@@ -131,9 +131,17 @@ Answer the setup questions as prompted. Hit Enter to accept the default value sp
 ## Finish setup
 After answering the setup questions, your selections will be displayed with a prompt to finish installation. If everything looks good, hit Y to finish.
 
-Upon successful installation, a confirmation message will appear that says: "Casa installation successful! Point your browser to `https://<host>/casa`".
+Upon successful installation, a confirmation message will appear that says: "Casa installation successful! Point your browser to `https://<host>/casa`. Recall admin capabilities are disabled by default. Check casa docs to learn how to unlock admin features"
 
 Wait a couple of minutes, then visit the URL and authenticate against Gluu to access Casa. 
+
+To enable admin features in Casa, follow the steps -
+1.	Navigate inside chroot to /opt/gluu/jetty/casa/ 
+2.	Create a blank /empty file called "administrable"
+    This blank file serves as a marker file to indicate that this node is designated for admin functionalities.
+    In a clustered deployment, the admin features and user features should run on different nodes to stay protected from a privilege         escalation attack. It will be the responsibility of the administrator to enable admin features on a particular node, make it             publically inaccessible and remove it from the load balancer (while still leveraging syncing of LDAP and file system by Cluster         Manager).
+3.	Restart casa.
+
 
 !!! Note 
     To change the default URL path for Casa follow the steps listed [here](change-context-path.md). It is advisable to apply this customization **before** credentials are enrolled. 
