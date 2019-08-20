@@ -69,7 +69,7 @@ apt-get install gluu-casa
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa_3.1.6-29~trusty+Ub14.04_all.deb
+apt-get install gluu-casa=3.1.6-29~trusty+Ub14.04
 ```
 
 
@@ -100,7 +100,7 @@ apt-get install gluu-casa
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa_3.1.6-7~xenial+Ub16.04_all.deb
+apt-get install gluu-casa=3.1.6-7~xenial+Ub16.04
 ```
  
 ### CentOS 6
@@ -136,7 +136,7 @@ yum install gluu-casa
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.centos6.noarch.rpm
+yum install gluu-casa-3.1.6-6.centos6
 ```
 
 ### CentOS 7
@@ -172,7 +172,7 @@ yum install gluu-casa
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.centos7.noarch.rpm
+yum install gluu-casa-3.1.6-6.centos7
 ```
 
 ### RHEL 6
@@ -208,7 +208,7 @@ yum install gluu-casa
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-7.rhel6.noarch.rpm
+yum install gluu-casa-3.1.6-7.rhel6
 ```
 
 ### RHEL 7
@@ -244,7 +244,7 @@ yum install gluu-casa
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.rhel7.noarch.rpm
+yum install gluu-casa-3.1.6-6.rhel7
 ```     
 
 ### Debian 8 (Jessie)
@@ -274,7 +274,7 @@ apt-get install gluu-casa
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa_3.1.6-7~jessie+Db8_all.deb
+apt-get install gluu-casa=3.1.6-7~jessie+Db8
 ```
 
 ### Debian 9 (Stretch)
@@ -282,7 +282,7 @@ apt-get install gluu-casa_3.1.6-7~jessie+Db8_all.deb
 **Add Gluu Repository**
 
 ```
-echo "deb https://repo.gluu.org/debian/ stable main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/debian/ stretch-stable main" > /etc/apt/sources.list.d/gluu-repo.list
 ```
 
 **Add Gluu GPG Key**
@@ -304,7 +304,7 @@ apt-get install gluu-casa
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa_3.1.6-7~stretch+Db9_all.deb
+apt-get install gluu-casa=3.1.6-7~stretch+Db9
 ```
 
 ## Apply patch
