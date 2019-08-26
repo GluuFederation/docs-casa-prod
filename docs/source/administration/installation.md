@@ -120,3 +120,6 @@ Wait a couple of minutes, then visit the URL and authenticate against Gluu to ac
 
 !!! Note 
     To change the default URL path for Casa follow the steps listed [here](change-context-path.md). It is advisable to apply this customization **before** credentials are enrolled. 
+    
+!!! Note
+A casa installation has a 30 day trial period after which you need a license file for casa to work properly. Please follow the steps listed [here](create-licenses.md) to obtain a license file
