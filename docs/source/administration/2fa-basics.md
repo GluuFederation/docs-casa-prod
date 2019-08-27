@@ -12,6 +12,7 @@ There is no limit to the number of credentials a user can enroll, and credential
 
 Users will only be able to add credentials with a type matching one of the already enabled authentication methods in the admin console. See the [Admin console page](./admin-console.md/#enabled-methods) to learn more. Out of the box, all the following authentication methods are supported:
 
+- FIDO 2 security keys
 - U2F security keys ([browser restrictions](./faq.md#u2f-restrictions) may apply)
 - Super Gluu
 - HOTP/TOTP
@@ -19,7 +20,13 @@ Users will only be able to add credentials with a type matching one of the alrea
 
 ## Resetting a user's preferred method
 
-In the event a user loses access to his account, you can revert the preferred authentication method to "password only" by following the steps shown in the [troubleshooting guide](faq.md)
+In the event a user loses access to his account, admins can revert the preferred authentication method to "password only" by following the steps shown in the [troubleshooting guide](./faq.md).
+
+## Associated "strength" of credentials
+
+When authenticating, a user with 2FA turned on, will be challenged to present the credential matching the "strongest" authentication method. The strength is a numerical value assigned via the "level" property of the custom script that is tied to the authentication method. The higher the value, the stronger it is considered. Thus, if a user has several credentials enrolled, he will be asked to present the one of them having the highest strength associated. 
+
+Particularly, if the device used to access is a mobile browser, only the methods listed in the property "mobile_methods" of casa script will be accounted to determine the strongest credential. Admins can modify this property at will if the default value does not meet their expectations.
 
 ## Forcing users to enroll a specific credential before 2FA is available
 

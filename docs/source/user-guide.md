@@ -26,19 +26,15 @@ To manage existing credentials and enroll new credentials, click the `Manage` bu
 
 ### Turn 2FA on/off
 
-After the minimum number of credentials have been enrolled (as specified by the system admin), 2FA can be turned on by clicking the pencil icon in the preferred credential widget: 
+After the minimum number of credentials have been enrolled (as specified by the system admin), 2FA can be turned on by clicking on the switch found in the Second Factor Authentication widget: 
 
 ![preferred-2fa](./img/preferred.png)
 
-Select the preferred type of 2FA and click `Update`:
-
-![select-2fa](./img/select-2fa.png)
-
-When prompted for 2FA, the preferred credential will be requested _first_. If the preferred credential is not available, any other previously enrolled 2FA credential can be used. 
+When prompted for 2FA, the most suitable credential will be requested _first_ (for instance depending on the type of device used to attempt access). If such credential is not available, any other previously enrolled 2FA credential can be used. 
 
 ![u2f-auth-plus-options](./img/gluu-u2f-authentication.png) 
 
-To turn off 2FA, set the preferred credential back to password. 
+To turn off 2FA, click again the switch. 
 
 ### 2FA settings & trusted devices
 If enabled by the system administrator, people can set their own policies for when they should be prompted for 2FA. To manage your settings, after enrolling and turning 2FA on, click the `Manage your 2FA settings` button in the Preferred Authentication Mechanism widget. 
