@@ -103,23 +103,23 @@ After answering the setup questions, your selections will be displayed with a pr
 
 Upon successful installation, a confirmation message will appear that says: "Casa installation successful! Point your browser to `https://<host>/casa`".
 
-Recall admin capabilities are disabled by default.
-Check casa docs to learn how to unlock admin features
-
- To unlock admin features in casa, Follow these steps:
-1.	Navigate inside chroot to /opt/gluu/jetty/casa/  
-
- 2.	Create a blank /empty file called .administrable <br />
-`touch .administrable`<br />
-(This blank file serves as a marker file to indicate that this node is designated for admin functionalities)
-In a clustered deployment, the admin features and user features should run on different nodes to stay protected from a privilege escalation attack. It will be the responsibility of the administrator to enable admin features on a particular node, make it publically inaccessible and remove it from the load balancer (while still leveraging syncing of LDAP and file system by Cluster Manager).
-
- 3.	Restart casa. <br />
-`service casa restart`<br />
-Wait a couple of minutes, then visit the URL and authenticate against Gluu to access Casa. 
-
 !!! Note 
     To change the default URL path for Casa follow the steps listed [here](change-context-path.md). It is advisable to apply this customization **before** credentials are enrolled. 
+
+### Unlocking admin features
+
+Recall admin capabilities are disabled by default. To unlock admin features follow these steps:
+
+1. Navigate inside chroot to `/opt/gluu/jetty/casa/`
+1. Create an empty file named `.administrable` (ie. `touch .administrable`)
+1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
+1. Wait a couple of minutes, then visit the URL and authenticate against Gluu to access Casa
+
+### A word on security
+
+In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer
+
     
-!!! Note
-A casa installation has a 30 day trial period after which you need a license file for casa to work properly. Please follow the steps listed [here](create-licenses.md) to obtain a license file
+## Licensing
+
+A casa installation has a 30 day trial period after which you need a license file for casa to work properly. Check this [page](licensing.md) for more details.
