@@ -12,6 +12,9 @@ Casa must be installed on the same server or VM as an operational Gluu Server 3.
 - Gluu LDAP  
 - Apache     
 
+!!! Warning
+    It is required your installation was configured to use a FQDN for hostname, not an IP address
+
 **[Install Gluu 3.1.6](https://gluu.org/docs/ce/3.1.6/installation-guide/)**
 
 ### VM requirements
