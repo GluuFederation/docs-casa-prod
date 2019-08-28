@@ -9,8 +9,10 @@ Casa must be installed on the same server or VM as an operational Gluu Server 4.
 
 - Apache     
 - LDAP    
-- oxAuth   
-- oxTrust     
+- oxAuth    
+
+!!! Warning
+    It is required your installation was configured to use a FQDN for hostname, not an IP address
 
 **[Install Gluu 4.0](https://gluu.org/docs/ce/4.0/installation-guide/)**
 
