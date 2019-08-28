@@ -149,14 +149,14 @@ You include `casa-shared` in plugins by adding the following to your maven proje
 
 ```
         <dependency>
-            <groupId>org.xdi</groupId>
+            <groupId>org.gluu</groupId>
             <artifactId>casa-shared</artifactId>
             <version>YOUR-CASA-VERSION</version>
             <scope>provided</scope>
         </dependency>
 ```
 
-You can find the physical artifact [here](https://ox.gluu.org/maven/org/xdi/casa-shared/).
+You can find the physical artifact [here](https://ox.gluu.org/maven/org/gluu/casa-shared/).
 
 Note that "provided" scope is used because classes of this library are available at runtime in Gluu Casa already, thus you don't have to make them part of your plugin jar.
 
@@ -316,26 +316,6 @@ Build-Jdk: 1.8.0_65
 
 The `Logger-Name` entry allows you to include logging statements your project generates to `casa.log` when they belong to the prefix supplied. We will revisit this later.
 
-## Casa plugins lifecycle
-
-PF4J plugins have a [lifecycle](http://pf4j.org/doc/plugin-lifecycle.html), where basically they go through a number of "states" (see class `org.pf4j.PluginState`). In Gluu Casa, we present a simplified version of this through the admin dashboard. Here are the driving rules:
-
-* A plugin is considered to be **started** or **stopped** - no other intermediate states.
-
-* When a plugin is just uploaded, it is considered **stopped** (internally the plugin is actually *resolved*).
-
-* When the admin decides to add the plugin (this is prompted in a screen where the full plugin description is shown), the `startPlugin` method of class `org.pf4j.PluginManager` is called. If the call is successful, it is deemed as **started**.
-
-* A **started** plugin can only be transitioned to **stopped** (this is attempted by a call to `stopPlugin` of `org.pf4j.PluginManager`). Once stopped, the plugin is considered to be "down" (not serving any functionality).
-
-* A **stopped** plugin can transition to **started** state only.
-
-* The admin can delete a plugin only if it's already **stopped**. When this occurs, internally a call to `unloadPlugin` is made. 
-
-The configuration file of Gluu Casa stores a mapping of started/stopped plugins and their location. That way, when the app is starting, it tries to load all plugins (issuing `loadPlugin` calls). Up to this point those successfully loaded are considered **stopped**. The failed ones are removed from the configuration file. Afterwards, `startPlugin` is called on plugins which are supposed to be **started**.
-
-If the location of a plugin is not valid (e.g. jar file is not found), its entry is automatically removed from the file, no loading attempt occurs in this case.
-
 ## Important constraints
 
 The following are some important considerations to account:
@@ -393,11 +373,13 @@ The following is a generic suggested flow for developing plugins once the [requi
 
 1. In a browser hit the page(s) you want to visualize in order to test your achievement so far. For the first attempts there is good likelihood of errors appearing. These are normally due to some misreference in URLs, class names, or label names. Some errors can be fixed without even regenerating and reuploading your plugins while others many need you to get back to your IDE. See this [page](./tips-development#skipping-package-and-deployment-phases) for more information.
 
-1. Apply error fixing as per the previous step if needed. If a new jar file needs to be built, before uploading it, delete the current running plugin via the admin dashboard of Gluu Casa.
+1. Delete the current running plugin via the admin dashboard of Gluu Casa if a new jar file needs to be built.
+
+1. Apply error fixing as needed.
 
 1. Add more logic to your plugin. This may require you to do some of the following:
 
-    - Generate Java classes intended for LDAP data manipulation (e.g by using `generate-source-from-schema` or writing those by hand)
+    - Generate Java classes intended for database manipulation
    
     - Adding elements to Gluu's LDAP schema
    

@@ -20,7 +20,7 @@ Any change you need to apply on the plugin you have been working on that doesn't
 
 1. Connect to the VM where Gluu Server and Casa are running
 1. Log in to the chroot
-1. Locate the Jetty directory where Casa was exploded. This can be found at `/opt/jetty-9.4/temp` and has the form `jetty-localhost-8091-casa.war-_casa-any-RANDOM-CHARS.dir`
+1. Locate the Jetty directory where Casa was exploded. This can be found at `/opt/jetty-9.4/temp` and has the form `jetty-localhost-8099-casa.war-_casa-any-RANDOM-CHARS.dir`
 1. `cd` to `webapp/pl/<plugin-id>`
 1. Upload the edited files that need revision to your VM
 1. Retest your plugin features
@@ -41,12 +41,10 @@ When several files need to be updated and that includes Java classes, a cleaner 
 - Upload the file
 - Wait 1 minute
 
-This action will unload the plugin (if it was previously added) and then deploy it using the fresher file contents. If the file uploaded has a different name than the existing one, please remove it. Ideally the same file name should always be used, thus replacing the same file over and over.
+More details can be found [here](./plugin-management-internals.md#hot-deployment).
 
-An active plugin can also be removed by deleting the corresponding file from the server. This action will also take 1 minute (at most) to take effect.
-
-!!! Note: This approach allows developers to save some clicks on the UI, not necessarily time.
+Note this approach allows developers to save some clicks on the UI, not necessarily time.
 
 ## Write a good manifest!
 
-This won't make you more agile, but taking the time to write a good license and description notes in your plugin manifest file will allow you to communicate more effectively to others about the features you are delivering with your artifacts. You can also use the description note to describe prerequisites your plugin may have (such as interacting with an external system.)
+This won't make you more agile, but taking the time to write a good license and description notes in your plugin manifest file will allow you to communicate more effectively to others about the features you are delivering with your artifacts. You can also use the description note to describe prerequisites your plugin may have (such as interacting with an external system).
