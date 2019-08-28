@@ -203,7 +203,7 @@ Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces
 !!! Note  
     When obtaining your IPersistenceService reference there is no need to worry about connecting to the database. You are ready to go.  
 
-#### Persistence-ready POJOs 
+#### Persistence-ready POJOs
 
 `casa-shared` already provides some persistence-framework compatible POJOs that you can reuse or extend when writing plugins. The following are the most prominent:
 
