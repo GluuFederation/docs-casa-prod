@@ -214,8 +214,8 @@ Follow these steps:
 1. Access the admin dashboard and select "Logging". Set the severity to `TRACE`
 1. Select the "Plugins" option and click on the "Add a plugin..." button
 1. Browse for the jar file generated [here](#packaging). After uploading completes, a page showing your plugin metadata should be shown. 
-1. Click on the the "Add" button. If the operation succeeds, your plugin is considered "started". Learn more about plugin states [here](./intro-plugin.md#casa-plugins-lifecycle).
-1. The plugin will be added to the list showing basic details, including a summary of extensions detected.
+1. Click on the the "Add" button. If the operation succeeds, your plugin will be started in 1 minute at most.
+1. After this time has elapsed, the plugin will be listed showing basic details, including a summary of extensions detected.
 
 ### Check the log
 
@@ -234,8 +234,8 @@ After execution of this method, the UI is partially refreshed, which causes a ne
 ### Unload the plugin
 
 1. Access the admin dashboard and select the "Plugins" option.
-1. Press the "stop" button for the HelloWorld plugin, and then press "delete".
-1. Try hitting again `https://hostname/casa/pl/hello-world-plugin/index.zul`, you should see the "NOT FOUND" error.
+1. Press the "delete" button for the HelloWorld plugin.
+1. Wait 1 minute and try hitting again `https://hostname/casa/pl/hello-world-plugin/index.zul`, you should see the "NOT FOUND" error.
 
 ## Apply editions
 
@@ -249,23 +249,23 @@ You have now a good sense of how plugins work. Now let's alter the project a bit
 
 1. Edit `HelloWorldVM` in the following way:
 
-    Remove the line `ldapService = ...` in `init` method, then edit `ldapService` member by adding a `WireVariable` annotation like this:
+    Remove the line `persistenceService = ...` in `init` method, then edit `persistenceService` member by adding a `WireVariable` annotation like this:
 
     ```
     @WireVariable
-    private ILdapService ldapService;
+    private IPersistenceService persistenceService;
     ```
     
-    `WireVariable` is an annotation of package `org.zkoss.zk.ui.select.annotation` which is a sort of equivalent for `javax.inject.Inject`. It allows us to reference an instance of `ILdapService` (see `casa-shared` javadocs). Usage of `WireVariable` has a disadvantage though: you need to know the EL name of the bean you are trying to inject. 
+    `WireVariable` is an annotation of package `org.zkoss.zk.ui.select.annotation` which is a sort of equivalent for `javax.inject.Inject`. It allows us to reference an instance of `IPersistenceService` (see `casa-shared` javadocs). Usage of `WireVariable` has a disadvantage though: you need to know the EL name of the bean you are trying to inject. 
     
     Specifically the injection above is equivalent to this one:
 
     ```
-    @WireVariable("ldapService")
-    private ILdapService ldapService;
+    @WireVariable("persistenceService")
+    private IPersistenceService persistenceService;
     ```
     
-    if the field name were `myLdapService` instead of `ldapService`, you are forced to supply the parameter in the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `ILdapService` is annotated this way: `javax.inject.Named("ldapService")`. If the bean didn't have a `Named` annotation, `WireVariable` injection would give you a null reference.
+    if the field name were `myPService` instead of `persistenceService`, you are forced to supply the parameter in the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `IPersistenceService` is annotated this way: `javax.inject.Named("persistenceService")`. If the bean didn't have a `Named` annotation, `WireVariable` injection would give you a null reference.
     
     For the reasons above, `Utils.managedBean` is a safer way to go.
     
@@ -276,8 +276,8 @@ You have now a good sense of how plugins work. Now let's alter the project a bit
 
 ## Troubleshooting and testing tips
 
-- First source for trouble investigation is the log file. Check your `/opt/gluu/jetty/casa/logs/casa.log` and read [this](#logging) beforehand.
+- First source for trouble investigation is the log file. Check your `/opt/gluu/jetty/casa/logs/casa.log` and read [this](#logging) beforehand
 
-- While you get acquiantance with writing pages, you can use the `z:label` component to debug variable or expression values in zul. In most cases errors are caused by wrong usage of available namespaces. Locate an already existing page having a similar behaviour you desire and inspect its markup. This can save you lots of trial/error cycles. Also, it's good to work in small increments: do not attempt to write the entire page and backing Java code at once to test it thoroughly.
+- While you get acquiantance with writing pages, you can use the `z:label` component to debug variable or expression values in zul. In most cases errors are caused by wrong usage of available namespaces. Locate an already existing page having a similar behaviour you desire and inspect its markup. This can save you lots of trial/error cycles. Also, it's good to work in small increments: do not attempt to write the entire page and backing Java code at once to test it thoroughly
 
 - The life cycle for plugin development isn't tedious, but you can boost your performance by following the [Tips for plugin development](./tips-development.md)

@@ -5,7 +5,7 @@
     
 ## Overview
 
-In the introductory pages, we mentioned that developers can customize three types of menus: user, admin, and drop down. This can be achieved by implementing the `org.gluu.credmanager.extension.navigation.NavigationMenu` extension point.
+In the introductory pages, we mentioned that developers can customize three types of menus: user, admin, and drop down. This can be achieved by implementing the `org.gluu.casa.extension.navigation.NavigationMenu` extension point.
 
 Every extension point you implement specifies which type of menu item is intended by supplying a return value for the `menuType` method. Valid return values are `MenuType.USER`, `MenuType.ADMIN_CONSOLE`, or `MenuType.AUXILIARY`.
 

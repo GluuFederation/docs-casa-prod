@@ -66,15 +66,13 @@ Note **it is your responsability** to ensure an admin page can only be accessed 
 
 While the general template guarantees no anonymous access to a page is allowed, proper checks need to be added in case you want to restrict access to regular users.
 
-To do so, ensure the ZK tag you are using to pass the `maincontent` has an `if` attribute whose expression evaluates `true` when access should be granted. Using this technique, no `maincontent` will be defined and thus no rendering in the central area of page will take place. A typical example of this is:
+To do so, add a processing instruction like `<?init class="org.gluu.casa.core.navigation.AdminProtectionInitiator"?>` before the general template is called. This will provoke a page-scoped variable named `error` to contain a message describing that access is not authorized. Thus, you can make the ZK tag employed to pass the `maincontent` have an `if` attribute whose expression evaluates to `true` when `error` is not set. Using this technique, no `maincontent` will be defined and thus no rendering in the central area of page will take place. A typical example of this is:
 
 ```
-<z:div if="${sessionContext.user.admin}" self="@define(maincontent)">
+<z:div if="${empty pageScope.error}" self="@define(maincontent)">
 ...
 </z:div>
 ```
-
-The template also ensures that despite your page has a URL like `/casa/pl/<plugin-id>/admin/...`, the admin menu items on the left will not be displayed. 
 
 ## Displaying feedback to end-users
 
