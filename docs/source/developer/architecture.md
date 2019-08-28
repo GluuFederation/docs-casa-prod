@@ -40,17 +40,25 @@ From the server-side perspective, the following summarizes the most relevant asp
 
 #### Contexts and Dependency Injection (CDI)
 
-Casa uses Weld 3.0 (JSR-365 aka CDI 2.0) for managed beans. The most important aspects of business logic are implemented through a set of beans found in Java package `org.gluu.credmanager.core`.
+Casa uses Weld 3.0 (JSR-365 aka CDI 2.0) for managed beans. The most important aspects of business logic are implemented through a set of beans found in Java package `org.gluu.casa.core`.
 
 Managed beans are injected into UI controller classes (ZK ViewModels) by means of custom ZK annotations. ZK pages can access bean properties via EL expressions when they are annotated `javax.inject.Named`.
 
 #### Logging
 
-Casa uses "Simple Logging Facade for Java" (SLF4J) with the Log4j2 binding. Log files are located in `/opt/gluu/jetty/casa/logs` of Gluu Server chroot container. To get more information on loggers and appenders, check the `log4j2.xml` file found in `/WEB-INF/classes` of the application war. Alternatively, you can check the file online in [Github](https://github.com/GluuFederation/casa/blob/version_4.0/app/src/main/resources/log4j2.xml) (point to the branch that corresponds to your Casa version).
+Casa uses "Simple Logging Facade for Java" (SLF4J) with the Log4j2 binding. Log files are located in `/opt/gluu/jetty/casa/logs` of Gluu Server chroot container. To get more information on loggers and appenders, check the `log4j2.xml` file found in `/WEB-INF/classes` of the application war. Alternatively, you can check the file online in [Github](https://github.com/GluuFederation/casa/blob/master/app/src/main/resources/log4j2.xml) (point to the branch that corresponds to your Casa version).
 
 #### Async timers
 
-Casa currently employs two asynchronous jobs to periodically clean users trusted devices list if any, and to detect changes in relevant custom interception scripts and notify plugin handlers of this event. For this task, the Quartz 2 library is used.
+Casa employs a number of asynchronous jobs to:
+
+- Periodically clean users trusted devices list if any
+- Detect changes in relevant custom interception scripts and notify plugin handlers of this event
+- Detect changes in logging level
+- Deploy/undeploy plugins based on recent changes in the file system
+- Synchronize configuration changes 
+
+For these tasks, the Quartz 2 library is used.
 
 #### Plugin framework
 
@@ -77,7 +85,7 @@ More importantly, the workflow exhibited by the authorization server when an aut
 
 ### oxd server
 
-oxd server (and the oxd-https-extension if used) acts as a mediator to simplify the authorization process (which follows the OpenID Connect code flow). This required component's location is supplied during Casa installation (in case administrators don't have an oxd server available, they can make use of the option to install and configure on an instance).
+oxd server (version 4.0 required) acts as a mediator to simplify the authorization process (which follows the OpenID Connect code flow). This required component's location is supplied during Casa installation (in case administrators don't have an oxd server available, they can make use of the option to install and configure on an instance).
 
 ### Geolocation service
 
@@ -87,11 +95,11 @@ Casa supports free and pro service of IP-API.
 
 ## Data storage
 
-### LDAP
+### Backend database
 
-Casa uses the same lightweight directory (LDAP) of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), preferred authentication method, users' trusted devices information, and so on. 
+Casa uses the same lightweight directory (LDAP) or Couchbase database of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), preferred authentication method, users' trusted devices information, and so on. 
 
-It is recommended that developers writing plugins leverage the existing directory to save their data. Nonetheless, any other alternative mechanism can be embraced (e.g. a database); it is up to administrators and developers to agree on how to incorporate this to the current stack.
+It is recommended that developers writing plugins leverage the existing database to save their data. Nonetheless, any other alternative mechanism can be embraced; it is up to administrators and developers to agree on how to incorporate this to the current stack.
 
 ### Config file
 
@@ -103,7 +111,7 @@ To force the application to pick up changes manually applied to this file, a [re
 
 ### Plugins directory
 
-Jar files of all [plugins](#plugin-framework) (started/stopped) reside in the file system at `/opt/gluu/casa/plugins`.
+Jar files of deployed [plugins](#plugin-framework) reside in the file system at `/opt/gluu/casa/plugins`.
 
 ## Runtime environment
 

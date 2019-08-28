@@ -21,27 +21,21 @@ During normal use, the app will show feedback to users if operations were succes
 
 ### How do I restart the application?
 
-To restart Casa, just issue
-
-```
-$ service casa restart
-```
-
-from within the Gluu Server chroot container.
+Just [restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa service.
 
 ### How do I custom brand Casa?
 
-We have a dedicated page covering the topic of custom branding [here](custom-branding.md).
+We have a dedicated page covering the topic of custom branding [here](./custom-branding.md).
 
 ### What ports are used by the application?
 
-Casa uses port `8091`. One way to see if the app is up and running is by checking whether this port is open by issuing a command like `netstat -nltp`.
+Casa uses port `8099`. One way to see if the app is up and running is by checking whether this port is open by issuing a command like `netstat -nltp`.
 
-### How to reset a user's preferred authentication method?
+### How to turn off 2FA for a user?
 
-If a user has been locked out for any reason (e.g. lost devices), you can reset his preferred method by accessing the admin console and choosing the menu item labelled "Reset users preference".  Type the username (or part of) in the text field and then press search. Once you locate the user in the result grid, click the corresponding row and then hit "Change to password". The row will become disabled, and you'll see a success message.
+If a user has been locked out for any reason (e.g. lost devices), you can reset his "authentication method" to password by accessing the admin console and choosing the menu item labelled "Reset users preference". Type the username (or part of) in the text field and then press search. Once you locate the user in the result grid, click the corresponding row and then hit "Change to password". The row will become disabled, and you'll see a success message.
 
-If you've followed the steps as described above, next time he attempts to log in, **password** will be his new preference and he won't be asked to present additional credentials to enter.
+If you've followed the steps as described above, next time he attempts to log in, he won't be asked to present any credentials other than password to enter.
 
 ### How to adjust the issuer for OTP tokens
 
@@ -112,7 +106,6 @@ In order to ensure authentication scripts are properly configured in Gluu, it is
 
 !!! Note  
     Learn more about how the Gluu Server handles authentication in the [user authentication intro](https://www.gluu.org/docs/ce/authn-guide/intro). In addition, to learn more about how custom interception scripts work, review the [custom script tutorial](https://www.gluu.org/docs/ce/admin-guide/custom-script).  
- 
 
 ### A previously enabled method is not available anymore
 
@@ -148,9 +141,9 @@ Ensure the following are met:
 
 * In the administration console, you can see which methods are already enabled in the server, and modify those you want to offer.
 
-### The preferred method for authentication is set to password and user cannot change it
+### A user cannot turn 2FA on
 
-To choose a strong method for authentication, the user has to have enrolled at least a certain number of credentials through the app. Only after this is met, he will be able to set his preferred method. 
+To turn 2FA on, the user has to have enrolled at least a certain number of credentials through the app. Only after this is met, he will be able to perform this action. 
 
 In the administration console you can specify the minimum number of enrolled credentials needed to enable second factor authentication for users.
 

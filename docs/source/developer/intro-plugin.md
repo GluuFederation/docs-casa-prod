@@ -1,6 +1,6 @@
 # Introduction to plugin development
  
-This page covers basic notions required for Gluu Casa plugin development. In practice, writing plugins is easy but requires understanding of some key concepts. If you skip the background part and proceed straight to [Writing your first plugin](writing-first.md), it is quite likely you will get bounced here very soon.
+This page covers basic notions required for Gluu Casa plugin development. In practice, writing plugins is easy but requires understanding of some key concepts. If you skip the background part and proceed straight to [Writing your first plugin](writing-first.md), you will get bounced here very soon.
  
 ## Requirements and tools
  
@@ -34,7 +34,7 @@ By default .zul templates are cached for a very long period, however, for develo
     ```
     # jar -uf casa.war WEB-INF/zk.xml
     ```
-1. Restart Casa (`service casa restart`)
+1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
 
 The above guarantees changes in .zul files are picked very often (5 seconds is default ZK cache refresh time).
 
@@ -82,15 +82,11 @@ In theory, any other language supported in the JVM such as Scala or Groovy may w
 
 You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the from in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
 
-### LDAP SDK For Java
+### oxcore persistence annotation lib
 
-Plugins will likely require reading and writing data from and to the underlying Gluu Server lightweight directory. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to LDAP (basically CRUD operations). Manipulation of this abstraction requires you to create simple classes and POJOs that can be mapped to actual LDAP entries. 
+Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
 
-For this purposes the UnboundID LDAP SDK [Persistence Framework](https://docs.ldap.com/ldap-sdk/docs/persist/index.html) is used. Of particular interest is the [`generate-source-from-schema`](https://docs.ldap.com/ldap-sdk/docs/persist/generate-source-from-schema.html) tool which allows you to automate generation of classes so that you don't have to write the mapping annotations manually.
-
-`generate-source-from-schema` and the persistence framework is bundled in the [UnboundID LDAP SDK](https://github.com/pingidentity/ldapsdk/releases). It is recommended to download the full release package which brings the automation tools, Java libs (jar files), and plenty of documentation and examples. Internally, Gluu Casa uses version 4.0.4 of this project.
-
-For more background on these topics you may like checking this [website](https://www.ldap.com/unboundid-ldap-sdk-for-java).
+For this purpose, Gluu's oxcore [persistence-annotation](https://github.com/GluuFederation/oxCore/blob/master/persistence-annotation/pom.xml) library is leveraged.
 
 ## Basic concepts
 
@@ -172,7 +168,7 @@ Note that "provided" scope is used because classes of this library are available
 
 - *Authentication method* (`org.gluu.casa.extension.AuthnMethod`): Implementing an extension of this kind allows adding (or overriding) and authentication mechanism used in Gluu Casa (with regards to enrolling capabilities only). Adding a method requires some planning. There is a dedicated [section](./authn-methods/index.md) around this.
 
-The existence of this two extension points means that you can tweak menus or authentication method behaviors. These are core aspects of the application, specially the later. However, if your plugin is not related to any of those, you can pack your plugin with no extensions and still provide assets like UI pages, ViewModels, etc.
+The existence of these two extension points means that you can tweak menus or authentication method behaviors. These are core aspects of the application, specially the later. However, if your plugin is not related to any of those, you can pack your plugin with no extensions and still provide assets like UI pages, ViewModels, etc.
 
 #### Utility classes
 
@@ -202,24 +198,24 @@ Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces
 
 - `ISessionContext`: It allows you to obtain information about the current user session: who the logged-in `User` is, and which their `BrowserInfo` settings are.
 
-- `ILdapService`: Obtain an instance of this class (via `managedBean` method) and you are ready to start performing CRUD operations in local LDAP!. Recall that objects and classes passed here are supposed to follow the rules of [persistence framework](#ldap-sdk-for-java). This interface also contains some methods that allows you to quickly obtain the DN (distinguished name) of the most important branches of Gluu's LDAP tree.
+- `IPersistenceService`: Obtain an instance of this class (via `managedBean` method) and you are ready to start performing CRUD operations in the local database!. Recall that objects and classes passed around are supposed to be annotated with some of the annotations from the oxcore [persistence framework](#oxcore-persistence-annotation-lib). This interface also contains some methods that allows to quickly obtain the DN (distinguished name) of the most important branches of Gluu's LDAP tree which are also useful when couchbase is in place.
 
 !!! Note  
-    When obtaining your ILdapService reference there is no need to worry about connecting to LDAP. You are ready to go.  
+    When obtaining your IPersistenceService reference there is no need to worry about connecting to the database. You are ready to go.  
 
-#### Ldap-ped POJOs 
+#### Persistence-ready POJOs 
 
 `casa-shared` already provides some persistence-framework compatible POJOs that you can reuse or extend when writing plugins. The following are the most prominent:
 
-##### BaseLdapPerson
+##### BasePerson
 
-The class `org.gluu.casa.core.ldap.BaseLdapPerson` represents an entry in the *people* LDAP branch, that is, one with `objectClass=gluuPerson`. It only exposes LDAP attributes `inum` and `uid` so you might extend this class and add the attributes your plugin needs to handle. Note that field attributes, getter and setter methods may require annotations so that the framework automatically populates and/or persists values appropriately and also execute searches successfully.
+The class `org.gluu.casa.core.model.BasePerson` represents an entry in the *people* LDAP branch, that is, one with `objectClass=gluuPerson` (or its equivalent in case of Couchbase). It only exposes attributes `inum` and `uid` so you might extend this class and add the attributes your plugin needs to handle. Note that field attributes may require annotations so that the framework automatically populates and/or persists values appropriately.
 
-For an example on `BaseLdapPerson` derivation, check Gluu Casa [Person](https://github.com/GluuFederation/casa/tree/version_4.0/app/src/main/java/org/gluu/casa/core/ldap/Person.java) class which in addition to `BaseLdapPerson` fields, handles `givenName`, `sn`, and `memberOf` attributes. This class is not available in `casa-shared`.
+For an example on `BasePerson` derivation, check Gluu Casa [Person](https://github.com/GluuFederation/casa/blob/version_4.0/app/src/main/java/org/gluu/casa/core/model/Person.java) class which in addition to `BasePerson` fields, handles `givenName`, `sn`, and `memberOf` attributes. This class is not available in `casa-shared`.
 
-##### oxCustomScript
+##### CustomScript
 
-The class `org.gluu.casa.core.ldap.oxCustomScript` models an entry in the *scripts* LDAP branch, in other words, a representation of a Gluu custom interception script. This class is useful for plugins working with authentication methods since those are parameterized via the configuration properties of scripts. You will find method `Utils.scriptConfigPropertiesAsMap` useful for easily reading a script properties set.
+The class `org.gluu.casa.core.model.CustomScript` represents a Gluu custom interception script. This class is useful for plugins working with authentication methods since those are parameterized via the configuration properties of scripts. You will find method `Utils.scriptConfigPropertiesAsMap` useful for easily reading a script properties set.
 
 ## Anatomy of a plugin
 
@@ -352,7 +348,7 @@ To obtain references of already defined [service objects](#service-objects), use
 
 ### Simultaneous plugin versions
 
-Gluu Casa does not allow to upload a plugin whose plugin ID is already found in the system - whether started or stopped - even when plugin versions do not match. 
+Gluu Casa does not allow to upload a plugin whose plugin ID is already found in the system even when plugin versions do not match. 
 
 ### Plugin versioning
 
@@ -393,13 +389,11 @@ The following is a generic suggested flow for developing plugins once the [requi
 
 1. Build your plugin artifact. For your first artifact, ensure the jar complies with the [expected structure](#anatomy-of-a-plugin). Check your manifest file contains the entries you expect and that the `extensions.idx` was bundled alongside with the manifest.
 
-1. Login to your Gluu Casa testing application and upload the plugin in the admin dashboard. Check your `casa.log`: while the application provides you with some visual feedback, there might be some warnings generated under the hood that may result interesting to you. 
-
-1. Click the button that adds (starts) the plugin. Check the log once more.
+1. Login to your Gluu Casa testing application and upload the plugin in the admin dashboard. Wait 1 minute and check your `casa.log` and `casa_async_jobs.log`. You may find a lot of interesting information there.
 
 1. In a browser hit the page(s) you want to visualize in order to test your achievement so far. For the first attempts there is good likelihood of errors appearing. These are normally due to some misreference in URLs, class names, or label names. Some errors can be fixed without even regenerating and reuploading your plugins while others many need you to get back to your IDE. See this [page](./tips-development#skipping-package-and-deployment-phases) for more information.
 
-1. Apply error fixing as per the previous step if needed. If a new jar file needs to be built, before uploading it, stop and delete the current running plugin via the admin dashboard of Gluu Casa.
+1. Apply error fixing as per the previous step if needed. If a new jar file needs to be built, before uploading it, delete the current running plugin via the admin dashboard of Gluu Casa.
 
 1. Add more logic to your plugin. This may require you to do some of the following:
 
@@ -422,4 +416,4 @@ The following is a generic suggested flow for developing plugins once the [requi
 1. Test your plugin on a realistic Gluu Server instance (pre-production environment of your organization). Once approved give the plugin its final version (e.g. 1.0.0), generate the final jar file, and deploy in production.
 
 !!! Note  
-    Neither Gluu Casa nor Gluu Server requires to be **restarted** when you are developing plugins. In case you need to alter the directory schema, only the LDAP service needs a restart.  
+    Neither Gluu Casa nor Gluu Server requires to be **restarted** when you are developing plugins. In case you need to alter the lightweight directory schema, only the LDAP service needs a restart.  
