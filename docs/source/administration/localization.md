@@ -20,12 +20,12 @@ To supply labels in a particular language (or even if you want to override the E
 1. Extract the Casa default labels: `/opt/jre/bin/jar -xf /opt/gluu/jetty/casa/webapps/casa.war WEB-INF/classes/labels`
 1. Run `mv WEB-INF/classes/labels/*.properties .` and delete WEB-INF dir: `rm -R WEB-INF/`
 1. Add the appropriate suffix to the properties files found in the current directory, ie. `_de` for German, `_es` for Spanish, `_ja` for Japanese, etc.
-1. Edit the contents of files accordingly. Use UTF-8 encoding for opening and saving.
+1. Edit the contents of files accordingly. Use UTF-8 encoding for opening and saving
 1. `cd` to `/opt/gluu/jetty/casa/static`
 1. Create directory `i18n` if it does not exist: `mkdir i18n`
 1. Transfer the properties files to the `i18n` folder
 1. Ensure `jetty` user has permission for reading the files
-1. Restart Casa: `service casa restart`
+1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
 
 Log in to the application and review your work. Make necessary edits and repeat the process.
 
@@ -34,6 +34,8 @@ Log in to the application and review your work. Make necessary edits and repeat 
 In Casa, the rule for displaying contents is leveraged from the [underlying framework](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Internationalization). In short, the locale to use per session is picked based on the end-user browser settings.
 
 As an example, if the browser was configured to use U.S. English, the locale will be `en_US`. This means that files ending in  `_en_US.properties` will be considered first. Then, the country suffix is removed and thus `_en.properties` is looked up. Finally the non-suffixed ones are considered, that is, the default label files bundled with Casa.
+
+Additionally, end users can pick the language of their preference by selection a language item from the dropdown list appearing at the bottom of any Casa page. The list is only shown if there are two or more languages available to display.
 
 ## Localization in plugins
 
@@ -44,14 +46,14 @@ To add your own translation for plugin texts, proceed as follows:
 1. `cd` to the folder where you stored the jar file of the plugin of interest. This file was delivered to you by Gluu staff directly.
 1. Extract the plugin's default labels (requires Java bin on your path): `jar -xf JAR_FILE labels/zk-label.properties`
 1. `cd` to `labels` folder
-1. Add the appropriate suffix to the properties file, ie. `_de` for German, `_es` for Spanish, `_ja` for Japanese, etc
+1. Add the appropriate suffix to the properties file, ie. `_de` for German, `_es` for Spanish, `_ja` for Japanese, etc.
 1. Edit the contents accordingly. Use UTF-8 encoding for opening and saving
 1. Connect to your Gluu Casa Server/VM and log in to chroot
 1. `cd` to `/opt/gluu/jetty/casa/static`
 1. Create directory `i18n` if it does not exist: `mkdir i18n`
 1. Transfer the properties file to the `i18n` folder
 1. Ensure `jetty` user has permission for reading
-1. Restart casa: `service casa restart`
+1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
 
 !!! Note
     Since most Gluu Inc. plugins have a `zk-label.properties`, you can accumulate all plugin texts into a single file, or you can use a different filename for each plugin.
