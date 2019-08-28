@@ -23,9 +23,8 @@ Simply add it to your project as you normally would. Ensure the jar files needed
 You don't normally need to, but here is an example on how to obtain references to `javax.servlet.http.HttpServletRequest` and `javax.servlet.http.HttpSession` objects respetively:
 
 ```
-Execution current = Executions.getCurrent();
-request = (HttpServletRequest) current.getNativeRequest();
-session = (HttpSession) current.getSession().getNativeSession();
+request = org.gluu.casa.misc.WebUtils.getServletRequest();
+session = request.getSession();
 ```
 
 ## Enrollment APIs
@@ -44,7 +43,7 @@ Authentication methods are parameterized by configuration properties set in oxTr
 
 - `twilio_sms`: The details of a Twilio account to be able to send SMS.
 - `otp`: A configuration file containing key length, algorithm, and number of OTP digits.
-- `super_gluu`: A credentials file that configures the underlying service to send mobile pushes for Android and iOS.
+- `super_gluu`: A credentials file that configures the underlying service to send mobile pushes for Android and iOS. Optionally a license file to remove advertisements.
 
 Before attempting the endpoints, make sure the scripts are already running and well configured according to your organization needs. Ask your administrator.
 

@@ -20,7 +20,7 @@ This page summarizes key facts about how enrollment logic for an authentication 
   
 In the [introductory](./index.md#whats-next) page we highligthed the importance of some design points. Particularly in the enrollment logic, the following have to be very well-defined before any coding:
 
-- How a credential will be represented in terms of data for LDAP?
+- How a credential will be represented in terms of data in the database?
 - What parameters of the authentication method have effect on the enrollment process itself?
 
 Follow the instructions given in [Introduction to plugin development](../intro-plugin.md) to create your first plugin. This will require you to setup an environment for development previously. Ideally, you should have your first experience with the dummy [Hello-World](../writing-first.md) plugin so that you get acquaintace with the [development lifecycle](../intro-plugin.md#development-lifecycle).
@@ -99,7 +99,7 @@ These are a set of methods that map directly to what will be shown in the widget
 These methods must not return text but the identifiers of the labels that actually contain it. As an example, if your authentication method has to do with iris scanning, you could have an entry in your project's `zk-label.properties` this way:
 
 ```
-iris.method_title=Iris scannings
+iris.method_title=Iris scanning
 ```
 
 so `getPanelTitleKey` is implemented this way:
@@ -131,11 +131,11 @@ of the enrollment process of your plugin. Account this method is not called as s
 
 These are summarizing methods which are called directly by Casa in different situations. These methods should not throw exceptions and be as performant as possible. Please check the javadocs.
 
-- `getTotalUserCreds`: The number of credentials associated to this method that the user identified by the parameter passed has currently enrolled. The value of this parameter will be the `inum` attribute of the user in LDAP.
+- `getTotalUserCreds`: The number of credentials associated to this method that the user identified by the parameter passed has currently enrolled. The value of this parameter will be the `inum` attribute of the user.
 
 - `getEnrolledCreds`: The list of credentials a user has currently enrolled. Very basic data is required, see class `org.gluu.casa.credential.BasicCredential`. This method is called for every authentication method enabled in Casa when a user hits the home page of the application.
 
-These methods will probably require you to read LDAP data. The same goes when saving a credential for its enrollment. We will cover this aspects in "[Credentials retrieval](#credentials-retrieval)" section.
+These methods will probably require you to read data from the underlying database. The same goes when saving a credential for its enrollment. We will cover this aspects in "[Credentials retrieval](#credentials-retrieval)" section.
 
 Interface `AuthnMethod` does not expose an "add" credential Java method since mechanisms for enrollment are varied and usualy demand several steps for completion which are far from being homogeneous.
 
@@ -144,27 +144,31 @@ Interface `AuthnMethod` does not expose an "add" credential Java method since me
 It is a common need to be able to read the properties of a script from within a plugin's code. Use the following as a guide:
 
 ```
-ILdapService ldapService = Utils.managedBean(ILdapService.class);
-oxCustomScript script = new oxCustomScript();
+IPersistenceService persistenceService = Utils.managedBean(IPersistenceService.class);
+CustomScript script = new CustomScript();
 script.setDisplayName(acr);
-List<oxCustomScript> scripts = ldapService.find(script, oxCustomScript.class, ldapService.getCustomScriptsDn());
+script.setBaseDn(persistenceService.getCustomScriptsDn());
+List<CustomScript> scripts = persistenceService.find(script);
 Map<String, String> properties = scripts.size() > 0 ?
 	Utils.scriptConfigPropertiesAsMap(scripts.get(0)) : Collections.emptyMap();
 ```
 
-The code above basically does a query in LDAP and then parses data. This [page](../ldap-data.md) contains all details you need to know in order to manipulate LDAP data from your plugin's code. You may skip it now if you wish, but you will revisit it later when trying to code your actual enrollment logic or [this](#credentials-related-methods) set of methods. Here is a summary of what's going on there:
+The code above basically does a query and then parses data. This [page](../ldap-data.md) contains all details you need to know in order to manipulate data from your plugin's code. You may skip it now if you wish, but you will revisit it later when trying to code your actual enrollment logic or [this](#credentials-related-methods) set of methods. Here is a summary of what's going on there:
 
-- Line 1: A reference to an object that implements `ILdapService` is obtained. This is a high level interface that allow you to interact (CRUD) with the underlying Gluu Server LDAP very easily.
+- Line 1: A reference to an object that implements `IPersistenceService` is obtained. This is a high level interface that allow you to interact (CRUD) with the underlying Gluu database very easily.
 
-- Line 2-3: An object that represents a custom script is created. `oxCustomScript` is an utility class defined in module `casa-shared`. The display name of the custom script is set to the acr value we are interested in.
+- Line 2-3: An object that represents a custom script is created. `CustomScript` is an utility class defined in module `casa-shared`. The display name of the custom script is set to the acr value we are interested in. The base DN value is set so the query can be driven upon the correct initial location (basically, we follow an LDAP paradigm regardless of the actual underlying database).
 
-- Line 4: A query to LDAP is performed trying to find all instances of `oxCustomScript` that "look" like the `script` object instance. The search is performed in the subree where custom scripts are stored (the DN of such branch is obtained with the call to `getCustomScriptsDn`).
+- Line 4: A query is performed trying to find all instances of `CustomScript` that "look" like the `script` object instance.
 
-- Line 5: If the search returned results, the first one is picked and the properties are parsed. It turns out that properties are stored in LDAP attribute `oxConfigurationProperty` in json format, so the method `scriptConfigPropertiesAsMap` hides this complexity returning a `Map` of property name vs value.
+- Line 5: If the search returned results, the first one is picked and the properties are parsed. It turns out that properties are stored in json format, so the method `scriptConfigPropertiesAsMap` hides this complexity returning a `Map` of property name vs. value.
 
 ## Credentials retrieval
 
-This [page](../ldap-data.md) contains some guidelines in order to manipulate LDAP data from your plugin's code. Take some time now to get the grasp of how LDAP access work in Casa.
+!!! Note:
+    This subsection assumes you are using LDAP. If this is not the case, please perform the analogies appropriately. Account Couchbase, for instance, is schemaless.
+
+This [page](../ldap-data.md) contains some guidelines in order to manipulate data from your plugin's code. Take some time now to get the grasp of how database access work in Casa.
 
 In the [introductory](./index.md#whats-next) page we mentioned about credential data modelling, so it's time to manually create some dummy entries to simulate the process of retrieval. Add all elements you consider relevant for your case, for instance: 
 
@@ -176,7 +180,7 @@ Any of the above may require changing LDAP schema. [Here](../ldap-data.md#adding
 
 Once you create some sub-entries or attributes under a test user representing a couple of already enrolled credentials, you can proceed to implement the logic to list credentials (useful for the user's home page and for the enrollment page). These are some hints:
 
-- Create a persistence-aware Java class to represent the relevant info about a credential. You can use the concepts and examples found [here](../ldap-data.md#about-the-persistence-framework) for this. You can use the code generation tool mentioned there to make things easy.
+- Create a persistence-aware Java class to represent the relevant info about a credential. You can use the concepts and examples found [here](../ldap-data.md#about-the-persistence-framework) for this.
 
 - Create a separate Java class that will take charge of doing all credential management (CRUD over credentials). Focus on retrieval first: normally you will have to return a `List` of objects belonging to the previously created class.
 
@@ -209,6 +213,7 @@ Once confident of your result, proceed to code your `index.zul` page or whatever
 |twilio_sms|phone-detail.zul|
 |super_gluu|super-detail.zul|
 |u2f|u2f-detail.zul|
+|fido2|fido2-detail.zul|
 
 It will take some reading and inspection of existing code to understand how pages are built and how they are bound to backend classes. "[Adding UI pages](../ui-pages.md)" contains useful tech tips to write UI pages in Casa. A relevant overview of fundamental concepts can be found [here](../intro-plugin.md#ui-framework).
  
@@ -221,7 +226,7 @@ Steps for enrolling a credential clearly depend on the type of credential itself
 - Add suitable UI elements to your page (e.g. textboxes, buttons, etc.) that users should fill for enrolling
 - Add any required javascript libraries to your plugin and include those in your page. Copy these files in the `assets` directory of your project and use the "extra" content fragment to attach them to the page, as mentioned [here](../ui-pages.md#template-usage)
 - Add presentation logic to the Java class you are using as controller of your page. This logic basically takes charge of receiving input from the user and storing it in temporary variables or small POJOs.
-- Add the handlers to persist credentials to LDAP. Generally this involves filling a persistence-aware POJO with data previously grabbed from the user, and calling `add`, `modify`, or `delete` methods of `ILdapService`.
+- Add the handlers to persist credentials to the database. Generally this involves filling a persistence-aware POJO with data previously grabbed from the user, and calling `add`, `modify`, or `delete` methods of `IPersistenceService`.
 
 As you make progress with the task also ensure you have added:
 

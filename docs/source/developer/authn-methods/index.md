@@ -29,7 +29,7 @@ Plugins can be very powerful and depending on the actual need, a mix of skills c
 
 The building blocks of plugins are called **extensions**. A plugin can bundle one or more extensions and they can be of different types. Every extension contributes ("adds") specific behavior. For the problem at hand, your plugin will just need one extension as well as one UI page (where credential enrollment will take place). Also you can include supporting Java classes or static files you may need.
 
-A plugin that adds one (or more) authentication mechanisms will have a strong interaction with LDAP (the underlying Gluu lightweight directory) since that's the natural place where users' credential data will be stored. Also, all configurations (parameters) of the authentication method itself should be there in LDAP as well.
+A plugin that adds one (or more) authentication mechanisms will have a strong interaction with the the underlying Gluu database (eg. LDAP or couchbase) since that's the natural place where users' credential data will be stored. Also, all configurations (parameters) of the authentication method itself should be there in the DB as well.
 
 ## What's next?
 
@@ -37,7 +37,7 @@ Now that you have a minimal grasp, we suggest planning before coding. Working on
 
 - The `acr` value associated with your authentication method. This is a concept found often in [OpenID spec](http://openid.net/specs/openid-connect-core-1_0.html). In the case of the Gluu Server, this is a short "nickname" you assign to your script that serves the purpose of uniquely identifying the authentication mechanism it represents. Make a good choice, changing it afterwards may force you to change your Java code.
 
-- How will you model and store credentials associated to the authentication method? As an example, if you were to add OTP tokens as the authentication method, how do you represent such credentials and what LDAP attributes will you use to store such in LDAP?. Will you have to add attribute types to LDAP schema? If so, what syntaxes will be used?.
+- How will you model and store credentials associated to the authentication method? As an example, if you were to add OTP tokens as the authentication method, how do you represent such credentials and what attributes will you use to store such info in the database?. Will you have to add attribute types to LDAP schema? If so, what syntaxes will be used?.
 
 - Will you parameterize your authentication method? Using OTP as an example, you may have the key length as a parameter, or the number of digits that generated codes will have. Every possible authentication method on its own will have some characteristic you will prefer not to be hardcoded.
 
@@ -63,10 +63,3 @@ If you are interested in overriding how credential enrollment takes place for an
 - Associate the plugin to the authentication method: once the plugin is added to your Casa installation, visit the "enabled methods" section of Gluu Casa [dashboard](../../administration/admin-console.md#enabled-methods). In the row corresponding to the acr of interest, change "System" in the selection list by the plugin ID you have just added.
 
 Next time you visit the home page, the default widget for that method will be replaced by one generated using the data supplied in your plugin extension.
-
-<!--
-
-- [Example: a dummy authentication method](./dummy-method.md)
-- [Troubleshooting](./troubleshooting.md)
-
--->

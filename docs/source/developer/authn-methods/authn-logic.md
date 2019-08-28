@@ -19,8 +19,8 @@ Once you have a working custom script, ensure the following preconditions are me
 - For step 1, `getExtraParametersForStep` must only return `None`  
 - For step 1, the `authenticate` routine must check if there is already an authenticated user, and if so bypass validating the username and password. This is because a user may have previously attempted authentication with a different method
 - Add a `hasEnrollments` routine with a signature like:  
-    `def hasEnrollments(self, configurationAttributes, user):`  
-  where the `configurationAttributes` parameter is a `java.util.Map<String, org.xdi.model.SimpleCustomProperty>` with properties specified in `oxConfigurationProperty` attributes, and `user` is an instance belonging to `org.xdi.oxauth.model.common.User` (like the one obtained after a call to `authenticationService.authenticate`).
+       `def hasEnrollments(self, configurationAttributes, user):`  
+  where the `configurationAttributes` parameter is a `java.util.Map<String, org.gluu.model.SimpleCustomProperty>` with properties specified in `oxConfigurationProperty` attributes, and `user` is an instance belonging to `org.gluu.oxauth.model.common.User` (like the one obtained after a call to `authenticationService.authenticate`).
 - `hasEnrollments` must return `True` or `False`, describing whether `user` has one or more credentials enrolled for the type you are interested in  
 - Keep in mind that `getPageForStep` won't be called when `step=1` in your script. Casa takes charge of this specific step/method combination  
 - Finally, ensure that custom pages returned by `getPageForStep` for step 2 (or higher) include this footer:
@@ -31,7 +31,7 @@ Once you have a working custom script, ensure the following preconditions are me
     </ui:include>
     ```
 
-  This will make the alternative backtracking feasible. This footer includes a set of buttons for the user to navigate to alternate 2FA pages.
+    This will make the alternative backtracking feasible. This footer includes a set of buttons for the user to navigate to alternate 2FA pages.
 
 ## Enabling your method
 

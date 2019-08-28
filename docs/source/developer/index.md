@@ -63,13 +63,14 @@ For this, developers have access to a REST API which faciliates the credential e
 - OTP by SMS
 - TOTP or HOTP mobile applications (like Google Authenticator) 
 - Super Gluu push authentication
+- FIDO 2 security keys
 
 !!! Note
-    FIDO credentials can **not** be enrolled via APIs because the security model requires a direct connection to the server. 
+    Per spec FIDO 2 credentials can only be enrolled from a page belonging to the same domain or subdomain of your Gluu Server. 
 
 The [Swagger](https://swagger.io/docs/specification/2-0/) definition document is located at `https://host/casa/enrollment-api.yaml`. You can leverage [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to bootstrap the process of creating a client application in order to consume the service in a variety of programming languages. You can achieve similar effects by using [Swagger Hub](https://app.swaggerhub.com).
 
-Additionally, the Casa Github project contains a small [client-side application](https://github.com/GluuFederation/casa/tree/master/extras/enrollment-client/) that mimicks the process of enrolling credentials in Casa using the REST API. 
+Additionally, the Casa Github project contains a small [client-side application](https://github.com/GluuFederation/casa/tree/master/extras/enrollment-client/) that mimicks the process of enrolling credentials in Casa using the REST API. If you ever had trouble with it, please open a support ticket.
 
 As the Swagger yaml document states, the API is protected by a bearer token. That is, developers have to pass a suitable value in the authorization header for requests. This means an OpenID Connect client **must be** previously registered in the underlying Gluu Server in order to interact with the server's token endpoint.
 
