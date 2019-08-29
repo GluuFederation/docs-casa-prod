@@ -20,7 +20,7 @@ Users will only be able to add credentials with a type matching one of the alrea
 
 ## Resetting a user's preferred method
 
-In the event a user loses access to his account, admins can revert the preferred authentication method to "password only" by following the steps shown in the [troubleshooting guide](./faq.md).
+In the event a user loses access to his account, admins can revert the user's authentication method to "password only" by following the steps shown in the [troubleshooting guide](./faq.md).
 
 ## Associated "strength" of credentials
 

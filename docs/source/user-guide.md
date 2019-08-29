@@ -62,6 +62,19 @@ The context of an authentication attempt can determine which type of credental i
 
 The details page provides additional details about each enrolled credential, for instance last used, mobile operating system, and device name. Nicknames can be edited, credentials can be deleted and new credentials can be enrolled and nicknamed. 
 
+!!! Warning  
+    When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off. 
+
+### FIDO 2 security keys
+
+To add a new FIDO 2 credential, navigate to `2FA credentials` > `Fido 2 Security Keys`. Insert the fido key and click `Ready`. Casa will prompt to press the button on the key.
+
+![add-fido2](./img/add-fido2.png)
+
+Add a nickname and click `Add`. Once added, the new device will appear in a list on the same page. Click the pencil to edit the device's nickname or the trashcan to delete the device.
+
+![added-fido2](./img/view-fido2.png)
+
 ### U2F security keys
 
 To add a new U2F credential, navigate to `2FA credentials` > `U2F Security Keys`. Insert the U2F key and click `Ready`. Casa will prompt to press the button on the U2F key.
@@ -75,9 +88,6 @@ Add a nickname and click `Add`.
 Once it's added, the new device will appear in a list on the same page. Click the pencil to edit the device's nickname or the trashcan to delete the device.
 
 ![added-u2f](./img/view-2fa-casa.png)
-
-!!! Warning  
-    When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off. 
     
 ### Super Gluu Devices
 
@@ -97,9 +107,6 @@ Once it's added, the new device will appear in a list on the same page. Click th
 
 ![view-supergluu-casa](./img/view-supergluu-casa.png)
 
-!!! Warning  
-    When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off. 
-    
 ### OTP Tokens
 
 To add a new OTP token, navigate to `2FA credentials` > `OTP Tokens`.
@@ -115,9 +122,6 @@ For a hard token, choose the `Hard Token` option.
 Add the key associated with the device and the 6 digit code. Add a nickname for the device and click `Add`.
 
 Once it's added, the new device will appear in a list on the same page. Click the pencil to edit the device's nickname or the trashcan to delete the device.
-
-!!! Warning  
-    When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off.
     
 ### Mobile Phone Numbers
 
@@ -129,8 +133,6 @@ Enter a phone number and click 'Send SMS' to get the passcode. Enter the code re
 
 Once it's added, the new mobile number will appear in a list on the same page. Click the pencil to edit the mobile number's nickname or the trashcan to delete the mobile number.
 
-!!! Warning  
-    When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off.
     
 ## Password Reset
 

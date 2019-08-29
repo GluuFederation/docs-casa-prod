@@ -6,7 +6,7 @@ All configuration changes applied via the admin console take effect immediately 
 
 ## Local database 
 
-This header contains the settings Casa uses to establish a connection to the underlying database (LDAP or couchbase). These settings are made by the application installer and there is no need to apply any change afterwards. Update these settings only if the application needs to be tested against a different database Server. 
+This section contains settings used by Casa to establish a connection to the underlying database (LDAP or couchbase). These settings are prepared by the application installer and there is no need to apply any change afterwards. Update these settings only if the application needs to be tested against a different database Server. 
 
 ![local-ldap](../img/admin-console/LocalDatabase.png)
 
@@ -21,7 +21,7 @@ In case of lockout, visit the [FAQ document](./faq.md#oxd).
 ### oxd Settings
 The following settings can be adjusted or viewed via the Casa admin console:
 
-- Connection Type: By default, oxd will connect to its corresponding Gluu Server via localhost ("oxd-server"). If oxd is installed on a standalone server, and has the https-extension enabled, the connection can be made over the web. If `oxd-server` is being used, a normal value would be `localhost`/ `8099`. If the `oxd-https-extension` is being used, the value will be something like `https://oxd.myorg.com:8443`. Learn more in the [oxd docs](https://gluu.org/docs/oxd). 
+- oxd server location: host and port of [oxd](https://gluu.org/docs/oxd). 
 
 - URI of the OpenID Provider (OP): This is the URL of the corresponding Gluu Server where users are sent for authentication, e.g. `https://idp.myorg.com`. 
 
@@ -122,9 +122,9 @@ Application logs are useful sources of information to diagnose anomalies and und
 ![logging](../img/admin-console/logging.png)
 
 
-## Reset Users Preference
+## Reset to password authentication
 
-If a user is locked out for any reason (e.g. lost device, etc.), an admin can navigate to `Reset users preference` in the admin console to reset the user's preferred method to password. Type the username (or part of) in the text field and then press search. Once the user has been located, click the checkbox and click the `Change to password` button. The row will become disabled, and a success message will be displayed.
+If a user is locked out for any reason (e.g. lost device, etc.), an admin can navigate to `Reset to password authentication` in the admin console to turn 2FA off for them. Type the username (or part of) in the text field and then press search. Once the user has been located, click the checkbox and click the `Reset to password` button. The row will become disabled, and a success message will be displayed.
 
 ![reset-user-to-pw](../img/admin-console/reset-user-to-pw.png)
 
