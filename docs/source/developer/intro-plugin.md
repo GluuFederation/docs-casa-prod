@@ -57,8 +57,7 @@ If your Gluu Server is backed by OpenDJ:
 
 - Run `/opt/opendj/bin/dsconfig -h localhost -p 4444 -D "cn=directory manager" -w PASSWORD -n set-connection-handler-prop --handler-name="LDAPS Connection Handler" --set listen-address:0.0.0.0 -X` in chroot
 - Open port 1636 in your VM firewall
-- Restart LDAP (`service opendj restart`)
-
+- [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) LDAP
 
 ### LDAP notions
 
