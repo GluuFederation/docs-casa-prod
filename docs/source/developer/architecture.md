@@ -67,9 +67,9 @@ The "Plugin Framework for Java" ([PF4J](http://www.pf4j.org)) is the mechanism C
 Plugins are added at runtime, which, requires no restart of Casa. Additionally, plugins can be temporarily stopped or permanently removed.
 To add a plugin, a jar file must be uploaded via the admin dashboard. 
 
-#### LDAP persistence
+#### Persistence
 
-As expected, access to LDAP is key in Casa. To cover this need, the "UnboundID Persistence Framework" was employed. This is a small framework (part of the more general "UnboundID LDAP SDK") which allows to easily establish a mapping between Java objects (POJOs) and LDAP entries facilitating CRUD operations a lot. Plugins leverage some of the persistence framework tools, as well as some functionalities exposed directly by the application which makes access to LDAP fairly easy to understand and highly productive at the same time. 
+As expected, access to Gluu database is key in Casa. To cover this need, the oxcore persistence library. This is a small framework which allows to easily establish a mapping between Java objects (POJOs) and database entries facilitating CRUD operations a lot. Plugins leverage the persistence framework as well as some functionalities exposed directly by the application which makes access to the database fairly easy to understand and highly productive at the same time. 
 
 #### Rest services
 
