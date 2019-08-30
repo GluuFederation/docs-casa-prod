@@ -86,6 +86,6 @@ Message boxes are powerful because they also allow prompting users for their con
 
 ### Bootstrap alerts
 
-When the message you want to communicate is easy to get (e.g. operation successful), a simple [alert](https://getbootstrap.com/docs/4.0/components/alerts/) should suffice. For this, you can use `showMessageUI` of class `org.gluu.casa.ui.UIUtils`. Account you have to previously create the proper `div` element to hold the alert in your markup and ensure javascript variable `alertRef` points to the DOM element of the `div`. 
+When the message you want to communicate is easy to get (eg. operation successful), a simple [alert](https://getbootstrap.com/docs/4.0/components/alerts/) should suffice. For this, you can use `showMessageUI` of class `org.gluu.casa.ui.UIUtils`. Account you have to previously create the proper `div` element to hold the alert in your markup and ensure javascript variable `alertRef` points to the DOM element of the `div`. 
 
 You can find examples of how to do so everywhere in Casa code. A good minimalistic example is in `/admin/logging.zul` page of Casa project; this is the page where administrators can set the logging level of the app.

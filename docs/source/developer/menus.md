@@ -39,4 +39,4 @@ While you can point in your menu extension to a zul page containing basically an
    
 - Try using simple static markup for menu items. Avoid using long expressions or complex logic to generate markup. Since every page loaded involves evaluating your zul code, it is desirable to keep it lightweight.
 
-- Ensure your zul content won't end up in a runtime evaluation error under any circumstance. If this happens, the extension will simply not contribute to the resulting markup of the page. This applies for admin, user and drop-down menus.
+- Ensure your zul content won't end up in a runtime evaluation error under any circumstance. If this happens, the extension will simply not contribute to the resulting markup of the page. This applies for admin, user, and drop-down menus.

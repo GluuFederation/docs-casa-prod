@@ -2,6 +2,9 @@
 
 This page introduces two relevant topics for developers: [writing plugins](#plugins) and writing applications for [credentials enrollment](#credentials-enrollment-in-your-applications).
 
+!!! Note
+    Access to Casa github repo is required to go through developer doc pages. Please request read [access](https://gluu.org/contact) to the repository before undertaking any development task.
+
 ## Plugins
 
 ### What are plugins?
@@ -56,7 +59,7 @@ In addition to the above:
 
 ## APIs for credential enrollment
 
-Despite Casa having enrollment capabilities built-in, a use case may arise where credential enrollment needs to happen elswhere in your app ecosystem. A typical scenario is in a user registration application, where users are asked to enroll strong authentication credentials during account creation.
+Despite Casa having enrollment capabilities built-in, a use case may arise where credential enrollment needs to happen elsewhere in your app ecosystem. A typical scenario is in a user registration application, where users are asked to enroll strong authentication credentials during account creation.
 
 For this, developers have access to a REST API which faciliates the credential enrollment process. Currently, the following types of credentials can be enrolled using the API:
 
