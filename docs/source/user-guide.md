@@ -156,21 +156,21 @@ Navigate to the `Password Reset` widget. Enter your current and new passwords, t
     
 ## Account linking
 
-To manage the external accounts you've used to sign in, navigate to `Account Linking` in the left-hand menu. This presents the option to link new accounts, or remove existing linked accounts.
+To manage the external accounts you've used to sign in, use the left-hand menu to navigate to the page for `Account Linking`. This will present the option to link new external accounts, or remove existing linked accounts.
 
 ![Options for linked accounts](./img/plugins/account-linking-options.png)
 
-Once an account is linked, it can be removed when necessary.
+Once an account is linked, it can be removed as necessary.   
 
 ![disable or remove linked account](./img/plugins/account-linking-remove.png)
 
 ### Sign in with a linked account
 
-If the administrator has enabled the Account Linking plugin, a list with the configured providers will be displayed on the right panel. Click on an entry to access the given provider's authentication process. After this is finished, you will be taken back to Casa.
+By default, a list of the available external providers is displayed in the right panel of the sign in page. 
 
-Note that users without a local password set yet don't have access to enroll credentials because the username + password combination is  a prerequisite for multi-factor authentication. The user will be prompted to create a new password.
+![Login with linked account](./img/plugins/account-linking-login.png)
 
-![Login with linked account](./img/plugins/account-linking-need-password.png)
+Click any supported provider for which you've previously linked to kick-off authentication. After you've authenticated, you will be sent to the app which you were attempting to access. 
 
 ## Consent Management
 
