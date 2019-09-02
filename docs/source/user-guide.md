@@ -9,7 +9,7 @@ Gluu Casa ("Casa") is a self-service web portal for end-users to manage account 
 
 ## Sign in for the first time
 
-To log in, navigate to your Casa web URL. By default, it will be: `https://<yourdomain>/casa`. 
+To access Casa, navigate to its web URL. By default, it will be: `https://<yourdomain>/casa`. 
 
 Sign in with your standard username and password. If you do not have an account but social login is enabled, a new account can be created via social login. 
 
@@ -18,7 +18,7 @@ Sign in with your standard username and password. If you do not have an account 
 
 ## Credential Dashboard
 
-Your dashboard displays summary details about your enrolled 2FA credentials, and a button to manage those credentials for your account.
+Your dashboard displays summary details about your 2FA preferences and enrolled credentials.
 
 ![cred-dashboard](./img/dashboard-no-creds-enrolled.png)
 
