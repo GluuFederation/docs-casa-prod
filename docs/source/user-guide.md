@@ -156,11 +156,7 @@ Navigate to the `Password Reset` widget. Enter your current and new passwords, t
     
 ## Account linking
 
-To manage accounts linked to outside sources, navigate to `Account Linking` on the left-hand menu.
-
-![Nav Bar with Account Linking active](./img/plugins/account-linking-nav-bar.png)
-
-This presents the option to link new accounts, or edit existing linked accounts.
+To manage the external accounts you've used to sign in, navigate to `Account Linking` in the left-hand menu. This presents the option to link new accounts, or remove existing linked accounts.
 
 ![Options for linked accounts](./img/plugins/account-linking-options.png)
 
