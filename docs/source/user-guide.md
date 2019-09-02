@@ -2,9 +2,7 @@
 
 ## Overview
 
-Gluu Casa ("Casa") is a self-service web portal for end-users to manage security preferences for their account(s) in a Gluu Server. 
-
-The primary use-case for Casa is self-service 2FA. Other use cases and functionalities can be supported via [Casa plugins](https://casa.gluu.org/plugins), for example [Account Linking](#account-linking) and [Consent Management](#consent-management). 
+Gluu Casa ("Casa") is a self-service web portal for end-users to manage security preferences like two-factor authentication (2FA) and social login for their account(s) in a Gluu Server. 
 
 !!! Note
     The options displayed in the user portal will always depend upon which settings have been enabled by the administrator. 
@@ -20,7 +18,7 @@ Sign in with your standard username and password. If you do not have an account 
 
 ## Credential Dashboard
 
-Your dashboard includes widgets for all supported 2FA credentials (e.g. U2F keys, OTP apps, etc.). Each widget displays summary details of your enrolled credentials, and a button to manage those credentials for your account.
+Your dashboard displays summary details about your enrolled 2FA credentials, and a button to manage those credentials for your account.
 
 ![cred-dashboard](./img/dashboard-no-creds-enrolled.png)
 
