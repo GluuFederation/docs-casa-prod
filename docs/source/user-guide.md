@@ -2,7 +2,7 @@
 
 ## Overview
 
-Gluu Casa ("Casa") is a self-service web portal for end-users to manage security preferences like two-factor authentication (2FA) and social login for their account(s) in a Gluu Server. 
+Gluu Casa ("Casa") is a self-service web portal for end-users to manage account security preferences like two-factor authentication (2FA) and social login. 
 
 !!! Note
     The options displayed in the user portal will always depend upon which settings have been enabled by the administrator. 
