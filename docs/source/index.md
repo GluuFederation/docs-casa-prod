@@ -20,11 +20,11 @@ The core use case for Casa is self-service 2FA. If people need to call the helpd
 Out-of-the-box, Casa can be used to enroll and manage the following authenticators:    
 
 - U2F security keys like [Yubikeys](https://www.yubico.com/products/yubikey-hardware/)       
-- Gluu's U2F push-notification mobile app, [Super Gluu](https://super.gluu.org)    
+- Gluu's push-notification mobile app, [Super Gluu](https://super.gluu.org)    
 - OTP hardware cards like [these](https://www.ftsafe.com/products/OTP/Display_Card) or dongles like [these](https://www.ftsafe.com/Products/OTP/Single_Button_OTP)      
-- OTP mobile apps like Google Authenticator, FreeOTP, etc.       
+- OTP mobile apps like Google Authenticator, Authy, Duo, etc.       
 - Mobile phone numbers able to receive OTPs via SMS   
-- Passwords (if stored in the corresponding Gluu Server's local LDAP, i.e. not a backend LDAP like AD)      
+- Passwords (if stored locally in Gluu, i.e. not a backend LDAP like AD)      
 
 ## 2FA enrollment APIs
 
