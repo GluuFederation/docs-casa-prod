@@ -11,7 +11,7 @@ Gluu Casa ("Casa") is a self-service web portal for end-users to manage account 
 
 To access Casa, navigate to its web URL. By default, it will be: `https://<yourdomain>/casa`. 
 
-Sign in with your standard username and password. If you do not have an account but social login is enabled, a new account can be created via social login. 
+Sign in with your standard username and password. If you don't have an account but social login is enabled, a new account can be created via social login. 
 
 ![Login with linked account](./img/plugins/account-linking-login.png)
 
