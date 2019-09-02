@@ -168,7 +168,7 @@ By default, a list of the available external providers is displayed in the right
 
 ![Login with linked account](./img/plugins/account-linking-login.png)
 
-Click any supported provider for which you've previously linked to kick-off authentication. After you've authenticated, you will be sent to the app which you were attempting to access. 
+Click any supported provider for which you've previously linked an account to sign in. After authentication, you will be sent to the protected page you were attempting to access, e.g. the Casa dashboard. 
 
 ## Consent Management
 
