@@ -57,7 +57,7 @@ While configuring Passport earlier, you enabled one or more authentication scrip
 
 ### Update Casa custom script
 
-Since the *standard* authentication flow will be different, the `casa` script contents must be updated. Expand the row corresponding to Casa script, back up the current script contents and then replace with those found [here](https://github.com/GluuFederation/casa-ee-plugins/raw/version_4.0/account-linking/extras/casa.py).
+Since the *standard* authentication flow will be different, the `casa` script contents must be updated. Expand the row corresponding to Casa script, back up the current script contents and then replace with those found [here](https://github.com/GluuFederation/casa/blob/version_4.0/plugins/account-linking/extras/casa.py).
 
 Press the update button at the bottom of the page.
 
