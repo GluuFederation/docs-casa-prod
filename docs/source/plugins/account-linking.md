@@ -65,7 +65,7 @@ The login page must be updated so it dynamically loads the external providers in
 
 1. Log in to the chroot
 1. `cd` to `/opt/gluu/jetty/oxauth/custom/pages`
-1. Copy the file found [here](https://github.com/GluuFederation/casa-ee-plugins/raw/version_4.0/account-linking/extras/casa.xhtml) into `pages` folder.
+1. Copy the file found [here](https://github.com/GluuFederation/casa/blob/version_4.0/plugins/account-linking/extras/casa.xhtml) into `pages` folder.
 
 ## User guide
 
