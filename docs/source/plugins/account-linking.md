@@ -1,6 +1,6 @@
 # Accounts Linking
 ## Overview
-The Accounts Linking plugin allows users to link and delink their local account with an existing account at third-party social providers like GitHub, Facebook, and Google, or even external customer or partner SAML IDPs. 
+The Accounts Linking plugin allows users to link and delink their local account with an existing account at third-party social providers like GitHub, Facebook, and Google, or even external customer or partner OIDC OPs or SAML IDPs. 
 
 ## Requirements
 
