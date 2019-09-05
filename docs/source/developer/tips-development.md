@@ -45,6 +45,9 @@ More details can be found [here](./plugin-management-internals.md#hot-deployment
 
 Note this approach allows developers to save some clicks on the UI, not necessarily time.
 
+!!! Warning
+    It is a known issue that adding/modifying labels from the plugin's resource bundle doesn't take effect upon redeployment of the plugin. One way to overcome this is using a different file name for the jar file: remove the current jar and add another one named differently.
+
 ## Write a good manifest!
 
 This won't make you more agile, but taking the time to write a good license and description notes in your plugin manifest file will allow you to communicate more effectively to others about the features you are delivering with your artifacts. You can also use the description note to describe prerequisites your plugin may have (such as interacting with an external system).
