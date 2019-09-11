@@ -4,7 +4,7 @@ In this page we will disect the "Hello world" plugin project, apply editions on 
 
 ## Requirements
 
-Requirements for this task are the same as those listed in the [introductory page](intro-plugin.md#requirements-and-tools) except for LDAP-related stuff which is not needed. Additionally, maven will be used as build tool. If you don't want to use maven you'll need to investigate how to perform the tasks in the tool of your preference. 
+Requirements for this task are the same as those listed in the [introductory page](intro-plugin.md#requirements-and-tools) except for LDAP-related stuff which is not required. Additionally, maven will be used as build tool. If you don't want to use maven you'll need to investigate how to perform the tasks in the tool of your preference. 
 
 If you skipped ["Introduction to plugin development"](intro-plugin.md) we strongly encourage you to check it now.
 
@@ -14,36 +14,28 @@ Hello world is minimalistic plugin that showcases very basic aspects of plugin d
 
 ### Download project
 
-Let's start by downloading the code. Hello World plugin is found inside the Gluu Casa project itself. This way you can easily check the underlying APIs and real world UI pages, particularly, the [`casa-shared`](intro-plugin.md#casa-shared-module) module being of remarkable interest.
+Let's start by downloading the code. Hello World plugin is found in the [sample plugins repo](https://github.com/GluuFederation/casa-sample-plugins).
 
 If you have `git` installed in your machine, issue the following command. Replace the content in the angle brackets with your Gluu Casa version (e.g. "version_4.0"):
 
 ```
-$ git clone https://github.com/GluuFederation/casa.git
+$ git clone https://github.com/GluuFederation/casa-sample-plugins.git
 $ git checkout <branch>
 ```
 
 Alternatively you can download a zipped version of the project from github:
 
-- Visit this [page](https://github.com/GluuFederation/casa) and pick from the dropdown the branch matching your Casa version
+- Visit this [page](https://github.com/GluuFederation/casa-sample-plugins) and pick from the dropdown the branch matching your Casa version
 - Click on the "Clone or download" button, then on "download ZIP"
 - Extract the contents of the file to a convenient location
 
-### Generate javadocs
+#### Useful javadocs
 
-It is very useful to have some apidocs at hand. Please `cd` to the directory where you extracted or cloned the repo and do:
-
-```
-$ mvn javadoc:javadoc -pl shared
-$ cd plugins/helloworld
-$ mvn javadoc:javadoc
-```
-
-It is assumed `mvn` (maven executable) is in your path.
+`casa-shared` maven dependency is of remarkable interest. For convenience, the java api docs are included in this repository under the folder `casa-shared-apidocs`.
 
 ## Anatomy
 
-Plugin directory is found in `plugins/helloworld` folder. As you can see, this is a [standard maven project](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
+Plugin directory is found in `helloworld` folder. As you can see, this is a [standard maven project](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
 
 ### POM
 
@@ -51,23 +43,23 @@ Plugin directory is found in `plugins/helloworld` folder. As you can see, this i
 
 - Identifiers and versions: At the top of the file variables `plugin.id` and `plugin.version` are defined. These are key for plugin's metadata. Also we reuse those to name the artifact to be produced: note the `artifactId` and `version` tags; this means the name of the generated jar will follow the pattern: `{plugin.id}-{plugin.version}`.
 
-- Assembly: We leverage the `maven-assembly-plugin` that allow us to generate a jar with dependencies and a suitable manifest file (see ["anatomy of a plugin"](./intro-plugin.md#anatomy-of-a-plugin)). Note the `<archive>` section of `pom.xml` reuses the ID and version defined previously and also supplies extra info, being `<Plugin-Class>` one the most relevant.
+- Assembly: We leverage the `maven-assembly-plugin` that allow us to generate a jar with dependencies and a suitable manifest file (see ["anatomy of a plugin"](./intro-plugin.md#anatomy-of-a-plugin)). Note the `<archive>` section of `pom.xml` reuses the ID and version defined previously and also supplies extra info, being `<Plugin-Class>` the most relevant.
 
 - Dependencies: This simple plugin just accounts for one dependency, namely the [`casa-shared`](./intro-plugin.md#casa-shared-module) module. This dependency is obtained from Gluu repository (see `<repositories>` section).
 
 ### Plugin's class
 
-In the build descriptor, `<Plugin-Class>` element points us to class `org.gluu.casa.plugins.helloworld.HelloWorldPlugin`. This class extends `org.pf4j.Plugin` which is a requirement of our [plugin framework](./intro#plugin-framework). A plugin project should bundle only one class of this kind.
+In the build descriptor, `<Plugin-Class>` element points us to class `org.gluu.casa.plugins.helloworld.HelloWorldPlugin`. This class extends `org.pf4j.Plugin` which is a requirement of the [plugin framework](./intro#plugin-framework). A plugin project should bundle only one class of this kind.
 
 Plugin classes can override methods of `org.pf4j.Plugin` (e.g. `start` and/or `stop`) if they need to do some processing upon plugin start or stop. For HelloWorld we don't need so we simply call the constructor of the superclass.
 
 ### Extension
 
-In the same package of plugin class, that is, `org.gluu.casa.plugins.helloworld` we can find `HelloWorldMenu`, this is the only extension this plugin contributes. Recall from the intro page [concepts](#plugin-framework) that extensions are classes that implement extension points (interfaces annotated with `org.pf4j.ExtensionPoint` that define a set of methods of interest).
+In the same package of plugin class, that is, `org.gluu.casa.plugins.helloworld` class `HelloWorldMenu` is found, this is the only extension this plugin contributes. Recall from the intro page [concepts](./intro-plugin.md#plugin-framework) that extensions are classes that implement extension points (interfaces annotated with `org.pf4j.ExtensionPoint` that define a set of methods of interest).
 
-`HelloWorldMenu` is a class annotated with `org.pf4j.Extension` that implements extension point `org.gluu.credmanager.extension.navigation.NavigationMenu`. `NavigationMenu` defines a couple of methods that allow implementing classes to add items (more generally, content) to menus. Check the javadocs (in folder `shared/target/site/apidocs`) for a thorough description. Note that `menuType` is a default interface method. If it weren't present in `HelloWorldMenu` the same effect would be achieved.
+`HelloWorldMenu` is a class annotated with `org.pf4j.Extension` that implements extension point `org.gluu.casa.extension.navigation.NavigationMenu`. `NavigationMenu` defines a couple of methods that allow implementing classes to add items (more generally, content) to menus. Check the javadocs for a thorough description. Note that `menuType` is a default interface method. If it weren't present in `HelloWorldMenu` the same effect would be achieved.
 
-Method `getContentsUrl` references a path to a page that can contain markup of any kind. It will get added to the overall menu markup you are targetting (user, admin, or auxiliary), see `org.gluu.credmanager.extension.navigation.MenuType`. Markup is added in order of priority (see `getPriority` method), the higher the value, the upper position in the menu.
+Method `getContentsUrl` references a path to a page that can contain markup of any kind. It will get added to the overall menu markup you are targetting (user, admin, or auxiliary), see `org.gluu.casa.extension.navigation.MenuType`. Markup is added in order of priority (see `getPriority` method), the higher the value, the upper position in the menu.
 
 !!! Note
     All "extra" menu items are added after Casa defaults. For example, if you are targetting user menus, the 2FA menu and password reset will be shown first, those dynamically added come afterwards.  
@@ -76,7 +68,7 @@ In this particular case, `NavigationMenu` returns the String `"menu.zul"` which 
 
 ### Resource bundle
 
-As described in [Anatomy of a plugin](./intro-plugin.md#anatomy-of-a-plugin), plugins may declare one resource bundle with internationalization labels. This is a neat approach to decouple UI pages from actual text content. In folder `src/main/resources/labels` of plugin we find the resource bundle which consists of a single file, `zk-label.properties`. This contains just a couple of entries that are referenced by UI pages.
+As described in [Anatomy of a plugin](./intro-plugin.md#anatomy-of-a-plugin), plugins may declare one resource bundle with internationalization labels. This is a neat approach to decouple UI pages from actual text content. In folder `src/main/resources/labels` of plugin's directory we find the resource bundle which consists of a single file, `zk-label.properties`. This contains just a couple of entries that are referenced by UI pages.
 
 ### UI pages
 
