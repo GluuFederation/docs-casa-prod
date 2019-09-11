@@ -97,7 +97,7 @@ Casa supports free and pro service of IP-API.
 
 ### Backend database
 
-Casa uses the same lightweight directory (LDAP) or Couchbase database of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), preferred authentication method, users' trusted devices information, and so on. 
+Casa uses the same lightweight directory (LDAP) or Couchbase database of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), users' trusted devices information, and so on. 
 
 It is recommended that developers writing plugins leverage the existing database to save their data. Nonetheless, any other alternative mechanism can be embraced; it is up to administrators and developers to agree on how to incorporate this to the current stack.
 
