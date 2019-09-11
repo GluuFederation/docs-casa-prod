@@ -274,19 +274,21 @@ In Gluu Casa extension classes are instantiated only once (singletons), so keep 
 
 ### Dependencies
 
-It is likely you will reuse other libraries in your plugin. Unless such dependencies are already part of those Gluu Casa provides at runtime, you have to provide them in your project. This means you will generate a fat jar (a jar-with-dependencies).
+It is likely you will use external libraries in your plugin. Unless such dependencies are already part of those Gluu Casa provides at runtime, you have to provide them in your project. This means you will generate a fat jar (a jar-with-dependencies).
 
-To know about the dependencies already available at runtime, you can to do the following:
+To know the dependencies already available at runtime, do the following:
 
-1. clone Gluu casa (`git clone https://github.com/GluuFederation/casa.git`)
+1. Create a temporary directory in locally and `cd` to it
 
-1. switch to a proper branch (e.g. `git checkout version_4.0`)
+1. Create `app` and `shared` folders inside it
 
-1. cd to application's project (`cd app`)
+1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.0-SNAPSHOT/casa-base-4.0.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
-1. run `mvn dependency:tree`
+1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.0.0-SNAPSHOT/casa-shared-4.0.0.Final.pom` (save as `pom.xml`)
 
-Alternatively, you may extract the file `/opt/gluu/jetty/casa/webapps/casa.war` inside your Gluu Server container and inspect subdirectory `WEB_INF/lib`. To do so you can use `jar -xf casa.war WEB-INF/lib`.
+1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.0.0-SNAPSHOT/casa-4.0.0.Final.pom` saving again as `pom.xml`
+
+1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
 If you are already using in your project dependencies found in Casa, you should skip those in your jar file to get a lighter plugin. To do so you can set the `scope` of the artifact to `provided` in your maven's pom descriptor.
 
@@ -380,7 +382,7 @@ The following is a generic suggested flow for developing plugins once the [requi
 
     - Generate Java classes intended for database manipulation
    
-    - Adding elements to Gluu's LDAP schema
+    - Adding elements to Gluu's LDAP schema (applicable only if LDAP is your backend database)
    
     - Add more code to your ViewModel classes (e.g. to handle interactions such as pressing a button or to bind data from UI components)
    
