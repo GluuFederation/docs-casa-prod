@@ -147,7 +147,7 @@ We are already done with point 2 of the [list](#key-facts-from-schema). Let's mo
 
 ### Setting the owners of a client
 
-Selecting owners for a client is out of the scope of this tutorial. This task only involves retrievals so you can easily extrapolate your current knowledge to the field of users. This time use as base the branch `persistenceService.getPeopleDn()` (ou=people,o=...,o=gluu) and `gluuPerson` as structural class. Actually, for our toy example you can write a class that reuses `org.gluu.casa.core.model.BasePerson` (found in `casa-shared` maven dependency).
+This task only involves retrievals so you can easily extrapolate your current knowledge to the field of users. This time use as base the branch `persistenceService.getPeopleDn()` (ou=people,o=...,o=gluu) and `gluuPerson` as structural class. Actually, for our toy example you can write a class that reuses `org.gluu.casa.core.model.BasePerson` (found in `casa-shared` maven dependency).
 
 Assuming `client` variable represents the instance you want to assing owners to, you can do the following:
 
@@ -163,3 +163,7 @@ persistenceService.modify(client);
 `modify` takes charge of the underlying complexity of LDAP entry updates. Just ensure `client` was previously retrieved with a call to `find`. The return value here was ignored (a boolean value), in a real world example, you should add logic to process whether the update was successful or not.
 
 This basically covers the need. There are more useful methods found in `org.gluu.casa.service.IPersistenceService` to manipulate the database. We encourage you to check this interface java docs.
+
+### The final result
+
+The fully functional code for this plugin can be found in the sample plugins repo [here](https://github.com/GluuFederation/casa-sample-plugins/clients-management).
