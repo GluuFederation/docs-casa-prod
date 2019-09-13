@@ -210,7 +210,7 @@ Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces
 
 The class `org.gluu.casa.core.model.BasePerson` represents an entry in the *people* LDAP branch, that is, one with `objectClass=gluuPerson` (or its equivalent in case of Couchbase). It only exposes attributes `inum` and `uid` so you might extend this class and add the attributes your plugin needs to handle. Note that field attributes may require annotations so that the framework automatically populates and/or persists values appropriately.
 
-For an example on `BasePerson` derivation, check Gluu Casa [Person](https://github.com/GluuFederation/casa/blob/version_4.0/app/src/main/java/org/gluu/casa/core/model/Person.java) class which in addition to `BasePerson` fields, handles `givenName`, `sn`, and `memberOf` attributes. This class is not available in `casa-shared`.
+For an example on `BasePerson` derivation, check [Owner](https://github.com/GluuFederation/casa-sample-plugins/blob/version_4.0/clients-management/src/main/java/org/gluu/casa/plugins/clientmanager/model/Owner.java) class from the client management sample plugin, which in addition to `BasePerson` fields, handles `givenName`, and `sn` attributes.
 
 ##### CustomScript
 

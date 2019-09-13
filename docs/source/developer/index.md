@@ -50,6 +50,12 @@ In addition to the above:
 - [Manipulating data](./ldap-data.md)
 - [Adding REST services](./rest-services.md)
 
+### Sample plugins
+
+- [Hello world](https://github.com/GluuFederation/casa-sample-plugins/tree/version_4.0/helloworld)
+- [Authentication script properties display](https://github.com/GluuFederation/casa-sample-plugins/tree/version_4.0/authentication-script-properties)
+- [OIDC Clients management](https://github.com/GluuFederation/casa-sample-plugins/tree/version_4.0/clients-management)
+
 ### Other topics
 
 - [Adding/overriding authentication mechanisms](./authn-methods/index.md)
