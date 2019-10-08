@@ -8,7 +8,7 @@ View screenshots in the [User Guide](../user-guide.md).
 Casa must be installed on the same server or VM as an operational Gluu Server 4.0 instance with at least the following components:  
 
 - Apache     
-- LDAP    
+- Backend database (LDAP / Couchbase / [Hybrid](https://gluu.org/docs/cb/4.0/#hybrid-backend) mode)  
 - oxAuth    
 
 !!! Warning
