@@ -24,9 +24,7 @@ In addition, make sure your instance meets the following requirements:
 
     !!! Note  
         Dynamic client registration can be turned off after Casa installation, as needed. 
-
-- If your Gluu Server 4.0 was upgraded from 2.4.4, ensure the `uma_protection` scope is allowed for dynamic registration in oxTrust.
-    
+ 
 ## Installation via Linux Packages 
 
 
@@ -119,7 +117,7 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 
 ### A word on security
 
-In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer
+In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
 
     
 ## Licensing
