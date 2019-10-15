@@ -6,7 +6,7 @@ All configuration changes applied via the admin console take effect immediately 
 
 ## Local database 
 
-This section contains settings used by Casa to establish a connection to the underlying database (LDAP or couchbase). These settings are prepared by the application installer and there is no need to apply any change afterwards. Update these settings only if the application needs to be tested against a different database Server. 
+This section contains settings used by Casa to establish a connection to the underlying database. These settings are prepared by the application installer and there is no need to apply any change afterwards. Update these settings only if the application needs to be tested against a different database Server. 
 
 ![local-ldap](../img/admin-console/LocalDatabase.png)
 
@@ -41,7 +41,7 @@ Updates need to be made in both the Gluu Server and Casa to get Casa operational
 
 The Gluu Server uses [interception scripts](https://gluu.org/docs/ce/admin-guide/custom-script/) to implement user authentication. For each type of 2FA credential that should be manageable in Casa, the corresponding authentication script **must be** enabled in Gluu. 
 
-To enable authentication methods in Gluu, open oxTrust and navigate to  `Configuration` > `Manage custom scripts`. Enable the interception script for each type of 2FA credential that should be manageable in Casa - i.e. `u2f`, `super_gluu`, `otp`, and/or `twilio_sms`.  
+To enable authentication methods in Gluu, open oxTrust and navigate to  `Configuration` > `Manage custom scripts`. Enable the interception script for each type of 2FA credential that should be manageable in Casa - i.e. `fido2`, `u2f`, `super_gluu`, `otp`, and/or `twilio_sms`.  
 
 ![oxtrust-enabled-scripts](../img/admin-console/oxTrust-enabled-scripts.png)
 
@@ -49,9 +49,9 @@ To confirm script functionality, or if issues arise, check the [troubleshooting 
 
 
 ### Set Default Authentication Method (Gluu)
-With the Casa authentication script enabled in the Gluu Server, OpenID Connect clients can now request Casa authentication (i.e. each user's 2FA preference) using the standard OpenID Connect `acr_value`. 
+With the Casa authentication script enabled in the Gluu Server, OpenID Connect clients can now request Casa authentication (i.e. each user's 2FA preferences) using the standard OpenID Connect `acr_value`. 
 
-To make each person's 2FA preference in Casa, the default authentication mechanism for all Gluu logins, navigate to `Configuration` > `Manage Authentication` > `Default Authentication method` and set `Default acr` and `oxTrust acr` to `casa`. Click update to save your changes. 
+To make this behavior the default for all Gluu logins, navigate to `Configuration` > `Manage Authentication` > `Default Authentication method` and set `Default acr` and `oxTrust acr` to `casa`. Click update to save your changes. 
 
 ![oxtrust-enabled-scripts](../img/admin-console/oxTrust-auth-mechanisms.png)
     
@@ -59,18 +59,19 @@ To make each person's 2FA preference in Casa, the default authentication mechani
 
 Once the applicable interception scripts are enabled in Gluu, a Casa admin can enable 2FA mechanisms in the `Enable methods` interface. Check the box for each type of authentication method users should be able to self-service in Casa. You can assign the handler [plugin](#plugins) for each method. Choose "System" to use the default implementation provided by the application.
 
+![enabled-2fa-methods](../img/admin-console/enabled-2FA-methods.png)
+
 !!! Warning
     It may take up to 2 minutes for a method to appear in the enabled methods list of Casa after its corresponding custom script has been activated in oxTrust. 
 
-The System handler plugin supports four authentication methods: 
+The System plugin supports several authentication methods:
+
 - OTP SMS
 - OTP (handling mobile apps and hard tokens)
-- security keys
+- security keys (FIDO / U2F)
 - Super Gluu. 
 
-Developers can provide their own custom handler plugins that add or override the authentication methods in the System plugin.
-
-![enabled-2fa-methods](../img/admin-console/enabled-2FA-methods.png)
+Developers can provide their own [custom handler plugins](https://gluu.org/docs/casa/4.0/developer/authn-methods/) that add or override the authentication methods.
 
 In their home page, users will see widgets for every available method. These widgets are listed in decreasing order of ACR level. That is, the first method shown will be that with the highest level assigned in its corresponding interception script, and therefore the most secure.
 
@@ -84,7 +85,7 @@ A recommended practice is to enable one script in the Gluu Server (like U2F), th
 ## 2FA settings
 
 !!! Warning  
-    This feature is only available through the ["2FA settings" plugin](../plugins/2fa-settings.md) (requires a valid license to operate).  
+    This feature is only available through the [2FA settings plugin](../plugins/2fa-settings.md) (requires a valid license to operate).  
 
 In the 2FA settings, an admin can specify the minimum number of credentials a user **must** enroll before they are able to turn on 2FA, and choose from a few predefined policies for when 2FA should be prompted. 
 
