@@ -18,7 +18,7 @@ Users will only be able to add credentials with a type matching one of the alrea
 - HOTP/TOTP
 - OTP sent by SMS with the Twilio service
 
-## Resetting a user's preferred method
+## Resetting a user's 2FA availability
 
 In the event a user loses access to his account, admins can revert the user's authentication method to "password only" by following the steps shown in the [troubleshooting guide](./faq.md).
 
@@ -36,6 +36,6 @@ To do so, just add a new configuration property named `2fa_requisite` to the cus
 
 You can flag more than one method as requisite. In this case users will be encouraged to enroll one credential associated to any of the flagged methods.
 
-If you are using an authentication method you added your own, just ensure the corresponding plugin implements the `mayBe2faActivationRequisite` method.
+If you are using an authentication method you added your own, ensure the corresponding plugin implements the `mayBe2faActivationRequisite` method.
 
-If a user attempts to delete their only available credential matching the requisite method, a prompt will appear warning that doing so will disable 2FA, that is, resorting to password authentication.
+If a user attempts to delete their only available credential matching the requisite method, a prompt will appear warning that doing so will disable 2FA, that is, resetting to password authentication.
