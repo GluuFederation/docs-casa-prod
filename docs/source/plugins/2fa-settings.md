@@ -20,7 +20,7 @@ Additionally, when administrators allow users to set their own strong authentica
 - View the time and location (city) associated to the last login event
 - Remove a device from the list (eg. when it should not be considered trustworthy anymore)
 
-A device/location is considered trustworthy when the user has presented a strong credential in order to login to Casa with it. Subsequent login attempts from trustworthy (recognized) device/locations will not require them to present a second factor.
+A device/location is considered trustworthy when the user has presented a strong credential in order to login to Casa in such device/location. Subsequent login attempts from trustworthy (recognized) device/locations will not require them to present a second factor.
 
 ## Requirements
 
