@@ -2,14 +2,16 @@
 
 To publish the application at a location other than `/casa`, do the following:
 
-1. Log into the Gluu Server chroot (e.g. `service gluu-server login`)       
+1. Log into the Gluu Server chroot (e.g. `# gluu-serverd login`)       
       
-1. Rename Casa's war file with the new path you want to use. For example, if you chose `/creds`, you would do the following:    
+1. Edit tag `<Set name="contextPath">` in file `/opt/gluu/jetty/casa/webapps/casa.xml` with the new path you want to use. For example, if you chose `/creds`, you would do the following:    
    
     ```  
-      cd /opt/gluu/jetty/casa/webapps  
-      mv casa.war creds.war      
+      <Set name="contextPath">/creds</Set>     
     ```  
+
+1. Edit tag `<Set name="contextPath">` in file `/opt/gluu/jetty/casa/webapps/casa_web_resources.xml` appropriately with the new path you want to use.
+    
 1. Adjust Apache's .conf file:    
 
     - Locate the `https_gluu.conf` file. The exact location will vary depending on your distribution. In Ubuntu, for example, you can find it at `/etc/apache2/sites-available`
@@ -26,11 +28,6 @@ To publish the application at a location other than `/casa`, do the following:
    
     - At the bottom, press the "Update" button
 
-1. Wait for around 1 minute (so the server picks the script changes), then restart Casa and Apache services. Use these commands as a guide:    
-
-    ```  
-      service casa restart    
-      service apache2 restart      
-    ```  
+1. Wait for around 1 minute (so the server picks the script changes), then restart Casa and Apache services. Use this [page](https://gluu.org/docs/ce/4.0/operation/services/#restart) as a guide
 
 1. The application should be accessible now at the new URL.
