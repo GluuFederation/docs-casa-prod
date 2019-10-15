@@ -14,7 +14,7 @@ docs_dir: source
 # Configuration
 theme: 
     name: material
-    custom_dir: theme
+#    custom_dir: theme
     palette:
         primary: 'green'
         accent: 'green'
