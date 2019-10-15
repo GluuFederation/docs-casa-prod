@@ -4,7 +4,7 @@ The Accounts Linking plugin allows users to link and delink their local account 
 
 ## Requirements
 
-- A Gluu Server with Passport.js installed. [Install Gluu](https://gluu.org/docs/ce/installation-guide) 
+- A Gluu Server with Passport installed. [Install Gluu](https://gluu.org/docs/ce/installation-guide) 
 
 - The plugin jar file that matches the version of your Casa and Gluu Server installation.
 
