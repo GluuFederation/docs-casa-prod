@@ -3,7 +3,7 @@
 In Casa, administrators can supply their own logo and favicon to better match the organization's look and feel. If you want to apply more advanced customizations, adding the custom branding plugin is the way to go (requires a valid license to operate).
 
 !!! Note  
-    This page covers customizations available through the [custom branding plugin](../plugins/custom-branding.md). It is assumed you have already added it to your Casa installation and started it.  
+    This page covers customizations available through the [custom branding plugin](../plugins/custom-branding.md). It is assumed you have already added it to your Casa installation.  
 
 The plugin allows administrators to easily alter the appearance of applications. There are two ways to tweak the design: a quick point-and-click set of changes that you can preview immediately, or a lower-level approach that allows you to supply your own CSS file and images (this is known as external assets directory usage). 
 
@@ -99,11 +99,9 @@ Here are some tips for applying your customizations:
 
 ### Viewing your changes
 
-There is no need to restart the application for the changes to take effect. However, most static files are cached by browsers, so you will need to clear the browser's cache beforehand. The `shift+ctrl+del` combination does the job in most cases. Leave the cookies option unchecked, so there is no need to log in after every refresh.
+There is no need to restart the application for the changes to take effect. However, most static files are cached by browsers, so you will need to open a fresh private browsing (incognito) session.
 
-Alternatively, you can use a private browsing session.
-
-If you tried the above and still don't see changes, try hitting the resource URL directly in a new browser tab. For example, to load the `style.css` file in your browser, visit `https://<host-name>/casa/custom/styles/gluu/style.css`. That way, you can determine if your changes are there; if they are not, refresh with **`F5`**. If you still get the same content, you are not flushing the cache properly. Close all tabs, empty the recent cache and try again.
+If you tried the above and still don't see changes, try hitting the resource URL directly in a new browser tab. For example, to load the `style.css` file in your browser, visit `https://<host-name>/casa/custom/styles/gluu/style.css`. That way, you can determine if your changes are there.
 
 ### Reverting to Default Theme
 
