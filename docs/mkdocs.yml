@@ -38,8 +38,9 @@ nav:
 - ' ': 'https://gluu.org'
 - ' ': 'https://gluu.org'
 - Home: 'index.md'    
+- Quick Start : 'quick-start.md'
+- 'Installation': 'administration/installation.md'
 - Administration Guide: 
-    - 'Installation': 'administration/installation.md'
     - 'About 2FA': 'administration/2fa-basics.md'
     - 'Admin console': 'administration/admin-console.md'   
     - 'Credentials storage': 'administration/credentials-stored.md'
