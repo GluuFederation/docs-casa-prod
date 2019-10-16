@@ -30,7 +30,11 @@ After the minimum number of credentials have been enrolled (as specified by the 
 
 ![preferred-2fa](./img/preferred.png)
 
-When prompted for 2FA, the most strongest credential will be presented  _first_ based on the type of device that is being used to access the resource. For example, if you're attempting to pass 2FA on a mobile device, the strongest mobile-friendly 2FA credential will be requested. If such credential is not available, any other previously enrolled 2FA credential can be used. 
+When prompted for 2FA, a combination of credential strength and the type of device being used to access the protected resource will be used to determine which type of strong credential is presented first. 
+
+For example, if you're accessing a 2FA protected resource from a laptop, and you've enrolled FIDO keys and OTP apps to secure your account, FIDO will be presented as the first option for 2FA. Alternatively, if you're accessing the protected resource from a mobile device, OTP will be presented first. The exact ranking and order will be determined by the administrator. 
+
+If at any time the credential prompted is unavailable, you can choose to present any other previously enrolled 2FA credential type. 
 
 ![u2f-auth-plus-options](./img/gluu-u2f-authentication.png) 
 
