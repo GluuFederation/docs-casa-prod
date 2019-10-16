@@ -282,11 +282,11 @@ To know the dependencies already available at runtime, do the following:
 
 1. Create `app` and `shared` folders inside it
 
-1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.0-SNAPSHOT/casa-base-4.0.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
+1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.Final/casa-base-4.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
-1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.0.0-SNAPSHOT/casa-shared-4.0.0.Final.pom` (save as `pom.xml`)
+1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.0.Final/casa-shared-4.0.Final.pom` (save as `pom.xml`)
 
-1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.0.0-SNAPSHOT/casa-4.0.0.Final.pom` saving again as `pom.xml`
+1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.0.Final/casa-4.0.Final.pom` saving again as `pom.xml`
 
 1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
