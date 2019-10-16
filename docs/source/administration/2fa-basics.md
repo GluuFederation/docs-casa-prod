@@ -14,9 +14,9 @@ Users will only be able to add credentials with a type matching one of the alrea
 
 - FIDO 2 security keys
 - FIDO U2F security keys ([browser restrictions](./faq.md#u2f-restrictions) may apply)
-- Super Gluu
-- HOTP/TOTP
-- OTP sent by SMS with the Twilio service
+- Super Gluu for push notifications 
+- HOTP/TOTP apps, cards, "dongles"
+- OTP via SMS (using Twilio)
 
 ## Resetting a user's 2FA availability
 
