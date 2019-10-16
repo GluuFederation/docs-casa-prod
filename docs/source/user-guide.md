@@ -26,22 +26,22 @@ To manage existing credentials and enroll new credentials, click the `Manage` bu
 
 ### Turn 2FA on/off
 
-After the minimum number of credentials have been enrolled (as specified by the system admin), 2FA can be turned on by clicking on the switch found in the Second Factor Authentication widget: 
+After the minimum number of credentials have been enrolled (as specified by the system admin), 2FA can be turned on by clicking the switch in the Second Factor Authentication widget: 
 
 ![preferred-2fa](./img/preferred.png)
 
-When prompted for 2FA, the most suitable credential will be requested _first_ (for instance depending on the type of device used to attempt access). If such credential is not available, any other previously enrolled 2FA credential can be used. 
+When prompted for 2FA, the most strongest credential will be presented  _first_ based on the type of device that is being used to access the resource. For example, if you're attempting to pass 2FA on a mobile device, the strongest mobile-friendly 2FA credential will be requested. If such credential is not available, any other previously enrolled 2FA credential can be used. 
 
 ![u2f-auth-plus-options](./img/gluu-u2f-authentication.png) 
 
 To turn off 2FA, click again the switch. 
 
 ### 2FA settings & trusted devices
-If enabled by the system administrator, people can set their own policies for when they should be prompted for 2FA. To manage your settings, after enrolling and turning 2FA on, click the `Manage your 2FA settings` button in the Preferred Authentication Mechanism widget. 
+If enabled by the system administrator, you can set your own policy for when 2FA is enforced. To manage your settings, after enrolling credentials and turning on 2FA, click the `Manage your 2FA settings` button in the Preferred Authentication Mechanism widget. 
 
 ![2fa-settings](./img/user-facing-2fa-settings.png)
 
-You will be able to choose from a few options for when 2FA is presented:
+By default, you will be able to choose from a few 2FA policies:
 
 - Always (upon every login attempt)
 - If the location (e.g. city) detected in the login attempt is unrecognized
