@@ -35,48 +35,48 @@ In addition, make sure your instance meets the following requirements:
 
 |  Command Description    |               Xenial Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `# echo "deb https://repo.gluu.org/ubuntu/ bionic main" > /etc/apt/sources.list.d/gluu-repo.list` |
-| Add Gluu GPG Key        | `# curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
-| Update/Clean Repo       | `# apt-get update`                         |
-| Install Gluu Casa     | `# apt-get install gluu-casa`      |
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ bionic main" > /etc/apt/sources.list.d/gluu-repo.list` |
+| Add Gluu GPG Key        | `curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
+| Update/Clean Repo       | `apt-get update`                         |
+| Install Gluu Casa     | `apt-get install gluu-casa`      |
 
 ### Ubuntu 16 (xenial)
       
 |  Command Description    |               Xenial Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `# echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list` |
-| Add Gluu GPG Key        | `# curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
-| Update/Clean Repo       | `# apt-get update`                         |
-| Install Gluu Casa     | `# apt-get install gluu-casa`      |
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list` |
+| Add Gluu GPG Key        | `curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
+| Update/Clean Repo       | `apt-get update`                         |
+| Install Gluu Casa     | `apt-get install gluu-casa`      |
 
 ### CentOS 7
      
 | Command Description     |               CentOS 7.2              |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `# wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo` |
-| Add Gluu GPG Key        | `# wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
-| Import GPG Key          | `# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
-| Update/Clean Repo       | `# yum clean all`                          |
-| Install Gluu Casa     | `# yum install gluu-casa`          |
+| Add Gluu Repository     | `wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo` |
+| Add Gluu GPG Key        | `wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
+| Import GPG Key          | `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
+| Update/Clean Repo       | `yum clean all`                          |
+| Install Gluu Casa     | `yum install gluu-casa`          |
 
 ### RHEL 7
      
 | Command Description     |               RHEL 7                  |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `# wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo` |
-| Add Gluu GPG Key        | `# wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
-| Import GPG Key          | `# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
-| Update/Clean Repo       | `# yum clean all`                          |
-| Install Gluu Casa     | `# yum install gluu-casa`          |
+| Add Gluu Repository     | `wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo` |
+| Add Gluu GPG Key        | `wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
+| Import GPG Key          | `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
+| Update/Clean Repo       | `yum clean all`                          |
+| Install Gluu Casa     | `yum install gluu-casa`          |
 
 ### Debian 9 (Stretch)
 
 | Command Description     |               Jessie Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `# echo "deb https://repo.gluu.org/debian/ stable main" > /etc/apt/sources.list.d/gluu-repo.list`|
-| Add Gluu GPG Key        | `# curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -` |
-| Update/Clean Repo       | `# apt-get update`                         |
-| Install Gluu Casa     | `# apt-get install gluu-casa`      |
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/debian/ stable main" > /etc/apt/sources.list.d/gluu-repo.list`|
+| Add Gluu GPG Key        | `curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -` |
+| Update/Clean Repo       | `apt-get update`                         |
+| Install Gluu Casa     | `apt-get install gluu-casa`      |
 
     
 ## Run the Setup Script
@@ -85,15 +85,20 @@ The Casa setup script, `setup_casa.py`, adds the application to the Gluu Server,
 
 Log in to the Gluu Server chroot, as follows:
 
-`$ service gluu-server login`
+```
+/sbin/gluu-serverd login
+``` 
 
-(Or `gluu-serverd start` for systemd-based distros). 
+(Or `service gluu-server login` for Ubuntu 16). 
 
 Then `cd` to the setup scripts directory and run `setup_casa.py`: 
 
 ```
-# cd /install/community-edition-setup
-# ./setup_casa.py
+cd /install/community-edition-setup
+```
+
+```
+./setup_casa.py
 ```
 
 Answer the setup questions as prompted. Hit Enter to accept the default value specified in square brackets, if appropriate. 
@@ -118,8 +123,7 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 ### A word on security
 
 In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
-
     
 ## Licensing
 
-A casa installation has a 30 day trial period after which you need a license file for casa to work properly. Check this [page](licensing.md) for more details.
+A Casa installation has a 30 day trial period after which you need a license file for casa to work properly. Check this [page](licensing.md) for more details.
