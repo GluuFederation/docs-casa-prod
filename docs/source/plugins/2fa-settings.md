@@ -28,7 +28,7 @@ A device/location is considered trustworthy when the user has presented a strong
     
 ## Installation
 
-1. [Download the plugin](https://casa.gluu.org/wp-content/uploads/2019/04/strong-authn-settings-4.0.Final_.jar)
+1. [Download the plugin](https://gluu.co/casa-4-2fa-settings)
 
 1. Log in to Casa using an administrator account
 
