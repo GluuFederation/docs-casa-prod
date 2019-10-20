@@ -28,7 +28,7 @@ Follow the instructions given in [Introduction to plugin development](../intro-p
 From here on we assume you have:
 
 - A ready environment (dev tools, LDAP client, Gluu Server VM, etc.)
-- A [clone or copy](../writing-first.md#download-project) of Gluu Casa github repository
+- A [clone or copy](../writing-first.md#download-project) of Casa sample plugins github repository
 - A maven project looking like:
 
 ```

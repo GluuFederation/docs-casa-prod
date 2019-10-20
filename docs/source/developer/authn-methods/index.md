@@ -19,7 +19,7 @@ Another important distinction from regular custom scripts is that Casa expects s
 
 ### Creating a plugin
 
-The [index](../index.md) page of this guide describes what plugins are. It is important to familiarize yourself with how plugins work and how they are built before proceeding. [This document](../intro-plugin.md) and [this one](../writing-first)  cover most of what you need to know. 
+The [index](../index.md) page of this guide describes what plugins are. It is important to familiarize yourself with how plugins work and how they are built before proceeding. [This document](../intro-plugin.md) and [this one](../writing-first.md)  cover most of what you need to know. 
 
 Plugins can be very powerful and depending on the actual need, a mix of skills can be demanded. The following are the most relevant:
 

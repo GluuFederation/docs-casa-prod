@@ -31,7 +31,7 @@ so that others know what the priority of your markup is upon code inspection. Th
 
 While you can point in your menu extension to a zul page containing basically anything, you should be careful with the code supplied. The following are some tips:
 
-- To preserve a consistent look and feel, you should use similar markup as in default Casa menu items. If possible, inspect the zul code used to generate such markup, not the one appearing in the browser because it can be more verbose than needed. The following is a list of files you may like peeking at (these are from [Casa repo](writing-first.md#download-project) itself):
+- To preserve a consistent look and feel, you should use similar markup as in default Casa menu items. If possible, inspect the zul code used to generate such markup, not the one appearing in the browser because it can be more verbose than needed. The following is a list of files you may like peeking at (these are from [Casa war contents](writing-first.md#extract-war-contents) itself):
 
    - `app/src/main/webapp/menubuttons.zul` for regular users menu
    - `app/src/main/webapp/admin/menu.zul` for admin dashboard menu

@@ -24,7 +24,7 @@ page `mypage.zul` will be accessible in the browser at `https://<host>/casa/pl/<
 
 ## Template usage
 
-Ideally, plugin pages should leverage the existing look and feel of the application. For this purposes, they can leverage the template used by all pages found in Casa by default. This template, called **general template** (found in file `general.zul` of Casa [github project](./writing-first.md#download-project)) ensures all pages using it as skeleton will:
+Ideally, plugin pages should leverage the existing look and feel of the application. For this purposes, they can leverage the template used by all pages found in Casa by default. This template, called **general template** (found in file `general.zul` of Casa [war](./writing-first.md#extract-war-contents)) ensures all pages using it as skeleton will:
 
 - Include all javascript and stylesheets needed
 - Show the navigation menu on the left (whether regular user or admin menus)
@@ -48,7 +48,7 @@ All three fragments are optional, you can skip any or even all of them in your p
 
 ## Writing your first pages
 
-Writing pages from scratch can be hard at first. We recommend identifying an existing page that somewhat resembles your needs, and check its code. For this you will have to clone [Casa project](./writing-first.md#download-project) or at least, check the ["Hello World"](./writing-first.md#anatomy) plugin code.
+Writing pages from scratch can be hard at first. We recommend identifying an existing page that somewhat resembles your needs, and check its code. For this you will have to inspect [Casa war contents](./writing-first.md#extract-war-contents) or at least, check the ["Hello World"](./writing-first.md#anatomy) plugin code.
 
 Reuse small pieces of markup until you get acquaintance with the tags, namespaces, and expressions used in zul code. Having some [ZK docs](./intro-plugin.md#reference-docs) at hand is useful as well.
 
