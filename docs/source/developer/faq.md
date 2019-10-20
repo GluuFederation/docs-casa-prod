@@ -49,7 +49,7 @@ Before attempting the endpoints, make sure the scripts are already running and w
 
 ### How do enrollment process work?
 
-Enrolling a credential is not simply a matter of calling an endpoint supplying some data. Since enrollment requires the user to present some data or device standing at his browser, the process consists of several steps where some data must be partially supplied and validated until the operation is considered completed.
+Enrolling a credential is not simply a matter of calling an endpoint supplying some data. Since enrollment requires the user to present some data or device standing at his browser, the process consists of several steps where some data must be partially supplied and validated until the operation is considered complete.
 
 The swagger document of the API (ie. `https://<host>/casa/enrollment-api.yaml`) and the client found in [Sample plugins repo](https://github.com/GluuFederation/casa-sample-plugins/tree/master/enrollment-client) illustrate the steps required for every type of credential (authentication method).
 

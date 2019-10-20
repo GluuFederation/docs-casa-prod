@@ -278,9 +278,9 @@ It is likely you will use external libraries in your plugin. Unless such depende
 
 To know the dependencies already available at runtime, do the following:
 
-1. Create a temporary directory in locally and `cd` to it
+1. Create a temporary directory locally and `cd` to it
 
-1. Create `app` and `shared` folders inside it
+1. Create `app` and `shared` folders in it
 
 1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.Final/casa-base-4.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
@@ -290,7 +290,7 @@ To know the dependencies already available at runtime, do the following:
 
 1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
-If you are already using in your project dependencies found in Casa, you should skip those in your jar file to get a lighter plugin. To do so you can set the `scope` of the artifact to `provided` in your maven's pom descriptor.
+If you are already using in your project some dependencies found in Casa, you should skip those in your jar file to get a lighter plugin. To do so you can set the `scope` of the artifact to `provided` in your maven's pom descriptor.
 
 If you are using maven as build tool, the Assembly Plugin will help you to easily generate your jar-with-dependencies and also get the manifest file as needed. The sample plugin we will study later uses this approach for your reference.
 
