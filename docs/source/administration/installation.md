@@ -35,7 +35,7 @@ In addition, make sure your instance meets the following requirements:
 
 |  Command Description    |               Xenial Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ bionic main" > /etc/apt/sources.list.d/gluu-repo.list` |
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ bionic-devel main" > /etc/apt/sources.list.d/gluu-repo.list` |
 | Add Gluu GPG Key        | `curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
 | Update/Clean Repo       | `apt-get update`                         |
 | Install Gluu Casa     | `apt-get install gluu-casa`      |
@@ -44,7 +44,7 @@ In addition, make sure your instance meets the following requirements:
       
 |  Command Description    |               Xenial Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list` |
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/ubuntu/ xenial-devel main" > /etc/apt/sources.list.d/gluu-repo.list` |
 | Add Gluu GPG Key        | `curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -` |
 | Update/Clean Repo       | `apt-get update`                         |
 | Install Gluu Casa     | `apt-get install gluu-casa`      |
@@ -53,7 +53,7 @@ In addition, make sure your instance meets the following requirements:
      
 | Command Description     |               CentOS 7.2              |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo` |
+| Add Gluu Repository     | `wget https://repo.gluu.org/centos/Gluu-centos-7-testing.repo -O /etc/yum.repos.d/Gluu.repo` |
 | Add Gluu GPG Key        | `wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
 | Import GPG Key          | `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
 | Update/Clean Repo       | `yum clean all`                          |
@@ -63,7 +63,7 @@ In addition, make sure your instance meets the following requirements:
      
 | Command Description     |               RHEL 7                  |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo` |
+| Add Gluu Repository     | `wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo` |
 | Add Gluu GPG Key        | `wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU`|
 | Import GPG Key          | `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU` |
 | Update/Clean Repo       | `yum clean all`                          |
@@ -71,9 +71,9 @@ In addition, make sure your instance meets the following requirements:
 
 ### Debian 9 (Stretch)
 
-| Command Description     |               Jessie Commands         |
+| Command Description     |               Stretch Commands         |
 |-------------------------|---------------------------------------|
-| Add Gluu Repository     | `echo "deb https://repo.gluu.org/debian/ stable main" > /etc/apt/sources.list.d/gluu-repo.list`|
+| Add Gluu Repository     | `echo "deb https://repo.gluu.org/debian/ stretch-testing main" > /etc/apt/sources.list.d/gluu-repo.list`|
 | Add Gluu GPG Key        | `curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -` |
 | Update/Clean Repo       | `apt-get update`                         |
 | Install Gluu Casa     | `apt-get install gluu-casa`      |
