@@ -1,6 +1,6 @@
 # Custom branding
 
-In Casa, administrators can supply their own logo and favicon to better match the organization's look and feel. If you want to apply more advanced customizations, adding the custom branding plugin is the way to go (requires a valid license to operate).
+In Casa, administrators can supply their own logo and favicon to better match the organization's look and feel. If you want to apply more advanced customizations, adding the custom branding plugin is the way to go.
 
 !!! Note  
     This page covers customizations available through the [custom branding plugin](../plugins/custom-branding.md). It is assumed you have already added it to your Casa installation.  

@@ -85,7 +85,7 @@ A recommended practice is to enable one script in the Gluu Server (like U2F), th
 ## 2FA settings
 
 !!! Warning  
-    This feature is only available through the [2FA settings plugin](../plugins/2fa-settings.md) (requires a valid license to operate).  
+    This feature is only available through the [2FA settings plugin](../plugins/2fa-settings.md).  
 
 In the 2FA settings, an admin can specify the minimum number of credentials a user **must** enroll before they are able to turn on 2FA, and choose from a few predefined policies for when 2FA should be prompted. 
 

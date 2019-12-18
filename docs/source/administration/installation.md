@@ -123,7 +123,3 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 ### A word on security
 
 In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
-    
-## Licensing
-
-A Casa installation has a 30 day trial period after which you need a license file for casa to work properly. Check this [page](licensing.md) for more details.

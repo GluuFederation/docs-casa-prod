@@ -305,8 +305,8 @@ Plugin-Class: com.mycompany.plugins.HelloWorldPlugin
 Plugin-Description: This plugin adds a link to users menu which takes
  you to a page where you are asked to fill a form with your credit
  card data and SSN. The information is sent to a hacker's inbox.
-Plugin-License: Available under the MIT License. See http://opensource
- .org/licenses/MIT for full text
+Plugin-License: Available under the Apache License 2.0. See 
+ https://www.apache.org/licenses/LICENSE-2.0.html for full text
 Plugin-Provider: My Company
 Logger-Name: com.mycompany.plugins
 Created-By: Apache Maven 3.2.5
