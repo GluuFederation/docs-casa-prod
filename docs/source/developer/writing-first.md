@@ -14,18 +14,18 @@ Hello world is minimalistic plugin that showcases very basic aspects of plugin d
 
 ### Download project
 
-Let's start by downloading the code. Hello World plugin is found in the [sample plugins repo](https://github.com/GluuFederation/casa-sample-plugins).
+Let's start by downloading the code. Hello World plugin is found in the [sample plugins folder](https://github.com/GluuFederation/casa/tree/version_4.1.0/plugins/samples).
 
 If you have `git` installed in your machine, issue the following command. Replace the content in the angle brackets with your Gluu Casa version (e.g. "version_4.0"):
 
 ```
-$ git clone https://github.com/GluuFederation/casa-sample-plugins.git
+$ git clone https://github.com/GluuFederation/casa.git
 $ git checkout <branch>
 ```
 
 Alternatively you can download a zipped version of the project from github:
 
-- Visit this [page](https://github.com/GluuFederation/casa-sample-plugins) and pick from the dropdown the branch matching your Casa version
+- Visit this [page](https://github.com/GluuFederation/casa) and pick from the dropdown the branch matching your Casa version
 - Click on the "Clone or download" button, then on "download ZIP"
 - Extract the contents of the file to a convenient location
 
@@ -43,7 +43,12 @@ This step is optional, however, it is illustrative to peek at some UI templates 
 
 #### Useful javadocs
 
-`casa-shared` maven dependency is of remarkable interest. For convenience, the java api docs are included in this repository under the folder `casa-shared-apidocs`.
+`casa-shared` maven dependency is of remarkable interest. To generate the java docs do:
+
+1. `cd` to the local directory where you cloned or download the git repo
+1.  Run `mvn javadoc:javadoc -pl shared`
+
+API docs will be found under `shared/target/site`. 
 
 ## Anatomy
 
