@@ -100,4 +100,4 @@ Use the following links to get started with Casa:
 
 ## License
 
-Gluu Casa is made available under a commercial license To obtain a license grant, [contact us](https://gluu.org/contact).
+Gluu Casa is available under the [Apache 2.0 license(./LICENSE)
