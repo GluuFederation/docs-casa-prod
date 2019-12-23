@@ -75,5 +75,6 @@ Use the following links to get started with Casa:
 - [Home](./developer/index.md)
 
 ## License
-Gluu Casa is available under the [Apache 2.0 license(./LICENSE)
+
+Gluu Casa is made available under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
