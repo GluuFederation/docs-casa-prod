@@ -21,7 +21,7 @@ During normal use, the app will show feedback to users if operations were succes
 
 ### How do I restart the application?
 
-Just [restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa service.
+Just [restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa service.
 
 ### How do I custom brand Casa?
 
@@ -86,7 +86,7 @@ If for any reason an update to oxd settings results in lockout, or if you provid
 
 ### Casa log shows "Setting oxd-server configs failed"
 
-oxd-server 4.0 uses https for communication so it is expected to use a production ready SSL certificate. If your log also shows "javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated" or "unable to find valid certification path to requested target", this is due to self-signed certificate usage (as is the case in a default oxd installation). You can configure oxd to use a production cert or add the self-signed cert to the trusted Java certificates file. For the latter take the `.keystore` file referenced in the `oxd-https.yml` config file, and export the certificate (this file contains the password too). Then run a command like the following in the Gluu chroot:
+oxd-server 4.x uses https for communication so it is expected to use a production ready SSL certificate. If your log also shows "javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated" or "unable to find valid certification path to requested target", this is due to self-signed certificate usage (as is the case in a default oxd installation). You can configure oxd to use a production cert or add the self-signed cert to the trusted Java certificates file. For the latter take the `.keystore` file referenced in the `oxd-https.yml` config file, and export the certificate (this file contains the password too). Then run a command like the following in the Gluu chroot:
 
 `keytool -import -trustcacerts -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt -alias mycert -file PATH_TO_CERT_FILE` 
 

@@ -24,4 +24,3 @@ The Consent Management plugin gives end-users the ability to view and revoke pre
 ## User guide
 
 For information on how to use the plugin, see the [User Guide](../user-guide.md)
-
