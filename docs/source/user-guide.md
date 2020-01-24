@@ -57,7 +57,7 @@ If you opt for 2FA based on location, device, or both, a new widget will appear 
 
 ### 2FA best practices
 
-The context of an authentication attempt can determine which type of credental is most convenient to use. For instance, U2F keys are not compatible with mobile phones or certain browsers. 
+The context of an authentication attempt can determine which type of credential is most convenient to use. For instance, U2F keys are not compatible with mobile phones or certain browsers. 
 
 **To reduce the chance of account lockout**, enroll at least two different _types_ of 2FA credentials -- e.g. one U2F token and one OTP app; or one OTP app and one SMS phone number, etc. This way, regardless which device you're using to access a protected resource, you will have a usable option for passing strong authentication. 
 
@@ -148,7 +148,7 @@ Navigate to the `Password Reset` widget. Enter your current and new passwords, t
     
 ## Account linking
 
-To manage accounts linked to outside sources, navigate to `Account Linking` on the left-hand menu.
+To manage accounts linked to outside sources, navigate to `Account Linking` on the left-hand menu. The item will only be accessible if the administrator has enabled this feature.
 
 ![Nav Bar with Account Linking active](./img/plugins/account-linking-nav-bar.png)
 
@@ -165,7 +165,7 @@ Once an account is linked, it can be removed when necessary.
 
 If the administrator has enabled the Account Linking plugin, a list with the configured external sites will be displayed on the right panel in the authentication web page. Click on an entry to trigger the given site's authentication process. After this is finished, you will be taken back to Casa.
 
-Note that users without a local password set yet don't have access to enroll credentials because the username + password combination is  a prerequisite for multi-factor authentication. The user will be prompted to create a new password.
+Note that users without a local password set yet don't have access to enroll credentials because the username + password combination is a prerequisite for multi-factor authentication. The user will be prompted to create a new password.
 
 ![Login with linked account](./img/plugins/account-linking-need-password.png)
 
