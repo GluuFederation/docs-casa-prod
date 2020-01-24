@@ -94,6 +94,12 @@ Finally, restart casa.
 
 If you are using the oxd-server installed by casa installer, this is automatically done for you.
 
+### Registration of clients fail
+
+Ensure dynamic client registration is enabled: in your Gluu Server admin UI ("oxTrust"), navigate to `Configuration` > `JSON Configuration` > `oxAuth configuration`, find the `dynamicRegistrationEnabled` property, and confirm it is set to `true`.
+
+Note Dynamic client registration can be turned off after Casa client registration succeds.
+        
 ## Miscellanenous
 
 ### Troubleshooting interception scripts
@@ -128,8 +134,7 @@ For Event-based OTP (HOTP), ensure you are using a suitable value for `look ahea
 U2F keys (for enrollment or authentication) are supported in the following desktop browsers only:
 
 - Chrome or Opera (versions greater than 40)
-- Firefox (version greater than 57), requires prior u2f [activation](http://www.cardps.com/news/activating-fido-u2f-on-firefox-quantum). 
-- Firefox versions older than 57 need the [u2f add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/) installed.
+- Firefox. Account versions between 57 and 71 require prior u2f [activation](http://www.cardps.com/news/activating-fido-u2f-on-firefox-quantum).
 
 In all cases, the app interface will display appropriate messages about u2f support, and instructions in case action is needed to use the feature. Currently Casa does not support adding U2F devices from mobile browsers.
 
