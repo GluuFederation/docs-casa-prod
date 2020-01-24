@@ -19,7 +19,9 @@ Starting with version 4.1, Casa is offered as one of the several components of t
 
 ## Finish setup
 
-After installation, you can access the application at `https://<host>/casa`. Please the check the [FAQ](./faq.md) in case of trouble.
+After installation, you can access the application at `https://<host>/casa`. 
+
+For the first time the application will try to register an OpenID Connect client via oxd. If this operation failed due to network problems or SSL cert issues, login will not work. Please refer to the [FAQ](./faq.md#oxd) for troubleshooting.
 
 !!! Note 
     To change the default URL path for Casa follow the steps listed [here](change-context-path.md). It is advisable to apply this customization **before** credentials are enrolled. 
