@@ -85,7 +85,7 @@ More importantly, the workflow exhibited by the authorization server when an aut
 
 ### oxd server
 
-oxd server (version 4.0 required) acts as a mediator to simplify the authorization process (which follows the OpenID Connect code flow). This required component's location is supplied during Casa installation (in case administrators don't have an oxd server available, they can make use of the option to install and configure on an instance).
+oxd server (version 4.x required) acts as a mediator to simplify the authorization process (which follows the OpenID Connect code flow). This required component's location is supplied during Casa installation (in case administrators don't have an oxd server available, they can make use of the option to install and configure on an instance).
 
 ### Geolocation service
 

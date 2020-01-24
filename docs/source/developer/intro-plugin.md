@@ -34,7 +34,7 @@ By default .zul templates are cached for a very long period, however, for develo
     ```
     # jar -uf casa.war WEB-INF/zk.xml
     ```
-1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
+1. [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa
 
 The above guarantees changes in .zul files are picked very often (5 seconds is default ZK cache refresh time).
 
@@ -57,7 +57,7 @@ If your Gluu Server is backed by OpenDJ:
 
 - Run `/opt/opendj/bin/dsconfig -h localhost -p 4444 -D "cn=directory manager" -w PASSWORD -n set-connection-handler-prop --handler-name="LDAPS Connection Handler" --set listen-address:0.0.0.0 -X` in chroot
 - Open port 1636 in your VM firewall
-- [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) LDAP
+- [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) LDAP
 
 ### LDAP notions
 
@@ -282,11 +282,11 @@ To know the dependencies already available at runtime, do the following:
 
 1. Create `app` and `shared` folders in it
 
-1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.Final/casa-base-4.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
+1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.1.Final/casa-base-4.1.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
-1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.0.Final/casa-shared-4.0.Final.pom` (save as `pom.xml`)
+1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.1.Final/casa-shared-4.1.Final.pom` (save as `pom.xml`)
 
-1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.0.Final/casa-4.0.Final.pom` saving again as `pom.xml`
+1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.1.Final/casa-4.1.Final.pom` saving again as `pom.xml`
 
 1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
@@ -348,11 +348,6 @@ PF4J allows a plugin to depend on other plugins. This feature is not supported i
 If you reached this part of the document, you already have the background required to start. Congratulations!. 
 
 The following is a generic suggested flow for developing plugins once the [requirements](#requirements-and-tools) presented in the beginning of this document are met. It is assumed the goals to fulfil with your development are already clear for you:
-
-<!-- TODO
-!!! Note
-    You can leverage the [maven archetype](./tips-development.md#bootstrap-a-plugin-using-an-archetype) to bootstrap the creation your project  
--->
 
 1. Create a simple project in your development environment. Include `casa-shared` dependency (this will give you access to UI and plugin framework as well as other utilities). Create an empty resource bundle (labels file).    
 

@@ -9,13 +9,13 @@ Starting with version 4.1, Casa is offered as one of the several components of t
 
 **Important notes:**
 
-- Account for **1GB of additional RAM** than you use in a standard CE installation. See [Gluu Server system requirements](https://gluu.org/docs/ce/4.0/installation-guide/#system-requirements)
+- Account for **1GB of additional RAM** than you use in a standard CE installation. See [Gluu Server system requirements](https://gluu.org/docs/ce/4.1/installation-guide/#system-requirements)
 
 - It is required your installation was configured to use a FQDN for hostname, not an IP address
 
 - Apache and oxAuth are required components 
 
-- Casa requires [oxd](https://gluu.org/docs/oxd) 4.0 or later to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, one will be installed for you locally.
+- Casa requires [oxd](https://gluu.org/docs/oxd) 4.x to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, one will be installed for you locally.
 
 ## Finish setup
 
