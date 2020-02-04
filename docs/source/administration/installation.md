@@ -21,7 +21,7 @@ Starting with version 4.1, Casa is offered as one of the several components of t
 
 After installation, you can access the application at `https://<host>/casa`. 
 
-For the first time the application will try to register an OpenID Connect client via oxd. If this operation failed due to network problems or SSL cert issues, login will not work. Please refer to the [FAQ](./faq.md#oxd) for troubleshooting.
+For the first time the application will try to register an OpenID Connect client via oxd. If this operation fails due to network problems or SSL cert issues, login will not work. Please refer to the [FAQ](./faq.md#oxd) for troubleshooting.
 
 !!! Note 
     To change the default URL path for Casa follow the steps listed [here](change-context-path.md). It is advisable to apply this customization **before** credentials are enrolled. 
@@ -32,8 +32,7 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 
 1. Navigate inside chroot to `/opt/gluu/jetty/casa/`
 1. Create an empty file named `.administrable` (ie. `touch .administrable`)
-1. [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa
-1. Wait a couple of minutes, then visit the URL and authenticate against Gluu to access Casa
+1. Logout in case you have an open browser session
 
 ### A word on security
 

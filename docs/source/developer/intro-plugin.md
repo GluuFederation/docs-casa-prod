@@ -6,7 +6,7 @@ This page covers basic notions required for Gluu Casa plugin development. In pra
  
 ### A Gluu Server VM
 
-For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/ce/installation-guide). The Gluu server version used should match that of the machines you are targetting for production environment.
+For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/ce/installation-guide). Keep in mind to opt in for Casa when prompted. The Gluu server version used should match that of the machines you are targetting for production environment.
 
 Ideally, you should populate your Gluu Server with data (e.g. users/groups) to somewhat resemble a testing or production server of your organization. Writing a plugin to be run on a server with no users other than admin will lead to very poor testing scenarios.
 
@@ -17,7 +17,7 @@ Ensure you have credentials for a user with administrator privileges in your Glu
 
 ### A running Gluu Casa installation
 
-Once you are up and running with a Gluu Server VM proceed to [install Gluu Casa](../administration/installation.md). Ensure you can log in to Casa when finished.
+Once you are up and running with a Gluu Server VM, ensure you can log in to Casa when finished, eg. `https://<host>/casa`.
 
 #### Change file check period
 
@@ -43,7 +43,7 @@ The above guarantees changes in .zul files are picked very often (5 seconds is d
 Ensure you can use a GUI client in order to connect to your LDAP. While all sort of operations on the directory can be achieved with the tools already bundled in the Gluu Server chroot container, the only means to have an agile development experience is leveraging a point-and-click tool. 
 
 Two graphical clients worth mentioning are [LDAP Admin](http://www.ldapadmin.org/) and [Apache DS](https://directory.apache.org/studio/downloads.html). Ask your administrator how to setup a connection from the client running on your desktop to Gluu container's LDAP or 
-follow [these](https://gluu.org/docs/ce/user-management/local-user-management#manage-users-in-gluu-ldap) instructions.
+follow [these](https://gluu.org/docs/ce/user-management/local-user-management/#manage-data-in-gluu-ldap) instructions.
 
 In case you cannot establish the tunnel mentioned in the docs you can do this:
 
@@ -79,11 +79,11 @@ In theory, any other language supported in the JVM such as Scala or Groovy may w
 
 ### IDE and building tools
 
-You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the from in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
+You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the form in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
 
 ### oxcore persistence annotation lib
 
-Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
+Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory (LDAP) or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
 
 For this purpose, Gluu's oxcore [persistence-annotation](https://github.com/GluuFederation/oxCore/blob/master/persistence-annotation/pom.xml) library is leveraged.
 
