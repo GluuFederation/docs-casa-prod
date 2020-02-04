@@ -1,5 +1,5 @@
 # Project information
-site_name: Gluu Casa 4.0 Docs
+site_name: Gluu Casa 4.1 Docs
 site_description: Documentation for Gluu Casa
 
 # Copyright
@@ -8,7 +8,7 @@ copyright: Copyright &copy; 2019, Gluu, Inc.
 # Repository
 repo_name: GluuFederation/docs-casa-prod
 repo_url: https://github.com/GluuFederation/docs-casa-prod/
-edit_uri: edit/4.0/docs/source
+edit_uri: edit/4.1/docs/source
 docs_dir: source
 
 # Configuration
