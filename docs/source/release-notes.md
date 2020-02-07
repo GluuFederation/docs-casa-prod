@@ -2,7 +2,7 @@
 
 ### Casa 4.1 
 
-<!-- - Application is now suitable to be supported in [cluster environment](https://gluu.org/docs/cm/) -->
+- Application is now suitable to be supported in a manually clustered environment
 - Added support for SMPP for delivery of OTP codes via SMS
 - Fix UI overlaps in 2FA authentication pages
 - Added support for memcached if underlying Gluu server uses it as cache provider
