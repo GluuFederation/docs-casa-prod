@@ -14,7 +14,11 @@ This section contains settings used by Casa to establish a connection to the und
 
 Casa leverages [oxd](https://oxd.gluu.org) to faciliate user authentication against its corresponding Gluu Server. oxd installation and configuration is prompted during Casa installation. To change or update details about the oxd server, or to configure and use an existing oxd deployment, navigate to the `oxd` page in the admin console.
 
-![oxd-settings](../img/admin-console/oxdSettings.png)
+![oxd-settings](../img/admin-console/oxdSettings1.png)
+
+![oxd-settings-scopes](../img/admin-console/oxdSettings2.png)
+
+![oxd-settings-summary](../img/admin-console/oxdSettings3.png)
 
 In case of lockout, visit the [FAQ document](./faq.md#oxd).
 
@@ -131,6 +135,11 @@ If a user is locked out for any reason (e.g. lost device, etc.), an admin can na
 
 ![reset-user-to-pw](../img/admin-console/reset-user-to-pw.png)
 
+## CORS domains
+
+Casa exposes some REST [services](../developer/rest-services.md) and plugin developers can also add their own. If consumption of services is required from the users' browser, known [cross origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) problems will arise. To "grant" an external domain access to a Casa service, you can add it to the list of allowed CORS domains.
+
+![cors-domains](../img/admin-console/cors-domains.png)
 
 ## Plugins
 
