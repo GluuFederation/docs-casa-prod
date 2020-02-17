@@ -64,11 +64,11 @@ This is caused by an unauthorized access attempt (e.g. users requesting URLs wit
 
 ### "An error occurred during authorization step" is shown when accessing the application
 
-This is shown when it is not possible to initiate a "conversation" with the authorization server. Check that the oxd server is up and running and that the oxd settings are properly configured. Find them at the administration console or in the configuration file.
+This is shown when it is not possible to initiate a "conversation" with the authorization server. Check that the oxd server is up and running and that the oxd settings are properly configured. Find them at the administration console or directly in the [database](../developer/architecture.md#application-configuration).
 
 ### "An error occurred: Casa did not start properly" is shown when accessing the application
 
-This occurs whenever the application failed to start successfully and may be caused by a syntax problem in the configuration file or an inconsistent configuration supplied. Check the log to diagnose the problem. Try to find a message like "WEBAPP INITIALIZATION FAILED" and see the traces above it. Often, error messages are self-explanatory.
+This occurs whenever the application failed to start successfully and may be caused by a syntax problem in the application [configuration](../developer/architecture.md#application-configuration) or an inconsistent configuration supplied. Check the log to diagnose the problem. Try to find a message like "WEBAPP INITIALIZATION FAILED" and see the traces above it. Often, error messages are self-explanatory.
 
 Once fixed, please restart the application. You will have to see a "WEBAPP INITIALIZED SUCCESSFULLY" message to know that it's working.
 
@@ -76,13 +76,22 @@ Once fixed, please restart the application. You will have to see a "WEBAPP INITI
 
 ### In case of lockout
 
-If for any reason an update to oxd settings results in lockout, or if you provided wrong data during installation, do the following:
+<!-- If for any reason an update to oxd settings results in lockout, or if you provided wrong data during installation, do the following: -->
 
-* Navigate to `/etc/gluu/conf`
-* Edit the config file of the application `casa.json`. Provide the oxd details in under the "oxd_config" section. If you are not sure of what to provide for the "client" section, you can remove it entirely
-* Save the file and [restart Casa](faq.md#How-to-restart-the-application)
-* [Check the logs](#check-the-logs) and there should be a successful message regarding oxd registration
-* Log in to the application
+For versions 4.1 or earlier, when there were problems with the OIDC client used by oxd to communicate with oxAuth, the solution involved editing a configuration file and doing a restart. Starting with version 4.2, such file contents were moved to the underlying database. To make it easy for admins to apply the tweak required (no low-level ldap or couchbase commands), we deliver a small CLI tool that allows flushing some oxd configurations.
+
+Please do the following:
+
+1. Stop casa if still running
+1. `cd` to a temp location
+1. Extract required files: `jar -xf /opt/gluu/jetty/casa/webapps/casa.war WEB-INF/classes/org/gluu/casa/misc/ClientReset.class WEB-INF/lib`
+1. `cd` to `WEB-INF/classes`
+1. Run `java -cp .:../lib/* org.gluu.casa.misc.ClientReset`
+
+Some output feedback will be printed to console; ensure it acknowledges success. To finish, restart casa. This will trigger a client registration for the application to become accessible again.
+
+If the above went fine, feel free to remove the temporary directory you created earlier.
+
 
 ### Casa log shows "Setting oxd-server configs failed"
 
@@ -133,8 +142,9 @@ For Event-based OTP (HOTP), ensure you are using a suitable value for `look ahea
 
 U2F keys (for enrollment or authentication) are supported in the following desktop browsers only:
 
-- Chrome or Opera (versions greater than 40)
-- Firefox. Account versions between 57 and 71 require prior u2f [activation](http://www.cardps.com/news/activating-fido-u2f-on-firefox-quantum).
+- Chrome >= 70
+- Firefox >= 71
+- Opera >= 57
 
 In all cases, the app interface will display appropriate messages about u2f support, and instructions in case action is needed to use the feature. Currently Casa does not support adding U2F devices from mobile browsers.
 

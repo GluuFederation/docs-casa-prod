@@ -187,7 +187,7 @@ The following are some classes which help represent remarkable entities:
 
 - `org.gluu.casa.core.pojo.BrowserInfo`: A class that holds basic information about a user's browser.
 
-- `org.gluu.casa.core.pojo.User`: Represents the current logged in user. It holds the most common attributes, e.g. given name, last name, etc.
+- `org.gluu.casa.core.pojo.User`: Represents the current logged in user. It provides access to common attributes such as given name, last name, etc. The whole set of claims returned by the authorization server can be obtained via `getClaims` method or individually with `getClaim`. The claims (user attributes) available are determined by the scopes requested upon user authentication (../administration/admin-console.md#oxd-settings)
 
 Actual instances of `BrowserInfo` and `User` are obtained by interacting with an instance of `org.gluu.casa.service.ISessionContext`. See below.
 
@@ -316,6 +316,39 @@ Build-Jdk: 1.8.0_65
 ```
 
 The `Logger-Name` entry allows you to include logging statements your project generates to `casa.log` when they belong to the prefix supplied. We will revisit this later.
+
+## Handling plugin configuration
+
+Most of times plugins will have to persist configuration data for normal operation. This data can be saved alongside existing Casa configuration in branch `ou=casa, ou=configuration, o=gluu`. To do so, create a Java bean that models the configuration you require and then obtain an instance of `IPluginSettingsHandler` this way:
+
+```
+import org.gluu.casa.service.settings.*;
+
+...
+IPluginSettingsHandler<Configuration> settingsHandler = Utils.managedBean(IPluginSettingsHandlerFactory.class).getHandler("<plugin-id>", Configuration.class);
+```
+
+Above we assumed `Configuration.class` was the Java class created to model config data of the plugin identified with `<plugin-id>`. Account this class has to have proper getters and setters for the fields defined. Fields can be primitives or objects with complex structure (no recursive structures though).
+
+In this case, `settingsHandler` is an object that allows to obtain an instance of `Configuration` (via `T getSettings()` method) that can be used to read the current configuration properties of your plugin. If no config data is defined yet, this method will return `null`. 
+Method `void save()` will persist modifications performed on the object reference previously obtained by a call to `getSettings()`. In addition, there is `void setSettings(T)` which is helpful to set an initial value for the configuration if undefined. As with calling setters of object of type `T`, a call to `setSettings` only alters the in-memory copy of the configuration: changes will be lost in case Casa is stopped.
+
+## Accessing cache facilities
+
+Plugins can access the underlying cache provider in use by the Gluu Server installation at no cost. This is helpful when access to a quick key/value store is required. Click [here](https://gluu.org/docs/ce/4.2/reference/cache-provider-prop/) to learn more about the cache types supported by the server.
+
+To access the cache handler, do the following:
+
+```
+import org.gluu.service.cache.CacheProvider;
+...
+CacheProvider cache = Utils.managedBean(CacheProvider.class);
+```
+
+With `cache` object it is possible, for example, to retrieve values (`get` method), set values (`set` methods), remove values by key (`remove`). By default a key/value pair has an expiration time defined at the server level in the oxTrust admin UI. A different expiration time (in seconds) can be supplied using `put` method of signature `void put(int, String, Object)`.
+
+!!! Note:
+    `Object`s to be stored in cache have to implement the interface `java.io.Serializable`.
 
 ## Important constraints
 

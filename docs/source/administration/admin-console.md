@@ -23,6 +23,8 @@ The following settings can be adjusted or viewed via the Casa admin console:
 
 - oxd server location: host and port of [oxd](https://gluu.org/docs/oxd). 
 
+- Scopes: The scopes to be requested from the authorization server when authentication takes place. Adding scopes to the set of pre-defined scopes allows plugin developers to have access to specific user attributes.
+
 - URI of the OpenID Provider (OP): This is the URL of the corresponding Gluu Server where users are sent for authentication, e.g. `https://idp.myorg.com`. 
 
 - Client Name: The name of the OpenID client that Casa uses to facilitate SSO with the Gluu Server. <!--, e.g. `Casa Production`.-->

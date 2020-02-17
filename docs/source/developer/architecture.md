@@ -101,13 +101,13 @@ Casa uses the same lightweight directory (LDAP) or Couchbase database of your Gl
 
 It is recommended that developers writing plugins leverage the existing database to save their data. Nonetheless, any other alternative mechanism can be embraced; it is up to administrators and developers to agree on how to incorporate this to the current stack.
 
-### Config file
+### Application configuration
 
-For convenience, all configuration parameters are stored in a JSON-formatted file located at `/etc/gluu/conf/casa.json` of the Gluu Server chroot container. This file contains all aspects that allow to customize/parameterize the application behaviour, in other words, it stores all the settings accessible through the application's [admin dashboard](../administration/admin-console.md).
+All configuration parameters are stored in attribute `oxConfApplication` under database branch `ou=casa,ou=configuration,o=gluu`in JSON-formatted style. It contains all aspects that allow parameterization/customization of application behaviour, in other words, it stores all settings accessible through the application's [admin dashboard](../administration/admin-console.md) as well as configurations for certain plugins, such as [strong authentication settings](../plugins/2fa-settings.md) plugin.
 
-Manipulating a plain-text file is a highly accessible alternative when, by means of some misconfiguration, administrators cannot log in to access the dashboard. A more common use case is that of cloning an environment with subtle differences in configuration.
+If by means of misconfiguration, administrators cannot log in to access the dashboard anymore, it is a matter of connecting to the database and apply editions on `oxConfApplication` to recover access.
 
-To force the application to pick up changes manually applied to this file, a [restart](../administration/faq.md#how-do-i-restart-the-application) is required.
+To force the application to pick up changes manually applied in the database, a [restart](../administration/faq.md#how-do-i-restart-the-application) is required.
 
 ### Plugins directory
 
