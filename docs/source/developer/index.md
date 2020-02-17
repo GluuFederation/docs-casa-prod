@@ -25,7 +25,7 @@ Plugins are very versatile, the following is by no means an extensive list of th
 
 In addition to the above:
 
-- Any plugin can have easy access to the underlying LDAP of the Gluu Server where casa was installed
+- Any plugin can have easy access to the underlying Gluu Server database
 - Plugins can onboard their own libraries (jar files) and classes
 
 #### What can't you do?

@@ -16,7 +16,7 @@ Users will only be able to add credentials with a type matching one of the alrea
 - FIDO U2F security keys ([browser restrictions](./faq.md#u2f-restrictions) may apply)
 - Super Gluu for push notifications 
 - HOTP/TOTP apps, cards, "dongles"
-- OTP via SMS (using Twilio)
+- OTP via SMS (using Twilio or an SMPP server)
 
 ## Resetting a user's 2FA availability
 
@@ -36,6 +36,6 @@ To do so, just add a new configuration property named `2fa_requisite` to the cus
 
 You can flag more than one method as requisite. In this case users will be encouraged to enroll one credential associated to any of the flagged methods.
 
-If you are using an authentication method you added your own, ensure the corresponding plugin implements the `mayBe2faActivationRequisite` method.
+If you are using an authentication method you added your own (via plugin), ensure the corresponding plugin implements the `mayBe2faActivationRequisite` method.
 
 If a user attempts to delete their only available credential matching the requisite method, a prompt will appear warning that doing so will disable 2FA, that is, resetting to password authentication.

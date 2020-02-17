@@ -25,7 +25,7 @@ To supply labels in a particular language (or even if you want to override the E
 1. Create directory `i18n` if it does not exist: `mkdir i18n`
 1. Transfer the properties files to the `i18n` folder
 1. Ensure `jetty` user has permission for reading the files
-1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
+1. [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa
 
 Log in to the application and review your work. Make necessary edits and repeat the process.
 
@@ -43,7 +43,7 @@ Plugins also support localization through the "zk-label" bundle. Check [here](..
 
 To add your own translation for plugin texts, proceed as follows:
 
-1. `cd` to the folder where you stored the jar file of the plugin of interest. This file was delivered to you by Gluu staff directly.
+1. `cd` to the folder where you stored the jar file of the plugin of interest.
 1. Extract the plugin's default labels (requires Java bin on your path): `jar -xf JAR_FILE labels/zk-label.properties`
 1. `cd` to `labels` folder
 1. Add the appropriate suffix to the properties file, ie. `_de` for German, `_es` for Spanish, `_ja` for Japanese, etc.
@@ -53,7 +53,7 @@ To add your own translation for plugin texts, proceed as follows:
 1. Create directory `i18n` if it does not exist: `mkdir i18n`
 1. Transfer the properties file to the `i18n` folder
 1. Ensure `jetty` user has permission for reading
-1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
+1. [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa
 
 !!! Note
     Since most Gluu Inc. plugins have a `zk-label.properties`, you can accumulate all plugin texts into a single file, or you can use a different filename for each plugin.

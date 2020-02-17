@@ -21,7 +21,7 @@ During normal use, the app will show feedback to users if operations were succes
 
 ### How do I restart the application?
 
-Just [restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa service.
+Just [restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa service.
 
 ### How do I custom brand Casa?
 
@@ -86,7 +86,7 @@ If for any reason an update to oxd settings results in lockout, or if you provid
 
 ### Casa log shows "Setting oxd-server configs failed"
 
-oxd-server 4.0 uses https for communication so it is expected to use a production ready SSL certificate. If your log also shows "javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated" or "unable to find valid certification path to requested target", this is due to self-signed certificate usage (as is the case in a default oxd installation). You can configure oxd to use a production cert or add the self-signed cert to the trusted Java certificates file. For the latter take the `.keystore` file referenced in the `oxd-https.yml` config file, and export the certificate (this file contains the password too). Then run a command like the following in the Gluu chroot:
+oxd-server 4.x uses https for communication so it is expected to use a production ready SSL certificate. If your log also shows "javax.net.ssl.SSLPeerUnverifiedException: peer not authenticated" or "unable to find valid certification path to requested target", this is due to self-signed certificate usage (as is the case in a default oxd installation). You can configure oxd to use a production cert or add the self-signed cert to the trusted Java certificates file. For the latter take the `.keystore` file referenced in the `oxd-https.yml` config file, and export the certificate (this file contains the password too). Then run a command like the following in the Gluu chroot:
 
 `keytool -import -trustcacerts -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt -alias mycert -file PATH_TO_CERT_FILE` 
 
@@ -94,6 +94,12 @@ Finally, restart casa.
 
 If you are using the oxd-server installed by casa installer, this is automatically done for you.
 
+### Registration of clients fail
+
+Ensure dynamic client registration is enabled: in your Gluu Server admin UI ("oxTrust"), navigate to `Configuration` > `JSON Configuration` > `oxAuth configuration`, find the `dynamicRegistrationEnabled` property, and confirm it is set to `true`.
+
+Note Dynamic client registration can be turned off after Casa client registration succeds.
+        
 ## Miscellanenous
 
 ### Troubleshooting interception scripts
@@ -128,8 +134,7 @@ For Event-based OTP (HOTP), ensure you are using a suitable value for `look ahea
 U2F keys (for enrollment or authentication) are supported in the following desktop browsers only:
 
 - Chrome or Opera (versions greater than 40)
-- Firefox (version greater than 57), requires prior u2f [activation](http://www.cardps.com/news/activating-fido-u2f-on-firefox-quantum). 
-- Firefox versions older than 57 need the [u2f add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/) installed.
+- Firefox. Account versions between 57 and 71 require prior u2f [activation](http://www.cardps.com/news/activating-fido-u2f-on-firefox-quantum).
 
 In all cases, the app interface will display appropriate messages about u2f support, and instructions in case action is needed to use the feature. Currently Casa does not support adding U2F devices from mobile browsers.
 

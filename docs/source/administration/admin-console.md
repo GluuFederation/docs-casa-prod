@@ -71,7 +71,7 @@ The System plugin supports several authentication methods:
 - security keys (FIDO / U2F)
 - Super Gluu. 
 
-Developers can provide their own [custom handler plugins](https://gluu.org/docs/casa/4.0/developer/authn-methods/) that add or override the authentication methods.
+Developers can provide their own [custom handler plugins](https://gluu.org/docs/casa/4.1/developer/authn-methods/) that add or override the authentication methods.
 
 In their home page, users will see widgets for every available method. These widgets are listed in decreasing order of ACR level. That is, the first method shown will be that with the highest level assigned in its corresponding interception script, and therefore the most secure.
 

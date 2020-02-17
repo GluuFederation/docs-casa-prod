@@ -6,13 +6,17 @@ Gluu Casa is a self-service web portal for end-users to manage security preferen
 
 ## Prerequisites
 
-Casa can be installed on a VM with a pre-existing Gluu Server installation, or a new instance of the Gluu Server can be installed during Casa deployment. 
-
-The server or VM should have at least the following minimum specs:
+Casa can be installed via Gluu Server installation. The server or VM should have at least the following minimum specs:
 
 | CPU Unit | RAM | Disk Space | Processor Type |
 |------ | ---- | ---- | ---- |
 | 2  | 5 GB | 40 GB | 64 Bit |
+
+Make sure the Gluu Server has at least the following components:
+
+  - oxAuth OAuth2 Server
+  - oxTrust admin GUI
+  - Apache Web Server
 
 The following operating systems are supported:
 
@@ -23,34 +27,9 @@ The following operating systems are supported:
 
 ## Getting started
 
-### Install packages
+### Install
 
-Casa requires an operational Gluu Server with a matching version number (e.g. Casa 4.0 and Gluu 4.0). In addition, Casa should be installed on the same server or virtual machine as the Gluu Server. 
-
-- Follow the [Casa installation instructions](./installation/installation.md#installation-via-linux-packages) to install the packages.  
-
-If you don't already have the Gluu Server installed, it will be automatically installed with Casa.
-    
-*Do **not** run setup_casa.py at this time.*
-
-### Set up Gluu Server
-
-If the Gluu Server was installed in the previous step, follow these instructions to [start the server](https://gluu.org/docs/ce/4.0/installation-guide/install/#start-the-server-and-log-in) and [run the setup script](https://gluu.org/docs/ce/4.0/installation-guide/install/#run-setuppy). 
-
-Otherwise, skip this step.
-
-Make sure the Gluu Server has at least the following components:
-
-  - oxAuth OAuth2 Server
-  - oxTrust admin GUI
-  - Gluu LDAP 
-  - Apache Web Server
-
-### Set up Casa
-
-Once the Gluu Server is installed, [run the Casa setup script](./installation.md#run-the-setup-script). 
-
-The [oxd client software](https://gluu.org/docs/oxd) is a required component to integrate Casa with the Gluu Server. It will be automatically installed with the script. When prompted, select `no` to install oxd.
+Casa is installed on the same server or virtual machine as the Gluu Server: follow the [Casa installation instructions](./installation/installation.md#installation-via-linux-packages).  
 
 ### Configure Casa
 
@@ -76,4 +55,4 @@ Once satisfied with testing, [configure the Gluu Server](../administration/admin
 
 ### Check out available plugins
 
-Browse our [catalog of plugins](https://casa.gluu.org/plugins) to add features and expand Casa!
+Browse our [catalog of plugins](https://casa.gluu.org/plugins) to add features and expand Casa!.

@@ -6,7 +6,7 @@ This page covers basic notions required for Gluu Casa plugin development. In pra
  
 ### A Gluu Server VM
 
-For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/ce/installation-guide). The Gluu server version used should match that of the machines you are targetting for production environment.
+For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/ce/installation-guide). Keep in mind to opt in for Casa when prompted. The Gluu server version used should match that of the machines you are targetting for production environment.
 
 Ideally, you should populate your Gluu Server with data (e.g. users/groups) to somewhat resemble a testing or production server of your organization. Writing a plugin to be run on a server with no users other than admin will lead to very poor testing scenarios.
 
@@ -17,7 +17,7 @@ Ensure you have credentials for a user with administrator privileges in your Glu
 
 ### A running Gluu Casa installation
 
-Once you are up and running with a Gluu Server VM proceed to [install Gluu Casa](../administration/installation.md). Ensure you can log in to Casa when finished.
+Once you are up and running with a Gluu Server VM, ensure you can log in to Casa when finished, eg. `https://<host>/casa`.
 
 #### Change file check period
 
@@ -34,7 +34,7 @@ By default .zul templates are cached for a very long period, however, for develo
     ```
     # jar -uf casa.war WEB-INF/zk.xml
     ```
-1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
+1. [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) casa
 
 The above guarantees changes in .zul files are picked very often (5 seconds is default ZK cache refresh time).
 
@@ -43,7 +43,7 @@ The above guarantees changes in .zul files are picked very often (5 seconds is d
 Ensure you can use a GUI client in order to connect to your LDAP. While all sort of operations on the directory can be achieved with the tools already bundled in the Gluu Server chroot container, the only means to have an agile development experience is leveraging a point-and-click tool. 
 
 Two graphical clients worth mentioning are [LDAP Admin](http://www.ldapadmin.org/) and [Apache DS](https://directory.apache.org/studio/downloads.html). Ask your administrator how to setup a connection from the client running on your desktop to Gluu container's LDAP or 
-follow [these](https://gluu.org/docs/ce/user-management/local-user-management#manage-users-in-gluu-ldap) instructions.
+follow [these](https://gluu.org/docs/ce/user-management/local-user-management/#manage-data-in-gluu-ldap) instructions.
 
 In case you cannot establish the tunnel mentioned in the docs you can do this:
 
@@ -57,7 +57,7 @@ If your Gluu Server is backed by OpenDJ:
 
 - Run `/opt/opendj/bin/dsconfig -h localhost -p 4444 -D "cn=directory manager" -w PASSWORD -n set-connection-handler-prop --handler-name="LDAPS Connection Handler" --set listen-address:0.0.0.0 -X` in chroot
 - Open port 1636 in your VM firewall
-- [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) LDAP
+- [Restart](https://gluu.org/docs/ce/4.1/operation/services/#restart) LDAP
 
 ### LDAP notions
 
@@ -79,11 +79,11 @@ In theory, any other language supported in the JVM such as Scala or Groovy may w
 
 ### IDE and building tools
 
-You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the from in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
+You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the form in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
 
 ### oxcore persistence annotation lib
 
-Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
+Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory (LDAP) or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
 
 For this purpose, Gluu's oxcore [persistence-annotation](https://github.com/GluuFederation/oxCore/blob/master/persistence-annotation/pom.xml) library is leveraged.
 
@@ -282,11 +282,11 @@ To know the dependencies already available at runtime, do the following:
 
 1. Create `app` and `shared` folders in it
 
-1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.0.Final/casa-base-4.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
+1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.1.Final/casa-base-4.1.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
-1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.0.Final/casa-shared-4.0.Final.pom` (save as `pom.xml`)
+1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.1.Final/casa-shared-4.1.Final.pom` (save as `pom.xml`)
 
-1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.0.Final/casa-4.0.Final.pom` saving again as `pom.xml`
+1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.1.Final/casa-4.1.Final.pom` saving again as `pom.xml`
 
 1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
@@ -348,11 +348,6 @@ PF4J allows a plugin to depend on other plugins. This feature is not supported i
 If you reached this part of the document, you already have the background required to start. Congratulations!. 
 
 The following is a generic suggested flow for developing plugins once the [requirements](#requirements-and-tools) presented in the beginning of this document are met. It is assumed the goals to fulfil with your development are already clear for you:
-
-<!-- TODO
-!!! Note
-    You can leverage the [maven archetype](./tips-development.md#bootstrap-a-plugin-using-an-archetype) to bootstrap the creation your project  
--->
 
 1. Create a simple project in your development environment. Include `casa-shared` dependency (this will give you access to UI and plugin framework as well as other utilities). Create an empty resource bundle (labels file).    
 

@@ -1,4 +1,4 @@
-# Gluu Casa 4.0 Documentation
+# Gluu Casa 4.1 Documentation
 
 ## Overview
 
@@ -59,8 +59,6 @@ For more information visit the [Casa website](https://casa.gluu.org/plugins).
 ## Gluu Server integration
 
 Casa is tightly bundled with the [Gluu Server](https://gluu.org/docs/ce) identity and access management (IAM) platform. A few important notes:
-
-- **Same host**: Casa must be installed on the same server (host) as its corresponding Gluu Server. For example, if the Gluu Server is deployed on `https://accounts.mydomain.com`, Casa should reside on the same host, for instance at `https://accounts.mydomain.com/signinoptions` 
 
 - **Authentication scripts**: The Gluu Server relies on "interception scripts" to implement user authentication. Casa itself has an interception script which defines authentication logic and routes authentications to specific 2FA mechanisms which also have their own scripts. All scripts must be enabled in the Gluu Server.        
 
