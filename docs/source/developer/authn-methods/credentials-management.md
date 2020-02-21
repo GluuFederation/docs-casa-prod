@@ -196,7 +196,8 @@ Once confident of your result, proceed to code your `index.zul` page or whatever
 |ACR|file|
 |--------|--------|
 |otp|otp-detail.zul|
-|twilio_sms|phone-detail.zul|
+|twilio_sms|twilio-phone-detail.zul|
+|smpp|smpp-phone-detail.zul|
 |super_gluu|super-detail.zul|
 |u2f|u2f-detail.zul|
 |fido2|fido2-detail.zul|
