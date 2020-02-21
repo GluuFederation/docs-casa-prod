@@ -145,23 +145,9 @@ It is a common need to be able to read the properties of a script from within a 
 
 ```
 IPersistenceService persistenceService = Utils.managedBean(IPersistenceService.class);
-CustomScript script = new CustomScript();
-script.setDisplayName(acr);
-script.setBaseDn(persistenceService.getCustomScriptsDn());
-List<CustomScript> scripts = persistenceService.find(script);
-Map<String, String> properties = scripts.size() > 0 ?
-	Utils.scriptConfigPropertiesAsMap(scripts.get(0)) : Collections.emptyMap();
+Map<String, String> properties = persistenceService.getCustScriptConfigProperties(acr);
+//properties is null if the script does not exist, otherwise it will contain a key/value mapping of script properties
 ```
-
-The code above basically does a query and then parses data. This [page](../ldap-data.md) contains all details you need to know in order to manipulate data from your plugin's code. You may skip it now if you wish, but you will revisit it later when trying to code your actual enrollment logic or [this](#credentials-related-methods) set of methods. Here is a summary of what's going on there:
-
-- Line 1: A reference to an object that implements `IPersistenceService` is obtained. This is a high level interface that allow you to interact (CRUD) with the underlying Gluu database very easily.
-
-- Line 2-3: An object that represents a custom script is created. `CustomScript` is an utility class defined in module `casa-shared`. The display name of the custom script is set to the acr value we are interested in. The base DN value is set so the query can be driven upon the correct initial location (basically, we follow an LDAP paradigm regardless of the actual underlying database).
-
-- Line 4: A query is performed trying to find all instances of `CustomScript` that "look" like the `script` object instance.
-
-- Line 5: If the search returned results, the first one is picked and the properties are parsed. It turns out that properties are stored in json format, so the method `scriptConfigPropertiesAsMap` hides this complexity returning a `Map` of property name vs. value.
 
 ## Credentials retrieval
 
@@ -210,7 +196,8 @@ Once confident of your result, proceed to code your `index.zul` page or whatever
 |ACR|file|
 |--------|--------|
 |otp|otp-detail.zul|
-|twilio_sms|phone-detail.zul|
+|twilio_sms|twilio-phone-detail.zul|
+|smpp|smpp-phone-detail.zul|
 |super_gluu|super-detail.zul|
 |u2f|u2f-detail.zul|
 |fido2|fido2-detail.zul|
