@@ -273,7 +273,7 @@ You have now a good sense of how plugins work. Now let's alter the project a bit
     private IPersistenceService persistenceService;
     ```
     
-    if the field name were `myPService` instead of `persistenceService`, you are forced to supply the parameter in the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `IPersistenceService` is annotated this way: `javax.inject.Named("persistenceService")`. If the bean didn't have a `Named` annotation, `WireVariable` injection would give you a null reference.
+    if the variable name were `myPService` instead of `persistenceService`, you would be forced to supply the parameter for the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `IPersistenceService` is annotated this way: `javax.inject.Named("persistenceService")`. If the bean weren't annotated with `Named`, `WireVariable` injection would give you a null reference.
     
     For the reasons above, `Utils.managedBean` is a safer way to go.
     
