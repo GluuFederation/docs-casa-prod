@@ -112,7 +112,7 @@ public String getPanelTitleKey() {
 
 Note that `getPanelBottomTextKey` is a default method, in this case if you don't need the extra text under the button, there is no need to implement it. Text referenced in this method can contain HTML markup, as the image shows.
 
-With regard to `getUINameKey`, the text being referenced is used as the "official" name of your authentication method, and you will see it in different places, such as the preferred authentication widget, the introductory text at user's home, the enabled authentication methods page in admin dashboard, etc.
+With regard to `getUINameKey`, the text being referenced is used as the "official" name of your authentication method, and you will see it in different places, such as the introductory text at user's home, the enabled authentication methods page in admin dashboard, etc.
 
 Finally, `getPageUrl` must return the relative URL (with respect to your plugin's assets directory) where the enrollment page will be accessible. If you followed the structure suggested [here](#create-a-plugin), returning "index.zul" suffices.
 

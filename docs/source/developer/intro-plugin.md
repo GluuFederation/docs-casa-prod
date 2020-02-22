@@ -339,6 +339,19 @@ Plugins can access the underlying cache provider in use by the Gluu Server insta
 
 To access the cache handler, do the following:
 
+In your `pom.xml` add:
+
+```
+<dependency>
+	<groupId>org.gluu</groupId>
+	<artifactId>oxcore-cache</artifactId>
+	<version>4.2.Final</version>
+	<scope>provided</scope>
+</dependency>
+```
+
+In your code do:
+
 ```
 import org.gluu.service.cache.CacheProvider;
 ...

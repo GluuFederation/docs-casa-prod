@@ -257,23 +257,23 @@ You have now a good sense of how plugins work. Now let's alter the project a bit
 
 1. Edit `HelloWorldVM` in the following way:
 
-    Remove the line `persistenceService = ...` in `init` method, then edit `persistenceService` member by adding a `WireVariable` annotation like this:
+    Remove the line `sessionContext = ...` in `init` method, then edit `sessionContext` member by adding a `WireVariable` annotation like this:
 
     ```
     @WireVariable
-    private IPersistenceService persistenceService;
+    private ISessionContext sessionContext;
     ```
     
-    `WireVariable` is an annotation of package `org.zkoss.zk.ui.select.annotation` which is a sort of equivalent for `javax.inject.Inject`. It allows us to reference an instance of `IPersistenceService` (see `casa-shared` javadocs). Usage of `WireVariable` has a disadvantage though: you need to know the EL name of the bean you are trying to inject. 
+    `WireVariable` is an annotation of package `org.zkoss.zk.ui.select.annotation` which is a sort of equivalent for `javax.inject.Inject`. It allows us to reference an instance of `ISessionContext` (see `casa-shared` javadocs). Usage of `WireVariable` has a disadvantage though: you need to know the EL name of the bean you are trying to inject. 
     
     Specifically the injection above is equivalent to this one:
 
     ```
-    @WireVariable("persistenceService")
-    private IPersistenceService persistenceService;
+    @WireVariable("sessionContext")
+    private ISessionContext sessionContext;
     ```
     
-    if the field name were `myPService` instead of `persistenceService`, you are forced to supply the parameter in the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `IPersistenceService` is annotated this way: `javax.inject.Named("persistenceService")`. If the bean didn't have a `Named` annotation, `WireVariable` injection would give you a null reference.
+    if the variable name were `mySessionContext` instead of `sessionContext`, you would be forced to supply the parameter for the annotation. This parameter should match the EL name of the bean you are injecting, that is, the managed bean in Casa that implements the interface `ISessionContext` is annotated this way: `javax.inject.Named("sessionContext")`. If the bean weren't annotated with `Named`, `WireVariable` injection would give you a null reference.
     
     For the reasons above, `Utils.managedBean` is a safer way to go.
     
