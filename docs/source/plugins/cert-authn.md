@@ -91,7 +91,7 @@ Wait for one minute, then visit `Administration Console` > `Enabled methods` and
 
 ## Testing
 
-So far, users that login to Casa should be able to see a new "User certificates" menu item. From there they can "link" their certificates. It is important to note that actual certificates have to be **imported directly** in the browser beforehand. There are hints in the UI in this regard. The sample applies for "delinking".
+So far, users that log into Casa should be able to see a new "User certificates" menu item. From there they can "link" their certificates. It is important to note that actual certificates have to be **imported directly** into the browser beforehand. There are hints in the UI in this regard. The analog applies for "delinking".
 
 Once a certificate is added, and if 2FA is turned on for the user, the browser will prompt to select a certificate after the usual username and password combination is supplied. In this sense, the certificate will just act as a second factor.
 
@@ -101,7 +101,7 @@ In the following we describe simple steps to quickly test the plugin and the aut
 
 ### Generating CA certs
 
-You can sign client certificates with a self-signed cert, for instance you can do:
+Admins can sign client certificates with a self-signed cert, for instance you can do:
 
 ```
 openssl req -newkey rsa:4096 -keyform PEM -keyout ca.key -x509 -days 365 -outform PEM -out ca.cer
@@ -109,4 +109,51 @@ openssl req -newkey rsa:4096 -keyform PEM -keyout ca.key -x509 -days 365 -outfor
 
 And then copy `ca.cer` to a location that you should specify in `chain_cert_file_path` property of the script.
 
-TODO
+### Generate a client SSL certificate
+
+Generate a private key:
+
+```
+openssl genrsa -out client.key 4096
+```
+
+Generate a certificate signing request (CSR):
+
+```
+openssl req -new -key client.key -out client.req
+```
+
+Sign CSR with the CA key and cert:
+
+```
+openssl x509 -req -in client.req -CA ca.cer -CAkey ca.key -set_serial 01 -days 365 -outform PEM -out client.cer
+```
+
+Bundle the private key and client certificate in a single PKCS#12 format certificate:
+
+```
+openssl pkcs12 -export -clcerts -inkey client.key -in client.cer -out client.p12
+```
+
+The resulting `p12` file will have to be imported into the browser. Instructions for this vary.
+
+
+### Enroll the certificate in Casa
+
+In Casa, Go to `User certificates` or in the home page scroll down to find the corresponding widget and click on `Add/remove certificates`.
+
+Account for the hints given and press the `Proceed` button. Your browser will prompt you to select a certificate from the personal certificates imported so far. For convenience, uncheck the option related to remembering this choice and continue.
+
+You will be taken to a page presenting the result of the operation. For a success outcome, the certificate had to be parsed correctly and passed all validations [configured](#validators).
+
+Press the button to return to the page listing the enrolled certificates. You will see a summary of the certificate just added including the expiration date. There is an option to remove the certificate as well.
+
+### Use the certificate as a second factor
+
+Ensure you have added another credential, hopefully of a different kind, for example a mobile phone number or an OTP token. Then visit the home page and click the toggle to turn 2FA on and logout.
+
+Try to access the application once more and supply the username and password for the account recently used to enroll the certificate. Depending on the numeric level assigned to the `cert` script, you will be prompted for a different factor, for instance, to enter an OTP code. If so, click on `Try an alternative way to sign in` and click on `User certificate`.
+
+The browser will show again the dialog window to pick a certificate. Choose the certificate already enrolled and continue. For convenience, uncheck the option related to remembering this choice.
+
+Finally you will be redirected and get access to the application.
