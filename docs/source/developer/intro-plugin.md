@@ -358,7 +358,7 @@ import org.gluu.service.cache.CacheProvider;
 CacheProvider cache = Utils.managedBean(CacheProvider.class);
 ```
 
-With `cache` object it is possible, for example, to retrieve values (`get` method), set values (`set` methods), remove values by key (`remove`). By default a key/value pair has an expiration time defined at the server level in the oxTrust admin UI. A different expiration time (in seconds) can be supplied using `put` method of signature `void put(int, String, Object)`.
+With `cache` object it is possible, for example, to retrieve values (`get` method), set values (`set` methods), and remove values by key (`remove`). By default a key/value pair has an expiration time defined at the server level in the [oxTrust admin UI](https://gluu.org/docs/ce/4.2/reference/cache-provider-prop/). A different expiration time (in seconds) can be supplied using `put` method of signature `void put(int, String, Object)`.
 
 !!! Note:
     `Object`s to be stored in cache have to implement the interface `java.io.Serializable`.
