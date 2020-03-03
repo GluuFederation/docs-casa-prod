@@ -3,7 +3,7 @@ site_name: Gluu Casa 4.1 Docs
 site_description: Documentation for Gluu Casa
 
 # Copyright
-copyright: Copyright &copy; 2019, Gluu, Inc.
+copyright: Copyright &copy; 2020, Gluu, Inc.
 
 # Repository
 repo_name: GluuFederation/docs-casa-prod
@@ -38,6 +38,7 @@ markdown_extensions:
 # Navigation Menu
 nav:
 - 'Versions':
+    - '4.1': 'https://gluu.org/docs/casa/4.1/'
     - '4.0': 'https://gluu.org/docs/casa/4.0/'
     - '3.1.6': 'https://gluu.org/docs/casa/3.1.6/'
 - ' ': 'https://gluu.org'
