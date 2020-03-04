@@ -41,15 +41,6 @@ Both `credentials_file` and `map_user_cert` properties are not in use, you can l
 
 Click on `Enable` under the script contents box, and press `Update` at the bottom of the page.
 
-## Custom pages
-
-The configured script requires a custom page. Do the following:
-
-1. Login to chroot and run:
-1. `cd /opt/gluu/jetty/oxauth/custom/pages`
-1. `mkdir casa && cd casa`
-1. `wget https://github.com/GluuFederation/casa/raw/master/plugins/cert-authn/extras/cert.xhtml`
-
 ## Apache configuration
 
 !!! Note:
