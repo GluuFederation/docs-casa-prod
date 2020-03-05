@@ -31,7 +31,7 @@ Alternatively you can download a zipped version of the project from github:
 
 ### Extract war contents
 
-This step is optional, however, it is illustrative to peek at some UI templates while getting acquaitance with UI design:
+This step is optional, however, it is illustrative to peek at some UI templates while getting acquainted with UI design:
 
 1. Log into chroot 
 1. Transfer the file `/opt/gluu/jetty/casa/webapps/casa.war` somewhere to your local environment (say to `~/temp`)
