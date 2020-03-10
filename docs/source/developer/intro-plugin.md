@@ -93,7 +93,7 @@ For this purpose, Gluu's oxcore [persistence-annotation](https://github.com/Gluu
 
 #### Reference docs
 
-Previous knowledge of the [ZK framework 8.6](https://www.zkoss.org) is not required but we advise to have some relevant docs at hand. From the list found [here](https://www.zkoss.org/documentation#References) we highlight:
+Previous knowledge of the [ZK framework 9](https://www.zkoss.org) is not required but we advise to have some relevant docs at hand. From the list found [here](https://www.zkoss.org/documentation#References) we highlight:
 
 * Get ZK Up and Running with MVVM (*glance at it now if possible*)
 * ZK MVVM Reference
@@ -103,7 +103,7 @@ Previous knowledge of the [ZK framework 8.6](https://www.zkoss.org) is not requi
 
 The [api-docs](https://www.zkoss.org/documentation#API) are also a good source of low-level details.
 
-There is no need to get into the installation details of ZK since plugins will just leverage the ZK 8.6 libraries available in Gluu Casa at runtime. 
+There is no need to get into the installation details of ZK since plugins will just leverage the ZK 9 libraries available in Gluu Casa at runtime. 
 
 #### Key concepts
 

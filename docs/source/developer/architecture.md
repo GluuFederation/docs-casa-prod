@@ -10,7 +10,7 @@ To generate HTML content, this application uses the [ZK Community Edition](https
 
 ZK helps developers write highly interactive interfaces in a fast-paced manner still using similar dialects of other Java-based UI frameworks. Additionally, although it uses a lot of Ajax in the browser, no knowledge about Javascript is required.
 
-There are a handful of approaches for ZK development, particularly in Casa the MVVM pattern is used. This pattern has 3 roles: View, Model, and ViewModel which allow separation of data and logic from presentation. For more information see [ZK MVVM Reference](http://books.zkoss.org/zk-mvvm-book/8.0/).
+There are a handful of approaches for ZK development, particularly in Casa the MVVM pattern is used. This pattern has 3 roles: View, Model, and ViewModel which allow separation of data and logic from presentation. For more information see [ZK MVVM Reference](http://books.zkoss.org/zk-mvvm-book/9.0/).
 
 Plugin developers are encouraged to use the MVVM development style of ZK, however any other approach is pluggable and should supported.
 
