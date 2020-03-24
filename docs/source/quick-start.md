@@ -27,7 +27,7 @@ The following operating systems are supported:
 
 Casa requires an operational Gluu Server with a matching version number (e.g. Casa 4.0 and Gluu 4.0). In addition, Casa should be installed on the same server or virtual machine as the Gluu Server. 
 
-- Follow the [Casa installation instructions](./installation/installation.md#installation-via-linux-packages) to install the packages.  
+- Follow the [Casa installation instructions](./administration/installation.md#installation-via-linux-packages) to install the packages.  
 
 If you don't already have the Gluu Server installed, it will be automatically installed with Casa.
     
