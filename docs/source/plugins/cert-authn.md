@@ -1,7 +1,10 @@
 # Integrating browser certificate authentication with Casa
-
+    
 ## Overview
 The browser certificate plugin allows users to enroll X.509 digital certificates and use them as a form of second factor authentication.
+
+!!! Warning
+    In containers-based environments there are difficulties making `nginx` work with SSL client certificates. Open a support ticket if necessary.
 
 ## Script configurations
 
@@ -31,6 +34,9 @@ When web browsers prompt users to choose a certificate, a number of validations 
 |use_crl_validator|Certificate revocation list validator (CRL)|Uses [CRL](https://en.wikipedia.org/wiki/Certificate_revocation_list) for verification|
 |use_ocsp_validator|Online Certificate Status Protocol (OCSP) validator|Uses OCSP responder servers to check cert validity|
 
+!!! Warning
+    Validations are still a work in progress. If you find issues, please open a support ticket.
+    
 ### Other properties
 
 Certificate revocation list validation imposes certain overhead so it is necessary to cap the maximum size of data to be downloaded. This can be controlled using `crl_max_response_size` property. If not supplied, default value is 5MB.
@@ -42,9 +48,6 @@ Both `credentials_file` and `map_user_cert` properties are not in use, you can l
 Click on `Enable` under the script contents box, and press `Update` at the bottom of the page.
 
 ## Apache configuration
-
-!!! Note:
-    Using containers? please open a support ticket if your server is ngnix.
     
 Locate Gluu's Apache configuration file `https_gluu.conf` in chroot and find the `SSLVerifyClient` directive. Duplicate the whole `LocationMatch` directive changing the first line this way:
 

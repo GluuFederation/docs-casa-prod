@@ -22,7 +22,7 @@ Once you supply your files, color values, and footer text, click on `Save` and s
 
 With "Primary buttons" we refer to the vast majority of buttons that trigger some action such as saving, updating or accepting - whether in the user pages or the admin UI itself. "Cancel" covers undo, close or cancel, while "Misc" is for anything not fitting any of the previous usages.
 
-You can choose "Use defaults" if you feel comfortable with the [Bootstrap-like](https://getbootstrap.com/docs/4.0/components/buttons/) colors offered in Gluu Casa.
+You can choose "Use defaults" if you feel comfortable with the [Bootstrap-like](https://getbootstrap.com/docs/4.4/components/buttons/) colors offered in Gluu Casa.
 
 ## Using the external assets directory
 
@@ -34,9 +34,9 @@ You can choose "Use defaults" if you feel comfortable with the [Bootstrap-like](
 Casa's UI design is driven by one CSS stylesheet and a few images. Specifically, Casa leverages the following UI frameworks:
 
 * [ZK](http://books.zkoss.org/zk-mvvm-book/9.0/)
-* [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/#quick-start)
+* [Bootstrap 4.4](https://getbootstrap.com/docs/4.4/getting-started/introduction/#quick-start)
 * [Tachyons 4.11](http://tachyons.io)
-* [Font Awesome 5.2](https://fontawesome.com)
+* [Font Awesome 5.12](https://fontawesome.com)
 
 Particularly, ZK's default theme CSS file was disabled to offer a higher degree of flexibility in design. This enables Bootstrap and Tachyons to claim control over style rules applied to HTML markup.
 

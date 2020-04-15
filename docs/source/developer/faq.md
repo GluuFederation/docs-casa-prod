@@ -35,7 +35,7 @@ Yes. To be able to do any useful interaction, you have to pass in the authorizat
 
 ### How do I obtain a token?
 
-From oxAuth's token endpoint. For this purpose, you have to register a client previously, say, by using oxTrust admin GUI. Ask your administrator for instructions on how to do so and how to pass a token in HTTP headers.
+From oxAuth's token endpoint. For this purpose, you have to register a client previously, say, by using oxTrust admin GUI. You might use the already existing casa client as well. Ask your administrator for instructions on how to do so and how to pass a token in HTTP headers.
 
 ### Do I need special setup before using the endpoints?
 
