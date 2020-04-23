@@ -68,11 +68,11 @@ apt-get update
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-apt-get install gluu-casa
+apt-get install gluu-casa=3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa=3.1.6-29~trusty+Ub14.04
+apt-get install gluu-casa=3.1.6
 ```
 
 
@@ -99,11 +99,11 @@ apt-get update
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-apt-get install gluu-casa
+apt-get install gluu-casa=3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa=3.1.6-7~xenial+Ub16.04
+apt-get install gluu-casa=3.1.6
 ```
  
 ### CentOS 6
@@ -135,11 +135,11 @@ yum clean all
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-yum install gluu-casa
+yum install gluu-casa-3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.centos6
+yum install gluu-casa-3.1.6
 ```
 
 ### CentOS 7
@@ -171,11 +171,11 @@ yum clean all
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-yum install gluu-casa
+yum install gluu-casa-3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.centos7
+yum install gluu-casa-3.1.6
 ```
 
 ### RHEL 6
@@ -206,12 +206,12 @@ yum clean all
 
 **Install Gluu Server extension pack**
 
-``` tab="3.1.6.sp1
-yum install gluu-casa
+``` tab="3.1.6.sp1"
+yum install gluu-casa-3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-7.rhel6
+yum install gluu-casa-3.1.6
 ```
 
 ### RHEL 7
@@ -242,12 +242,12 @@ yum clean all
 
 **Install Gluu Server extension pack**
 
-``` tab="3.1.6.sp1
-yum install gluu-casa
+``` tab="3.1.6.sp1"
+yum install gluu-casa-3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-yum install gluu-casa-3.1.6-6.rhel7
+yum install gluu-casa-3.1.6
 ```     
 
 ### Debian 8 (Jessie)
@@ -273,11 +273,11 @@ apt-get update
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-apt-get install gluu-casa
+apt-get install gluu-casa=3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa=3.1.6-7~jessie+Db8
+apt-get install gluu-casa=3.1.6
 ```
 
 ### Debian 9 (Stretch)
@@ -303,11 +303,11 @@ apt-get update
 **Install Gluu Server extension pack**
 
 ``` tab="3.1.6.sp1"
-apt-get install gluu-casa
+apt-get install gluu-casa=3.1.6.sp1
 ```
 
 ``` tab="3.1.6"
-apt-get install gluu-casa=3.1.6-7~stretch+Db9
+apt-get install gluu-casa=3.1.6
 ```
 
 ## Apply patch
