@@ -53,7 +53,7 @@ Add a custom parameter for authorization requests in your Gluu Server:
 
 ### Activate the custom scripts needed
 
-While configuring Passport earlier, you enabled one or more authentication scripts (ie. `passport_social`/`passport_saml`). In oxTrust, navigate to `Configuration` > `Manage custom scripts` and for every script you enabled, add a configuration parameter with name `authz_req_param_provider` and set its value to the custom authorization parameter created earlier (eg. `custParamCasaPassport`).
+While configuring Passport earlier, you enabled one or more authentication scripts (ie. `passport_social`/`passport_saml`). In oxTrust, navigate to `Configuration` > `Manage custom scripts` and for every script you enabled, add a custom property with name `authz_req_param_provider` and set its value to the custom authorization parameter created earlier (eg. `custParamCasaPassport`).
 
 ### Update Casa custom script
 
