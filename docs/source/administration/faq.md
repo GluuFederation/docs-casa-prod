@@ -105,11 +105,15 @@ If you are using the oxd-server installed by casa installer, this is automatical
 
 ### Registration of clients fail
 
-Ensure dynamic client registration is enabled: in your Gluu Server admin UI ("oxTrust"), navigate to `Configuration` > `JSON Configuration` > `oxAuth configuration`, find the `dynamicRegistrationEnabled` property, and confirm it is set to `true`.
+Ensure dynamic client registration is enabled: in your Gluu Server admin UI ("oxTrust"), navigate to `Configuration` > `JSON Configuration` > `oxAuth configuration`, find the `dynamicRegistrationEnabled` property, and confirm it is set to `true`. Do the same for property `returnClientSecretOnRead`.
 
-Note Dynamic client registration can be turned off after Casa client registration succeds.
+Note both properties can be turned off after Casa client registration succeds.
         
 ## Miscellanenous
+
+### How to remove the consent form shown upon first login?
+
+By default, Gluu server will present users a consent form for release of personal data to the application (Casa). If you want to skip this prompt, edit the OIDC Casa client this way using oxTrust: Go to `OpenID Connect` > `Clients`, then select the gluu_casa* entry and check the `Pre-Authorization` field, finally, save changes by pressing on `Update`. 
 
 ### Troubleshooting interception scripts
 
