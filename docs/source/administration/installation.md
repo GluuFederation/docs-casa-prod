@@ -13,9 +13,11 @@ Starting with version 4.1, Casa is offered as one of the several components of t
 
 - It is required your installation was configured to use a FQDN for hostname, not an IP address
 
-- Apache and oxAuth are required components 
+- Apache and oxAuth are required components
 
-- Casa requires [oxd](https://gluu.org/docs/oxd) 4.x to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, one will be installed for you locally.
+- Ensure your server has "dynamic registration" of clients enabled and that "returnClientSecretOnRead" is set to *true*. These settings can be reverted once your Casa installation is fully operational 
+
+- Casa requires [oxd](https://gluu.org/docs/oxd) 4.x to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, one will be installed for you locally
 
 ## Finish setup
 

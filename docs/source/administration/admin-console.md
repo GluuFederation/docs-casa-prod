@@ -15,7 +15,7 @@ This section contains settings used by Casa to establish a connection to the und
 Casa leverages [oxd](https://oxd.gluu.org) to faciliate user authentication against its corresponding Gluu Server. oxd installation and configuration is prompted during Casa installation. To change or update details about the oxd server, or to configure and use an existing oxd deployment, navigate to the `oxd` page in the admin console.
 
 !!! Warning
-    Ensure your Gluu Server has "dynamic registration" of clients enabled while you are applying changes here.
+    Ensure your Gluu Server has "dynamic registration" of clients enabled and that "returnClientSecretOnRead" is set to true while you are applying changes here.
 
 ![oxd-settings](../img/admin-console/oxdSettings1.png)
 
