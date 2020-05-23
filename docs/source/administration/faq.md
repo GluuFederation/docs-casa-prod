@@ -84,11 +84,11 @@ Please do the following:
 
 1. Stop casa if still running
 1. `cd` to a temp location
-1. Extract required files: `jar -xf /opt/gluu/jetty/casa/webapps/casa.war WEB-INF/classes/org/gluu/casa/misc/ClientReset.class WEB-INF/lib`
+1. Extract required files: `jar -xf /opt/gluu/jetty/casa/webapps/casa.war WEB-INF/classes/org/gluu/casa/misc WEB-INF/lib`
 1. `cd` to `WEB-INF/classes`
 1. Run `java -cp .:../lib/* org.gluu.casa.misc.ClientReset`
 
-Some output feedback will be printed to console; ensure it acknowledges success. To finish, restart casa. This will trigger a client registration for the application to become accessible again.
+Some output feedback will be printed to console; ensure the process acknowledges success (Log4j/SLF4J warnings and errors can be ignored). To finish, restart casa. This will trigger a client registration for the application to become accessible again.
 
 If the above went fine, feel free to remove the temporary directory you created earlier.
 
