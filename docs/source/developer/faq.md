@@ -57,6 +57,10 @@ The swagger document of the API (ie. `https://<host>/casa/enrollment-api.yaml`) 
 
 Every authentication method has at least one API endpoint that allows to *save* or *finalize* a credential enrollment. Once you receive a positive response from it, you can simply navigate to Casa (with the user you were doing enrollments on behalf): the enrollment will appear in the home page of the application.
 
+### Can I use the API to get/set 2FA data?
+
+The API provides some operations to retrieve the status of a user in terms of 2FA as well as to turn 2FA on and off. Check the swagger document of the API. 
+
 ## My problem is not listed here
 
 Feel free to open a [support](https://support.gluu.org/) ticket.

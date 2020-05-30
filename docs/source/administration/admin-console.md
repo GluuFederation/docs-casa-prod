@@ -96,11 +96,16 @@ A recommended practice is to enable one script in the Gluu Server (like U2F), th
 !!! Warning  
     This feature is only available through the [2FA settings plugin](../plugins/2fa-settings.md).  
 
-In the 2FA settings, an admin can specify the minimum number of credentials a user **must** enroll before they are able to turn on 2FA, and choose from a few predefined policies for when 2FA should be prompted. 
+In the 2FA settings, an admin can:
+
+- Specify the minimum number of credentials a user **must** enroll before 2FA can be turned on
+- Determine whether 2FA should be automatically enabled upon credential enrollment
+- Whether users can turn 2FA on and off their own
+- Choose from a few predefined policies for when 2FA should be prompted. 
 
 ![2fa-settings](../img/admin-console/2FA-settings.png)
 
-To reduce the chance of lockout, we recommend setting a minimum of two (2) strong credentials. 
+To reduce the chance of lockouts, we recommend setting a minimum of two (2) strong credentials. 
 
 Predefined 2FA policy options include:
 

@@ -1,10 +1,11 @@
 # About Two-Factor Authentication (2FA)
 
+!!! Note:
+    You can tailor different aspects of 2FA behavior in Casa using the [plugin](../plugins/2fa-settings.md) developed for this purpose.
+
 ## Availability
 
 By default, strong (two-factor) authentication will be available to users of Casa once they have added at least two credentials. By requiring users to register two strong credentials, the number of account lockouts that require admin intervention will be greatly reduced. If one credential is lost, there will be at least one fallback mechanism available. Avoiding user lockout is important because it prevents a serious burden for IT administrators.
-
-You can increase or even reduce this value at your discretion via the [admin console](admin-console.md#2fa-settings).
 
 There is no limit to the number of credentials a user can enroll, and credentials do not need to be of the same type: any combination is valid. 
 
@@ -39,3 +40,12 @@ You can flag more than one method as requisite. In this case users will be encou
 If you are using an authentication method you added your own (via plugin), ensure the corresponding plugin implements the `mayBe2faActivationRequisite` method.
 
 If a user attempts to delete their only available credential matching the requisite method, a prompt will appear warning that doing so will disable 2FA, that is, resetting to password authentication.
+
+## Enrolling credentials upon registration or first login
+
+If the previous scenario is not enough for your needs, you can force users to enroll credentials and turn 2FA on before the first usage of the application. This can be done in two ways:
+
+- Altering the login flow to check for presence of credentials and then redirect to custom pages that implement enrollment
+- Making enrollments occur at registration time (through the application you use for this purpose)
+
+Any of these cases entails a development effort which should leverage the enrollments [API](../developer/index.md#apis-for-credential-enrollment) available.

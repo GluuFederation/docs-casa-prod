@@ -1,9 +1,24 @@
 # Strong Authentication Settings Plugin
 
 ## Overview
-This plugin allows administrators to configure how and when 2FA is applied. Admins can:
+This plugin allows administrators to configure how and when 2FA is applied. Admins may:
 
-- Specify the minimum number of credentials users must enroll before they are able to turn on 2FA
+1. Specify the minimum number of credentials users must enroll before 2FA can be used
+1. Allow 2FA to be automatically enabled upon credential enrollment
+1. Prevent users to turn 2FA on and off their own
+
+When (2) is not used, option (3) is disabled. This is the default behavior exhibited in Casa where users explicitly enable or disable 2FA usage.
+
+When (2) is active, 2FA is turned on as soon as the user enrolls a credential and the minimum required is fulfilled. Bear in mind:
+
+- Automatic enablement happens only via GUI: enrollments made using the API will have to turn 2FA on by means of the API itself
+- Plugins attaching authentication methods to Casa have to explicitly call method `notifyEnrollment` of `SndFactorAuthenticationUtils` upon successful enrollments (see the javadocs).
+
+Also, 2FA is automatically turned on upon login for users with enough credentials registered and not having 2FA turned on yet.
+
+For more restrictive scenarios, administrators have the option to remove the 2FA switch (3) from the user's dashboard.
+
+Additionally this plugin allows to:
 
 - Choose from a set of predefined policies for when 2FA should be prompted:
  
@@ -14,7 +29,7 @@ This plugin allows administrators to configure how and when 2FA is applied. Admi
   
 - Set how long a location or device can be deemed as recognized
     
-Additionally, when administrators allow users to set their own strong authentication policy, users can:
+Moreover, when administrators allow users to set their own strong authentication policy, users can:
 
 - View the list of physical devices they have used to login (e.g. PC, tablet, phone)
 - View the time and location (city) associated to the last login event
