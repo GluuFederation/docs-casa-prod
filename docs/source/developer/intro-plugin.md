@@ -193,7 +193,9 @@ Actual instances of `BrowserInfo` and `User` are obtained by interacting with an
 
 #### Service objects
 
-Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces that used in combination with method `Utils.managedBean` opens access to key features or information:
+Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces that used in combination with method `Utils.managedBean` open access to key features or information:
+
+- `SndFactorAuthenticationUtils`: Provides helper methods for several 2FA-related tasks.
 
 - `ISessionContext`: It allows you to obtain information about the current user session: who the logged-in `User` is, and which their `BrowserInfo` settings are.
 
@@ -215,6 +217,10 @@ For an example on `BasePerson` derivation, check [Owner](https://github.com/Gluu
 ##### CustomScript
 
 The class `org.gluu.casa.core.model.CustomScript` represents a Gluu custom interception script. This class is useful for plugins working with authentication methods since those are parameterized via the configuration properties of scripts. You will find method `Utils.scriptConfigPropertiesAsMap` useful for easily reading a script properties set.
+
+##### Client
+
+The class `org.gluu.casa.core.model.Client` represents an OpenId Connect Client defined in the Gluu Server. To see the list of defined clients visit `OpenID Connect` > `Clients` in oxTrust admin console.
 
 ## Anatomy of a plugin
 

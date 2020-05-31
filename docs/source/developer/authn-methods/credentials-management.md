@@ -28,7 +28,7 @@ Follow the instructions given in [Introduction to plugin development](../intro-p
 From here on we assume you have:
 
 - A ready environment (dev tools, LDAP client, Gluu Server VM, etc.)
-- A [clone or copy](../writing-first.md#download-project) of Casa sample plugins github repository
+- A [clone or copy](../writing-first.md#download-project) of Casa sample plugins
 - A maven project looking like:
 
 ```
@@ -220,5 +220,8 @@ As you make progress with the task also ensure you have added:
 - Tooltips where necessary
 - Prompts to proceed in case of credential removal
 - Alerts to nofify the general outcome of operations (e.g. enrollment success, update failure, etc.)
+
+!!! Note:
+    It is strongly recommended to call method `notifyEnrollment(User, String)` defined at interface `org.gluu.casa.service.SndFactorAuthenticationUtils` after a successful enrollment takes place. Obtain an instance of `SndFactorAuthenticationUtils` via `Utils#managedBean`.
 
 Enrollment pages of default authentication methods already have this kind of elements in place to bring users the best experience.
