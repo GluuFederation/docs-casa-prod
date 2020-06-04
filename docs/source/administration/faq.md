@@ -85,6 +85,7 @@ Please do the following:
 1. Stop casa if still running
 1. `cd` to a temp location
 1. Extract required files: `jar -xf /opt/gluu/jetty/casa/webapps/casa.war WEB-INF/classes/org/gluu/casa/misc WEB-INF/lib`
+1. Run `rm -f WEB-INF/lib/slf4j-simple*`
 1. `cd` to `WEB-INF/classes`
 1. Run `java -cp .:../lib/* org.gluu.casa.misc.ClientReset`
 
