@@ -88,7 +88,7 @@ Please do the following:
 1. `cd` to `WEB-INF/classes`
 1. Run `java -cp .:../lib/* org.gluu.casa.misc.ClientReset`
 
-Some output feedback will be printed to console; ensure the process acknowledges success (Log4j/SLF4J warnings and errors can be ignored). To finish, restart casa. This will trigger a client registration for the application to become accessible again.
+Some output feedback will be printed to console; ensure the process acknowledges success. To finish, restart casa. This will trigger a client registration for the application to become accessible again.
 
 If the above went fine, feel free to remove the temporary directory you created earlier.
 
