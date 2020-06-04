@@ -145,6 +145,9 @@ For Event-based OTP (HOTP), ensure you are using a suitable value for `look ahea
 
 ### U2F restrictions
 
+!!! Note:
+    It is recommended not to use U2F but FIDO2 as authentication method. Visit this [page](./fido2-migration.md) for more information.
+
 U2F keys (for enrollment or authentication) are supported in the following desktop browsers only:
 
 - Chrome >= 70
@@ -165,7 +168,7 @@ Ensure the following are met:
 
 To turn 2FA on, the user has to have enrolled at least a certain number of credentials through the app. Only after this is met, he will be able to perform this action. 
 
-In the administration console you can specify the minimum number of enrolled credentials needed to enable second factor authentication for users.
+In the administration console you can specify the minimum number of enrolled credentials needed to enable second factor authentication for users. Please check the [2FA Settings plugin](../plugins/2fa-settings.md) for more details.
 
 ### The log shows an error related to *Obtaining "acr_values_supported" from server*
 

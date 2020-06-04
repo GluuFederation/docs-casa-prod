@@ -3,7 +3,7 @@ site_name: Gluu Casa 4.1 Docs
 site_description: Documentation for Gluu Casa
 
 # Copyright
-copyright: Copyright &copy; 2019, Gluu, Inc.
+copyright: Copyright &copy; 2020, Gluu, Inc.
 
 # Repository
 repo_name: GluuFederation/docs-casa-prod
@@ -48,7 +48,8 @@ nav:
 - 'Installation': 'administration/installation.md'
 - Administration Guide: 
     - 'About 2FA': 'administration/2fa-basics.md'
-    - 'Admin console': 'administration/admin-console.md'   
+    - 'Admin console': 'administration/admin-console.md'
+    - 'Fido U2F to Fido2 migration': 'administration/fido2-migration.md'
     - 'Credentials storage': 'administration/credentials-stored.md'
     - 'Custom branding': 'administration/custom-branding.md'
     - 'URL path customization': 'administration/change-context-path.md'

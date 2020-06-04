@@ -54,6 +54,9 @@ To enable authentication methods in Gluu, open oxTrust and navigate to  `Configu
 
 ![oxtrust-enabled-scripts](../img/admin-console/oxTrust-enabled-scripts.png)
 
+!!! Note:
+    It is recommended not to use U2F but FIDO2 as authentication method. Visit this [page](./fido2-migration.md) for more information.
+    
 To confirm script functionality, or if issues arise, check the [troubleshooting doc](./faq.md#troubleshooting-interception-scripts) in the FAQ.
 
 
@@ -77,7 +80,7 @@ The System plugin supports several authentication methods:
 
 - OTP SMS
 - OTP (handling mobile apps and hard tokens)
-- security keys (FIDO / U2F)
+- FIDO security keys
 - Super Gluu. 
 
 Developers can provide their own [custom handler plugins](https://gluu.org/docs/casa/4.1/developer/authn-methods/) that add or override the authentication methods.
