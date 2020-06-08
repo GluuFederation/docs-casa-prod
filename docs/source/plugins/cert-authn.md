@@ -10,7 +10,7 @@ The browser certificate plugin allows users to enroll X.509 digital certificates
 
 A special custom script is key for this plugin. It serves as mechanism to incorporate the browser certificate prompt into Casa authentication flow and also to hold parameters for the plugin itself.
 
-!!! Note:
+!!! Note
     If for some reason you are already using the `cert` script, please back up its contents now.
 
 Log into oxTrust, and go to `Configuration` > `Manage Custom scripts` > `cert`. Script contents and config must be tailored for Casa:

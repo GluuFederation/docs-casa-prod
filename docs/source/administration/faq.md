@@ -144,7 +144,7 @@ For Event-based OTP (HOTP), ensure you are using a suitable value for `look ahea
 
 ### U2F restrictions
 
-!!! Note:
+!!! Note
     It is recommended not to use U2F but FIDO2 as authentication method. Visit this [page](./fido2-migration.md) for more information.
 
 U2F keys (for enrollment or authentication) are supported in the following desktop browsers only:

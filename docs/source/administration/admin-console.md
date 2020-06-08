@@ -54,7 +54,7 @@ To enable authentication methods in Gluu, open oxTrust and navigate to  `Configu
 
 ![oxtrust-enabled-scripts](../img/admin-console/oxTrust-enabled-scripts.png)
 
-!!! Note:
+!!! Note
     It is recommended not to use U2F but FIDO2 as authentication method. Visit this [page](./fido2-migration.md) for more information.
     
 To confirm script functionality, or if issues arise, check the [troubleshooting doc](./faq.md#troubleshooting-interception-scripts) in the FAQ.

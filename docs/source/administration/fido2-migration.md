@@ -13,7 +13,7 @@ Migration consists of the following steps:
 
 This process consists of creating entries under every user's `fido2_register` branch corresponding to already existing entries found under `fido` branches. See [Storage of User Credentials](./credentials-stored.md#u2f-devices).
 
-!!! Note:
+!!! Note
     Only `active` entries not corresponding to Super Gluu enrollments are converted. Every successfully migrated U2F entry acquires the state `migrated` and thus cannot be used of U2F authentication anymore.
 
 To perform the conversion follow these steps:

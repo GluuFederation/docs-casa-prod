@@ -151,7 +151,7 @@ Map<String, String> properties = persistenceService.getCustScriptConfigPropertie
 
 ## Credentials retrieval
 
-!!! Note:
+!!! Note
     This subsection assumes you are using LDAP. If this is not the case, please perform the analogies appropriately. Account Couchbase, for instance, is schemaless.
 
 This [page](../ldap-data.md) contains some guidelines in order to manipulate data from your plugin's code. Take some time now to get the grasp of how database access work in Casa.
@@ -221,7 +221,7 @@ As you make progress with the task also ensure you have added:
 - Prompts to proceed in case of credential removal
 - Alerts to nofify the general outcome of operations (e.g. enrollment success, update failure, etc.)
 
-!!! Note:
+!!! Note
     It is strongly recommended to call method `notifyEnrollment(User, String)` defined at interface `org.gluu.casa.service.SndFactorAuthenticationUtils` after a successful enrollment takes place. Obtain an instance of `SndFactorAuthenticationUtils` via `Utils#managedBean`.
 
 Enrollment pages of default authentication methods already have this kind of elements in place to bring users the best experience.
