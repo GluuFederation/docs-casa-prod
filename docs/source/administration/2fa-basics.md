@@ -1,6 +1,6 @@
 # About Two-Factor Authentication (2FA)
 
-!!! Note:
+!!! Note
     You can tailor different aspects of 2FA behavior in Casa using the [plugin](../plugins/2fa-settings.md) developed for this purpose.
 
 ## Availability
