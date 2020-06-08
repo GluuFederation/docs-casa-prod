@@ -1,4 +1,4 @@
-# Gluu Casa 4.1 Documentation
+# Gluu Casa 4.2 Documentation
 
 ## Overview
 
