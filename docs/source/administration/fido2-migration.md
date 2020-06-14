@@ -1,6 +1,6 @@
 # FIDO U2F to FIDO2 migration
 
-Administrators offering U2F security keys as an authentication method are strongly encouraged to migrate to [FIDO2](https://fidoalliance.org/fido2/). This newer protocol is intended to provide an extended set of functionality to cover additional use-cases than in U2F. Additionally FIDO2 is better supported in web browsers than FIDO U2F.
+Administrators offering U2F security keys as an authentication method are strongly encouraged to migrate to [FIDO2](https://fidoalliance.org/fido2/). This newer protocol is intended to provide an extended set of functionality to cover additional use-cases than U2F. Additionally FIDO2 is better supported in web browsers than FIDO U2F.
 
 If you are already offering U2F and FIDO2 separately in Casa, migrating will allow you to consolidate security key usage into a single authentication method (credential type).
 
@@ -14,7 +14,7 @@ Migration consists of the following steps:
 This process consists of creating entries under every user's `fido2_register` branch corresponding to already existing entries found under `fido` branches. See [Storage of User Credentials](./credentials-stored.md#u2f-devices).
 
 !!! Note
-    Only `active` entries not corresponding to Super Gluu enrollments are converted. Every successfully migrated U2F entry acquires the state `migrated` and thus cannot be used of U2F authentication anymore.
+    Only `active` entries not corresponding to Super Gluu enrollments are converted. Every successfully migrated U2F entry acquires the state `migrated` and thus cannot be used for U2F authentication anymore.
 
 To perform the conversion follow these steps:
 
