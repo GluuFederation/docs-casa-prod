@@ -12,18 +12,3 @@ To remove Casa from your Gluu installation, do the following:
     # cd /install/community-edition-setup/
     # ./casa_cleanup.py
     ```
-
-1. Log out of chroot and remove the package:
-
-    For deb based systems:
-    
-    ```
-    apt remove gluu-casa
-    ```
-
-    For rpm based systems:
-
-    ```
-    yum remove gluu-casa
-    ```
-    
