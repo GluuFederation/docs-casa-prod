@@ -4,7 +4,7 @@
 The browser certificate plugin allows users to enroll X.509 digital certificates and use them as a form of second factor authentication.
 
 !!! Warning
-    In containers-based environments there are difficulties making `nginx` work with SSL client certificates. Open a support ticket if necessary.
+    In containers-based environments there may be difficulties making front http servers work with SSL client certificates. Open a support ticket if necessary.
 
 ## Script configurations
 

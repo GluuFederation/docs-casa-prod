@@ -60,6 +60,7 @@ nav:
         - 'Accounts linking': 'plugins/account-linking.md'
         - 'Consent Management': 'plugins/consent-management.md'
         - 'Custom Branding': 'plugins/custom-branding.md'
+        - 'Certificate authentication': 'plugins/cert-authn.md'
         - 'Write your own plugin': 'plugins/writing-plugins.md'
     - 'FAQ': 'administration/faq.md'
 - Developer Guide:
