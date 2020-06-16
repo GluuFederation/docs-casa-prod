@@ -35,6 +35,8 @@ markdown_extensions:
      permalink: '#'
 - pymdownx.superfences
 
+
+#    - 'Uninstallation and clean up': 'administration/uninstallation.md'
 # Navigation Menu
 nav:
 - 'Versions':
@@ -53,7 +55,6 @@ nav:
     - 'Credentials storage': 'administration/credentials-stored.md'
     - 'Custom branding': 'administration/custom-branding.md'
     - 'URL path customization': 'administration/change-context-path.md'
-    - 'Uninstallation and clean up': 'administration/uninstallation.md'
     - 'Localization': 'administration/localization.md'
     - 'Plugins':
         - '2FA Settings': 'plugins/2fa-settings.md'    
