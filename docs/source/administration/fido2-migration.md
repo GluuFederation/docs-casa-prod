@@ -26,6 +26,8 @@ To perform the conversion follow these steps:
 
 The script will output some feedback in the console. You can `tail` the file `log.txt` to see more details of the processing. Identifiers of failed entries (if any) are dumped to file `rejected.txt`.  
 
+Regardless of the steps above are executed, by default Gluu Server will attempt to migrate U2F entries when users attempt to login using FIDO2 acr. For example, if a user has already enrolled a key using the FIDO2 authentication mechanism and logins to Casa using such method, all their existing U2F enrollments (if any) will be migrated, this way all security keys will be listed under the one single widget in the user's dashboard.
+
 Something went wrong? Please open a [support](https://support.gluu.org) ticket.
 
 ## Enabling/disabling scripts
