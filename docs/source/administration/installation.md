@@ -5,7 +5,14 @@ View screenshots in the [User Guide](../user-guide.md).
  
 ## Installation via Linux Packages 
 
-Starting with version 4.1, Casa is offered as one of the several components of the Gluu Server CE. To include Casa in your instance, just ensure to hit *Y* when prompted at [installation](https://gluu.org/docs/ce/4.1/installation-guide/) time. 
+Casa is offered as one of the several components of the Gluu Server CE. To include Casa in your instance, just ensure to check it when prompted at [installation](https://gluu.org/docs/ce/4.1/installation-guide/) time.
+
+To add Casa post-install do the following:
+
+1. Login to chroot
+1. `cd /install/community-edition-setup`
+1. Run `python3  post-setup-add-components.py -addcasa`  
+
 
 **Important notes:**
 
