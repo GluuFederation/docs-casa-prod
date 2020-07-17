@@ -1,5 +1,14 @@
 ## Release Notes
 
+### Casa 4.2
+
+- FIDO U2F and FIDO2 have been consolidated into a single service.
+- New methods in the SCIM script allow to execute custom logic for retrieval and sources. See [Issue 885](https://github.com/GluuFederation/oxTrust/issues/885)
+- The 2FA settings pluin has been updated for more precise control of when second-factor authentication is enabled
+- New 2FA endpoints in the REST API
+- New custom pages for the authentication flow to closely resemble the typical UX found in Casa
+- New plugin implementing X.509 certificate authentication
+
 ### Casa 4.1 
 
 - Application is now suitable to be supported in a manually clustered environment
