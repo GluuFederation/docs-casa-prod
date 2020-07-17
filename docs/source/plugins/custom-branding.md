@@ -8,7 +8,7 @@ This plugin allows admins to apply a design customization by choosing colors, fa
     
 ## Installation
 
-1. [Download the plugin](https://ox.gluu.org/maven/org/gluu/casa/plugins/custom-branding/4.1.0.Final/custom-branding-4.1.0.Final-jar-with-dependencies.jar)
+1. [Download the plugin](https://ox.gluu.org/maven/org/gluu/casa/plugins/custom-branding/4.2.0.Final/custom-branding-4.2.0.Final-jar-with-dependencies.jar)
 
 1. Login to Casa using an administrator account
 
@@ -22,4 +22,4 @@ This plugin allows admins to apply a design customization by choosing colors, fa
 
 ## How to use
 
-See the [custom branding page](https://gluu.org/docs/casa/4.1/administration/custom-branding/) for full instructions.
+See the [custom branding page](https://gluu.org/docs/casa/4.2/administration/custom-branding/) for full instructions.
