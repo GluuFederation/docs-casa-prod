@@ -44,11 +44,14 @@ So far, users that log into Casa should be able to see a new entry "Biometric cr
 
 ![plugins page](../img/plugins/bioid-menu.png)
 
-From there they can enroll their biometric traits. The steps to enroll your facial and periocular traits are self explanatory. Follow the instructions on the web page.
+From there they can enroll their biometric traits. 
+The steps to enroll your facial and periocular traits are self explanatory. Follow the instructions on the web page.
 ![plugins page](../img/plugins/enroll_bioid.png)
 
 You can enroll again or delete your credentials by visiting your registered credential.
+
 Note - When you first use BioID you may wish to enroll a few times at different times of days or in different locations under a variety of environmental conditions. Once you can be reliably recognized, you only need to enroll again if something in your face changes significantly (such as after an accident or cosmetic surgery, or if you radically change eyeglasses, facial hair, facial jewelry, etc.) or if you often have to try more than once to be recognized. Once recognized, BioID typically adjusts itself to adapt to the changes right away.
+
 ![plugins page](../img/plugins/bioid_edit_delete.png)
 
 ### Use the biometric credential as a second factor
