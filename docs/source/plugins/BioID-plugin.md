@@ -48,6 +48,7 @@ From there they can enroll their biometric traits. The steps to enroll your faci
 ### Use the biometric credential as a second factor
 Ensure you have added another credential, hopefully of a different kind, for example a mobile phone number or an OTP token. Then visit the home page and click the toggle to turn 2FA on and logout.
 Try to access the application once more and supply the username and password for the account recently used to enroll the biometric credential. Depending on the numeric level assigned to the `bioid` script, you will be prompted for a different factor, for instance, to enter an OTP code. If so, click on `Try an alternative way to sign in` and click on `Biometric credential`.
+
 ![plugins page](../img/plugins/another_way.png)
 
 Follow the instructions on the screen for verification of facial and periocular traits.
