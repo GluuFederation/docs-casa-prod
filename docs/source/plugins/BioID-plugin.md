@@ -40,7 +40,7 @@ Alternatively you can log into chroot and copy the jar file directly to `/opt/gl
 Wait for one minute, then visit `Administration Console` > `Enabled methods` and tick `bioid`. On the right, the plugin will be selected by default. Finally save the changes.
 
 ## Testing
-So far, users that log into Casa should be able to see a new entry "Biometric credentials" that will appear under page will appear under "2FA credentials" .
+So far, users that log into Casa should be able to see a new entry "Biometric credentials" that will appear under "2FA credentials" .
 
 ![plugins page](../img/plugins/bioid-menu.png)
 
