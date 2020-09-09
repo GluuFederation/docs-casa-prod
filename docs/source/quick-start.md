@@ -10,7 +10,7 @@ Casa can be installed via Gluu Server installation. The server or VM should have
 
 | CPU Unit | RAM | Disk Space | Processor Type |
 |------ | ---- | ---- | ---- |
-| 2  | 5 GB | 40 GB | 64 Bit |
+| 2  | 6 GB | 40 GB | 64 Bit |
 
 Make sure the Gluu Server has at least the following components:
 
@@ -18,18 +18,11 @@ Make sure the Gluu Server has at least the following components:
   - oxTrust admin GUI
   - Apache Web Server
 
-The following operating systems are supported:
-
-- Ubuntu 16/18
-- CentOS 7
-- RHEL 7
-- Debian 9
-
 ## Getting started
 
 ### Install
 
-Casa is installed on the same server or virtual machine as the Gluu Server: follow the [Casa installation instructions](./installation/installation.md#installation-via-linux-packages).  
+Casa is installed on the same server or virtual machine as the Gluu Server: follow the [Casa installation instructions](../administration/installation.md#installation-via-linux-packages).  
 
 ### Configure Casa
 
@@ -39,7 +32,7 @@ Configuring Casa for usage requires you to enable interception scripts in the Gl
 
 1. **Activate authentication methods in Casa**: Once the interception scripts have been enabled, they can be activated in Casa itself. Log in to Casa as an administrator and [enable the desired methods](../administration/admin-console.md#configure-casa).
 
-1. **Setup 2FA preferences**: Use the [2FA Settings plugin](../plugins/2fa-settings.md) to set the [minimum number of credentials](../administration/admin-console.md#2fa-settings) a user must enroll.
+1. **Setup 2FA preferences**: Use the [2FA Settings plugin](../plugins/2fa-settings.md) to set the [minimum number of credentials](../administration/admin-console.md#2fa-settings) a user must enroll among others.
 
 ### Test enrollment and 2FA
 
