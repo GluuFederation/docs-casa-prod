@@ -111,6 +111,10 @@ Note both properties can be turned off after Casa client registration succeds.
         
 ## Miscellanenous
 
+### Admin console is not shown 
+
+If you have logged in using an administrative account and cannot find any admin features in the UI ensure you have performed this [step](./installation.md#unlocking-admin-features).
+
 ### How to remove the consent form shown upon first login?
 
 By default, Gluu server will present users a consent form for release of personal data to the application (Casa). In case this prompt is shown, edit the OIDC Casa client this way using oxTrust: Go to `OpenID Connect` > `Clients`, then select the gluu_casa* entry and check the `Pre-Authorization` field, finally, save changes by pressing on `Update`. 
