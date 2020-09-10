@@ -32,10 +32,10 @@ Once you have a working custom script, ensure the following preconditions are me
     This will display a set of links for the user to navigate to alternate 2FA pages. The list will be shown when clicking on a link which should be provided this way:
     
     ```
-    <a href="javascript:showAlternative('ELEMENT_ID')" class="green hover-green f7-cust">#{msgs['casa.alternative']}</a>
+    <a href="javascript:showAlternative('ELEMENT_ID')" id="alter_link" class="green hover-green f7-cust">#{msgs['casa.alternative']}</a>
     ```
     
-    Here `ELEMENT_ID` is the identifier for the HTML node that wraps all visual elements of your page (excluding `casa.xhtml`).
+    Here `ELEMENT_ID` is the identifier for the HTML node that wraps all visual elements of your page (excluding `casa.xhtml`). It is required to preserve `alter_link` as `id` for the `a` tag.
 
 ## Enabling your method
 
