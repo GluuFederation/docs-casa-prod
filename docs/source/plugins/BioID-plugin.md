@@ -1,14 +1,49 @@
 # Integrating BioID's biometric authentication with Casa
-  
+
+# BioID Web Service
 ## Overview
-The bioid plugin allows users to enroll their biometric traits (facial and periocular)  and use them as a form of second factor authentication.
+[BioID Web Service](https://www.bioid.com) is a "Biometrics as a service" provider. This document will explain how to use Gluu's [BioID  interception script](https://github.com/GluuFederation/oxAuth/blob/master/Server/integrations/bioID/BioIDExternalAuthenticator.py) along with a Plugin in Casa to enroll a user's biometric traits and use it is as a method for 2FA. 
+
+In order to use this authentication mechanism your organization will need to register for a BioID account. 
+
+## Prerequisites
+- A Gluu Server ([installation instructions](../installation-guide/index.md));
+- [BioID interception script](https://github.com/GluuFederation/oxAuth/blob/master/Server/integrations/bioID/BioIDExternalAuthenticator.py) (included in the default Gluu Server distribution);
+- An account with [BioID](https://bwsportal.bioid.com/register).   
+
+## Configure BioID Account
+
+1. [Sign up](https://bwsportal.bioid.com/register) for a BioID account.
+
+2. Upon registration, you will recieve an email with the instance name (listed as STORAGE in Gluu's BioID authentication script), partition number(listed as PARTITION in Gluu's BioID authentication script).
+
+3. As the owner of this instance, you are entitled to access BWS Portal at https://bwsportal.bioid.com using the account associated with your email. 
+With the BWS Portal, you can do the following:  
+    a. View your trial information such as your credentials (e.g. your client certificate), enrolled classes, BWS logs and more.  
+    b. Create your App ID and App secret, under "Web API keys".
+
+## BioID Documentation
+
+1. You can find all API reference at https://developer.bioid.com/bwsreference. 
+2. Lots of useful information about BWS is available at https://developer.bioid.com/blog.
+3. For liveness detection, you will find information about motion trigger helpful: https://developer.bioid.com/app-developer-guide/bioid-motion-detection
 
 ## Script configurations
 
-Log into oxTrust, and go to `Configuration` > `Manage Custom scripts` > `bioid`. 
+Log into oxTrust, and go to `Configuration` > `Person Authentication scripts` > `Add custom script configuration`. 
 ### Script contents
 
 Download this [file](https://github.com/GluuFederation/casa/raw/master/plugins/bioid/extras/BioIDExternalAuthenticator.py) and copy its contents in the `Script` form field.
+
+## Properties
+The mandatory properties in the BioID authentication script are as follows
+|	Property	|	Description		|	Example	|
+|-----------------------|-------------------------------|---------------|
+|ENDPOINT 		|URL of the BioID Web Service|`https://bws.bioid.com/extension/`|
+|APP_IDENTIFIER 	|API key |`c20b04cc-776a-45ed-7a1f-06347f8edf6c`|
+|APP_SECRET 	|API secret |`sTGB4n4HAkvc2BnJp6KeNUTk`|
+|STORAGE 	|The storage name assigned by BioID depending on the type of contract you have. |`bws`|
+|PARTITION 	|A number assigned to your company by BioID. |`12345`|
 
 
 ### Save changes
