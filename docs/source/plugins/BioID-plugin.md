@@ -35,7 +35,7 @@ Log into oxTrust, and go to `Configuration` > `Person Authentication scripts` > 
 
 Download this [file](https://github.com/GluuFederation/casa/raw/master/plugins/bioid/extras/BioIDExternalAuthenticator.py) and copy its contents in the `Script` form field.
 
-## Properties
+### Properties
 The mandatory properties in the BioID authentication script are as follows
 |	Property	|	Description		|	Example	|
 |-----------------------|-------------------------------|---------------|
