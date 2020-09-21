@@ -1,7 +1,7 @@
 # Integrating BioID's biometric authentication with Casa
 
-# BioID Web Service
-## Overview
+
+## BioID Web Service
 [BioID Web Service](https://www.bioid.com) is a "Biometrics as a service" provider. This document will explain how to use Gluu's [BioID  interception script](https://github.com/GluuFederation/oxAuth/blob/master/Server/integrations/bioID/BioIDExternalAuthenticator.py) along with a Plugin in Casa to enroll a user's biometric traits and use it is as a method for 2FA. 
 
 In order to use this authentication mechanism your organization will need to register for a BioID account. 
