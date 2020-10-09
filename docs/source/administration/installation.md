@@ -43,6 +43,11 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 1. Create an empty file named `.administrable` (ie. `touch .administrable`)
 1. Logout in case you have an open browser session
 
+!!! Warning
+    Once you have configured, tailored, and tested your deployment thoroughly, you are strongly encouraged to remove the marker file. This will prevent problems in case a user can escalate privileges or if some administrative account is compromised.
+
+<!--
 ### A word on security
 
 In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
+-->
