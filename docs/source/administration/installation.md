@@ -120,10 +120,14 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 1. [Restart](https://gluu.org/docs/ce/4.0/operation/services/#restart) casa
 1. Wait a couple of minutes, then visit the URL and authenticate against Gluu to access Casa
 
-### A word on security
-
-In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
+!!! Warning
+    Once you have configured, tailored, and tested your deployment thoroughly, you are strongly encouraged to remove the marker file. This will prevent problems in case a user can escalate privileges or if some administrative account is compromised.
     
+<!--
+### A word on security
+In a clustered or containerized deployment, admin features and user features should run on different nodes. It is responsibility of the administrator to enable admin features on a specific (small) set of nodes and make those publically inaccessible, for instance, by removing them from the load balancer.
+-->
+
 ## Licensing
 
 A Casa installation has a 30 day trial period after which you need a license file for casa to work properly. Check this [page](licensing.md) for more details.
