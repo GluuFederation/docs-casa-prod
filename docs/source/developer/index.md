@@ -79,7 +79,7 @@ For this, developers have access to a REST API which faciliates the credential e
 
 In addition to the above, the API also provides endpoints to query the number/type of credentials currently enrolled by a user as well as means to turn 2FA on and off. 
     
-The [Swagger](https://swagger.io/docs/specification/2-0/) definition document is located at `https://<host>/casa/enrollment-api.yaml`. You can leverage [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to bootstrap the process of creating a client application in order to consume the service in a variety of programming languages. You can achieve similar effects by using [Swagger Hub](https://app.swaggerhub.com).
+The [Swagger](https://swagger.io/docs/specification/2-0/) definition document is located at https://github.com/GluuFederation/casa/raw/version_4.2.2/app/src/main/webapp/enrollment-api.yaml. You can leverage [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to bootstrap the process of creating a client application in order to consume the service in a variety of programming languages. You can achieve similar effects by using [Swagger Hub](https://app.swaggerhub.com).
 
 Additionally, the Casa repo contains a small [client-side application](https://github.com/GluuFederation/casa/tree/version_4.2.0/extras/enrollment-client) that mimicks the process of enrolling credentials in Casa using the REST API.
 
