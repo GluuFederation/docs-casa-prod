@@ -87,14 +87,14 @@ So far, users that log into Casa should be able to see a new entry "DUO credenti
 ![plugins page](../img/plugins/duo-menu.png)
 
 The steps to enroll your DUO credentials are self explanatory. Follow the instructions on the web page.
-You can modify your enrollments or delete your credentials by visiting your registered credential.
+
 
 ![plugins page](../img/plugins/enroll_duo.png)
 
 
 
-
-![plugins page](../img/plugins/duo_delete.png)
+You can modify your enrollments or delete your credentials by visiting your registered credential. Click on "Add a new device" to add a new device and "My settings and Devices" to edit or delete a credential.
+![plugins page](../img/plugins/duo_edit.png)
 
 ### Use the duo credential as a second factor
 Ensure you have added another credential, hopefully of a different kind, for example a mobile phone number or an OTP token. Then visit the home page and click the toggle to turn 2FA on and logout.
