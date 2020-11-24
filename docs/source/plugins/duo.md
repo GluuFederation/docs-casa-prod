@@ -100,7 +100,7 @@ You can modify your enrollments or delete your credentials by visiting your regi
 Ensure you have added another credential, hopefully of a different kind, for example a mobile phone number or an OTP token. Then visit the home page and click the toggle to turn 2FA on and logout.
 Try to access the application once more and supply the username and password for the account recently used to enroll the duo credential. Depending on the numeric level assigned to the `duo` script, you will be prompted for a different factor, for instance, to enter an OTP code. If so, click on `Try an alternative way to sign in` and click on `DUO credential`.
 
-![plugins page](../img/plugins/another_way.png)
+![plugins page](../img/plugins/another_way_duo.png)
 
 Follow the instructions on the screen for verification duo credentials.
 
