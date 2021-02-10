@@ -73,9 +73,6 @@ Once the applicable interception scripts are enabled in Gluu, a Casa admin can e
 
 ![enabled-2fa-methods](../img/admin-console/enabled-2FA-methods.png)
 
-!!! Warning
-    It may take up to 2 minutes for a method to appear in the enabled methods list of Casa after its corresponding custom script has been activated in oxTrust. 
-
 The System plugin supports several authentication methods:
 
 - OTP SMS
@@ -119,6 +116,8 @@ Predefined 2FA policy options include:
 
 The default policy is to enforce 2FA for every login attempt. If the admin opts to allow users to manager their own policy, a new widget will appear in the user-facing dashboard as described in the [user guide](../user-guide.md#2fa-settings--trusted-devices). 
 
+In addition, the plugin exposes an API to programmatically manipulate these settings.
+
 ## Pass reset config
 
 If passwords are being stored in the Gluu Server (and not at an external backend directory server like AD), an admin can give users the ability to reset their password from inside Casa. To enable the password reset functionality, navigate to `Pass reset config` and click the toggle to `ON`.  
@@ -154,10 +153,14 @@ Casa exposes some REST [services](../developer/rest-services.md) and plugin deve
 
 ## Plugins
 
-Plugins are vehicles to augment the functionalities available by default in Gluu Casa. To learn more about plugins, visit the [developer guide](..\developer\index.md#plugins).
+Plugins are vehicles to augment the functionalities available by default in Gluu Casa. To learn more about plugins, visit the [developer guide](../developer/index.md#plugins).
 
 In this section of the console, the current list of active plugins is shown. Once an element in the list is selected, a summary of the relevant plugin's metadata is visualized.
 
 Click on the "Add a plugin..." button to select a file in your local hard drive that you wish to onboard as a new plugin into your Gluu Casa installation. Account that plugin files must have a specific format and structure as explained [here](../developer/intro-plugin.md#anatomy-of-a-plugin).
 
 ![plugin detail](../img/admin-console/plugin-detail.png)
+
+## Config API
+
+Most of the above aspects can be configured programmatically using the [configuration API](../developer/config-api.md).

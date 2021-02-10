@@ -63,6 +63,10 @@ In addition to the above:
 - [Internals of plugin management in Casa](./plugin-management-internals.md)
 - [FAQ](./faq.md)
 
+## API for configuration management
+
+Most aspects of Casa that are configurable via de admin console UI can be programmatically operated using the configuration API. Click [here](./config-api.md) to learn more.
+
 ## APIs for credential enrollment
 
 Despite Casa having enrollment capabilities built-in, a use case may arise where credential enrollment needs to happen elsewhere in your app ecosystem. A typical scenario is in a user registration application, where users are asked to enroll strong authentication credentials during account creation.
@@ -79,10 +83,10 @@ For this, developers have access to a REST API which faciliates the credential e
 
 In addition to the above, the API also provides endpoints to query the number/type of credentials currently enrolled by a user as well as means to turn 2FA on and off. 
     
-The [Swagger](https://swagger.io/docs/specification/2-0/) definition document is located at https://github.com/GluuFederation/casa/raw/version_4.2.2/app/src/main/webapp/enrollment-api.yaml. You can leverage [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to bootstrap the process of creating a client application in order to consume the service in a variety of programming languages. You can achieve similar effects by using [Swagger Hub](https://app.swaggerhub.com).
+The [Swagger](https://swagger.io/docs/specification/2-0/) definition document is located at https://github.com/GluuFederation/casa/raw/version_4.3.0/app/src/main/webapp/enrollment-api.yaml. You can leverage [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to bootstrap the process of creating a client application in order to consume the service in a variety of programming languages. You can achieve similar effects by using [Swagger Hub](https://app.swaggerhub.com).
 
-Additionally, the Casa repo contains a small [client-side application](https://github.com/GluuFederation/casa/tree/version_4.2.0/extras/enrollment-client) that mimicks the process of enrolling credentials in Casa using the REST API.
+Additionally, the Casa repo contains a small [client-side application](https://github.com/GluuFederation/casa/tree/version_4.3.0/extras/enrollment-client) that mimicks the process of enrolling credentials in Casa using the REST API.
 
-As the Swagger yaml document states, the API is protected by a bearer token. That is, developers have to pass a suitable value in the authorization header for requests. This means an OpenID Connect client **must be** previously registered in the underlying Gluu Server in order to interact with the server's token endpoint. A simpler option is using the already existing Casa client which is created at installation time.
+As the Swagger yaml document states, the API is protected by a bearer token. That is, developers have to pass a suitable value in the authorization header for requests. This means an OpenID Connect client **must be** previously registered in the underlying Gluu Server in order to interact with the server's token endpoint and that tokens should have sufficient scopes for the given endpoint interaction.
 
 For more information about crendential enrollment via APIs, visit the developer [FAQs](./faq.md#enrollment-apis).

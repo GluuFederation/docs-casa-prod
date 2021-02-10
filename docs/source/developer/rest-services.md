@@ -24,13 +24,13 @@ By default, all services are anonymously accessible. In case you want to protect
 !!! Note
     Registering OpenID clients and getting access tokens is out of the scope of this document, but you can check [this](https://tools.ietf.org/html/rfc6750) for a quick start.  
 
-To make a method protected, simply add the annotation `org.gluu.casa.rest.ProtectedApi` to it.
+To make a method protected, simply add the annotation `org.gluu.casa.rest.ProtectedApi` to it and optionally set the scopes you require the token to have, for instance `@ProtectedApi(scopes = {"read", "write"})`. If you use the annotation at the class level, annotations at methods are ignored and they are considered to be all protected with the same scopes. 
 
 The following HTTP status codes could arise when using protected methods:
 
 - FORBIDDEN (403): This will arise when access was attempted to a protected endpoint but no token was passed.
 
-- UNAUTHORIZED (401): The token passed was invalid (it has expired for instance). To handle this, clients of the service should re-request an access token (e.g. with a refresh token), and retry accessing the endpoint.
+- UNAUTHORIZED (401): The token passed was invalid (it has expired for instance) or does not have the expected scopes. To handle the former case, clients of the service should re-request an access token (e.g. with a refresh token), and retry accessing the endpoint.
 
 ## JSON support
 

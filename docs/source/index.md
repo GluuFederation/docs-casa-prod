@@ -39,6 +39,10 @@ To facilitate 2FA device enrollment during account registration, or elsewhere in
 
 Learn more in the [developer guide](./developer/index.md#apis-for-credential-enrollment).  
 
+## Configuration via APIs
+
+Besides a comprehensive graphical admin console, application settings can also be manipulated by means of the [configuration API](./developer/config-api.md).
+
 ## Plugin oriented
 
 Casa is a plugin-oriented, Java web application. Existing functionality can be extended and new functionality and APIs can be introduced through plugins. 

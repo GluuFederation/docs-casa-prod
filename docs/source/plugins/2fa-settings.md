@@ -64,3 +64,7 @@ For administrators, a new link labeled "2FA settings" appears in the dashboard m
 For regular users, proper details appear in the widget where 2FA is turned on.
 
 ![2fa-settings](../img/admin-console/2fa_user_policy.png)
+
+## API
+
+Configurations provided by this plugin can also be applied by means of the API exposed for this purpose. A formal description of the API can be found in this [swagger](https://raw.githubusercontent.com/GluuFederation/casa/version_4.3.0/plugins/strong-authn-settings/src/main/resources/assets/2fa-admin-api.yaml) file. Note all endpoints are protected by tokens which must have the `casa.config` OAuth scope.

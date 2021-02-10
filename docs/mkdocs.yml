@@ -86,5 +86,6 @@ nav:
     - 'Other topics':
         - 'Plugin development tips': 'developer/tips-development.md'
         - 'Plugin management internals': 'developer/plugin-management-internals.md'
+        - 'Configuration API': 'developer/config-api.md'
         - 'FAQ': 'developer/faq.md'
 - User Guide : 'user-guide.md'
