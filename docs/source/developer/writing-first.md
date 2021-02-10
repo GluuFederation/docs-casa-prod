@@ -139,7 +139,7 @@ In addition to the above, the following are functional aspects worth to mention:
 
 - There is a binding of the text entered in a textbox with the class field `message` of the ViewModel (`HelloWorldVM`). This means that if text changes in the UI, `message` is synced with the value, and if `message` is changed in the Java backend, the UI will update with the proper value.
 
-- When the button of this page is clicked, it triggers a call to method `loadOrgName` in the ViewModel. This method is annotated with `@Command` in that Java class and changes the value of class field `organizationName`. The same call is triggered when enter key is pressed when the textbox has focus (see `onOK` attribute).
+- When the button of this page is clicked, it triggers a call to method `loadOrgName` in the ViewModel. This method exists in that Java class and changes the value of class field `organizationName`. The same call is triggered when enter key is pressed when the textbox has focus (see `onOK` attribute).
 
 - There is a one-way binding ("load") with regard to ViewModel's field `organizationName`. This means that its value can be used in the page (e.g. for display), but no syncing takes place from page to server.
 

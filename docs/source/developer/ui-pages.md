@@ -103,14 +103,13 @@ For example, your ZUL template may contain the following:
   and executes a server side Java method
   -->
 <z:button sclass="${css.primaryButton}" label="Press me"
-	w:onClick="alertRef = $('#feedback')" onClick="@command('action')" />
+	w:onClick="alertRef = $('#feedback')" onClick="@('action')" />
 
 ```
 
 And the associated ZK ViewModel can exhibit the following so the alert displays the output (failure/success) of a server-side operation:
 
 ```
-	@Command
 	public void action() {
 		...
 		UIUtils.showMessageUI(operationWasSuccesful());
