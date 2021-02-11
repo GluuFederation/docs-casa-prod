@@ -24,7 +24,7 @@ By default, all services are anonymously accessible. In case you want to protect
 !!! Note
     Registering OpenID clients and getting access tokens is out of the scope of this document, but you can check [this](https://tools.ietf.org/html/rfc6750) for a quick start.  
 
-To make a method protected, simply add the annotation `org.gluu.casa.rest.ProtectedApi` to it and optionally set the scopes you require the token to have, for instance `@ProtectedApi(scopes = {"read", "write"})`. If you use the annotation at the class level, annotations at methods are ignored and they are considered to be all protected with the same scopes. 
+To make a method protected, simply add the annotation `org.gluu.casa.rest.ProtectedApi` to it and optionally set the scopes you require the token to have, for instance `@ProtectedApi(scopes = {"read", "write"})`. If you use the annotation at the class level, the method will still be considered protected if it has no annotations. Also method annotations override those at the class if any.
 
 The following HTTP status codes could arise when using protected methods:
 
