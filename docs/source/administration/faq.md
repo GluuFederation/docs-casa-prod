@@ -21,7 +21,7 @@ During normal use, the app will show feedback to users if operations were succes
 
 ### How do I restart the application?
 
-Just [restart](https://gluu.org/docs/ce/4.2/operation/services/#restart) casa service.
+Just [restart](https://gluu.org/docs/ce/4.3/operation/services/#restart) casa service.
 
 ### How do I custom brand Casa?
 
@@ -78,7 +78,7 @@ Once fixed, please restart the application. You will have to see a "WEBAPP INITI
 
 <!-- If for any reason an update to oxd settings results in lockout, or if you provided wrong data during installation, do the following: -->
 
-For versions 4.1 or earlier, when there were problems with the OIDC client used by oxd to communicate with oxAuth, the solution involved editing a configuration file and doing a restart. Starting with version 4.2, such file contents were moved to the underlying database. To make it easy for admins to apply the tweak required (no low-level ldap or couchbase commands), we deliver a small CLI tool that allows flushing some oxd configurations.
+This requires resetting the oxd configuration. To make it easy for admins to apply the tweak required (no low-level ldap or couchbase commands), we deliver a small CLI tool that allows flushing some oxd configurations.
 
 Please do the following:
 

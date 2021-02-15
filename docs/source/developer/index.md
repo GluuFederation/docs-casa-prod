@@ -52,9 +52,9 @@ In addition to the above:
 
 ### Sample plugins
 
-- [Hello world](https://github.com/GluuFederation/casa/tree/version_4.2.0/plugins/samples/helloworld)
-- [Authentication script properties display](https://github.com/GluuFederation/casa/tree/version_4.2.0/plugins/samples/authentication-script-properties)
-- [OIDC Clients management](https://github.com/GluuFederation/casa/tree/version_4.2.0/plugins/samples/clients-management)
+- [Hello world](https://github.com/GluuFederation/casa/tree/version_4.3.0/plugins/samples/helloworld)
+- [Authentication script properties display](https://github.com/GluuFederation/casa/tree/version_4.3.0/plugins/samples/authentication-script-properties)
+- [OIDC Clients management](https://github.com/GluuFederation/casa/tree/version_4.3.0/plugins/samples/clients-management)
 
 ### Other topics
 
