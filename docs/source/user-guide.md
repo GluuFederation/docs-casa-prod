@@ -30,9 +30,11 @@ After the minimum number of credentials have been enrolled (as specified by the 
 
 ![preferred-2fa](./img/preferred.png)
 
-When prompted for 2FA, a combination of credential strength and the type of device being used to access the protected resource will be used to determine which type of strong credential is presented first. 
+If the switch is not visible, your administrator may have configured the system so that 2FA is turned on automatically when enough credentials are available.
 
-For example, if you're accessing a 2FA protected resource from a laptop, and you've enrolled FIDO keys and OTP apps to secure your account, FIDO will be presented as the first option for 2FA. Alternatively, if you're accessing the protected resource from a mobile device, OTP will be presented first. The exact ranking and order will be determined by the administrator. 
+When prompted for 2FA, a combination of credential strength and the type of device being used to access the protected resource will be used to determine which type of strong credential is prompted first. Depending on settings specified by your admin, you can actually choose the type of credential yourself. 
+
+As an example, if you're accessing a 2FA protected application from a laptop, and you've enrolled FIDO keys and OTP apps to secure your account, FIDO will be presented as the first option for 2FA. Alternatively, if you're accessing the protected resource from a mobile device, OTP will be presented first. The exact ranking and order will be determined by the administrator. 
 
 If at any time the credential prompted is unavailable, you can choose to present any other previously enrolled 2FA credential type. 
 
@@ -57,21 +59,23 @@ If you opt for 2FA based on location, device, or both, a new widget will appear 
 
 ### 2FA best practices
 
-The context of an authentication attempt can determine which type of credential is most convenient to use. For instance, U2F keys are not compatible with mobile phones or certain browsers. 
+The context of an authentication attempt can determine which type of credential is most convenient to use. For instance, security keys may not be compatible with mobile phones or certain browsers. 
 
-**To reduce the chance of account lockout**, enroll at least two different _types_ of 2FA credentials -- e.g. one U2F token and one OTP app; or one OTP app and one SMS phone number, etc. This way, regardless which device you're using to access a protected resource, you will have a usable option for passing strong authentication. 
+**To reduce the chance of account lockout**, enroll at least two different _types_ of 2FA credentials -- e.g. one security key and one OTP app; or one OTP app and one SMS phone number, etc. This way, regardless which device you're using to access a protected resource, you will have a usable option for passing strong authentication. 
 
 
 ## 2FA credential details & enrollment
 
 The details page provides additional details about each enrolled credential, for instance last used, mobile operating system, and device name. Nicknames can be edited, credentials can be deleted and new credentials can be enrolled and nicknamed. 
 
+Depending on administrator configurations, some of the below sections may nor may not be available, or sections not listed here may appear.
+
 !!! Warning  
     When a credential is deleted, it cannot be recovered. Deleting credentials may result in 2FA being turned off. 
 
 ### FIDO 2 security keys
 
-To add a new FIDO 2 credential, navigate to `2FA credentials` > `Fido 2 Security Keys`. Insert the fido key and click `Ready`. Casa will prompt to press the button on the key.
+To add a new FIDO 2 credential, navigate to `2FA credentials` > `Security Keys`. Insert the fido key and click `Ready`. Casa will prompt to press the button on the key.
 
 ![add-fido2](./img/add-fido2.png)
 

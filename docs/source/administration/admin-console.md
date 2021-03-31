@@ -98,6 +98,7 @@ In the 2FA settings, an admin can:
 - Specify the minimum number of credentials a user **must** enroll before 2FA can be turned on
 - Determine whether 2FA should be automatically enabled upon credential enrollment
 - Whether users can turn 2FA on and off their own
+- Whether users can choose a preferred authentication method
 - Choose from a few predefined policies for when 2FA should be prompted. 
 
 ![2fa-settings](../img/admin-console/2FA-settings.png)

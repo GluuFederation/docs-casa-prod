@@ -6,6 +6,7 @@ This plugin allows administrators to configure how and when 2FA is applied. Admi
 1. Specify the minimum number of credentials users must enroll before 2FA can be used
 1. Allow 2FA to be automatically enabled upon credential enrollment
 1. Prevent users to turn 2FA on and off their own
+1. Allow users to choose a preferred method of authentication
 
 When (2) is not used, option (3) is disabled. This is the default behavior exhibited in Casa where users explicitly enable or disable 2FA usage.
 
@@ -15,6 +16,8 @@ When (2) is active, 2FA is turned on as soon as the user enrolls a credential an
 - Plugins attaching authentication methods to Casa have to explicitly call method `notifyEnrollment` of `SndFactorAuthenticationUtils` upon successful enrollments (see the javadocs).
 
 Also, 2FA is automatically turned on upon login for users with enough credentials registered and not having 2FA turned on yet.
+
+With (4) users may choose a preferred type of credential. This means that when requested for a second factor, a credential of such "preferred" type will be prompted first instead of the credential considered the "strongest". The strength associated to a method is equal to the numeric level assigned to the custom script that represents the method.
 
 For more restrictive scenarios, administrators have the option to remove the 2FA switch (3) from the user's dashboard.
 

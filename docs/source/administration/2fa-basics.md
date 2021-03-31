@@ -9,15 +9,20 @@ By default, strong (two-factor) authentication will be available to users of Cas
 
 There is no limit to the number of credentials a user can enroll, and credentials do not need to be of the same type: any combination is valid. 
 
+!!! Note
+    The number of credentials required for two-factor authentication (2FA) can be customized with the [Strong authentication settings plugin](../plugins/2fa-settings.md)
+
 ## Supported types of 2FA
 
 Users will only be able to add credentials with a type matching one of the already enabled authentication methods in the admin console. See the [Admin console page](./admin-console.md/#enabled-methods) to learn more. Out of the box, all the following authentication methods are supported:
 
 - FIDO 2 security keys
-- FIDO U2F security keys ([browser restrictions](./faq.md#u2f-restrictions) may apply)
+- FIDO U2F security keys ([browser restrictions](./faq.md#u2f-restrictions) may apply, we strongly recommend using FIDO 2 instead)
 - Super Gluu for push notifications 
 - HOTP/TOTP apps, cards, "dongles"
 - OTP via SMS (using Twilio or an SMPP server)
+
+Other methods may be supported via [plugins](../index.md#existing-plugins).
 
 ## Resetting a user's 2FA availability
 
@@ -29,9 +34,11 @@ When authenticating, a user with 2FA turned on, will be challenged to present th
 
 Particularly, if the device used to access is a mobile browser, only the methods listed in the property "mobile_methods" of casa script will be accounted to determine the strongest credential. Admins can modify this property at will if the default value does not meet their expectations.
 
+Note there are ways to override the rule of the "strongest" method; see the docs of the [Strong authentication settings plugin](../plugins/2fa-settings.md).
+
 ## Forcing users to enroll a specific credential before 2FA is available
 
-To further reduce the likelihood of lockouts, you can force users to initially enroll, for instance, one OTP credential before any other. OTP credentials are generally more accessible than their counterparts (like U2F) since they normally don't demand special conditions from the device used to access, like having a USB port.
+To further reduce the likelihood of lockouts, you can force users to initially enroll, for instance, one OTP credential before any other. OTP credentials are generally more accessible than their counterparts (like Fido 2) since they normally don't demand special conditions from the device used to access, like having a USB port.
 
 To do so, just add a new configuration property named `2fa_requisite` to the custom interception script corresponding to the authentication method, and assign `true` as its value. It may take more than one minute for Casa to pick up the changes. To add the property, open oxTrust web console and navigate to `Configuration` > `Manage custom scripts`, collapse the method you want to set as requisite for 2FA, and click on `Add new property`.
 
