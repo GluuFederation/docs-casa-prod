@@ -22,7 +22,7 @@ Make sure the Gluu Server has at least the following components:
 
 ### Install
 
-Casa is installed on the same server or virtual machine as the Gluu Server: follow the [Casa installation instructions](../administration/installation.md#installation-via-linux-packages).  
+Casa is installed on the same server or virtual machine as the Gluu Server: follow the [Casa installation instructions](./administration/installation.md#installation-via-linux-packages).  
 
 ### Configure Casa
 
