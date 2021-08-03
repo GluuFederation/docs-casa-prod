@@ -151,7 +151,7 @@ Casa exposes some REST [services](../developer/rest-services.md) and plugin deve
 
 ## Plugins
 
-Plugins are vehicles to augment the functionalities available by default in Gluu Casa. To learn more about plugins, visit the [developer guide](..\developer\index.md#plugins).
+Plugins are vehicles to augment the functionalities available by default in Gluu Casa. To learn more about plugins, visit the [developer guide](../developer/index.md#plugins).
 
 In this section of the console, the current list of active plugins is shown. Once an element in the list is selected, a summary of the relevant plugin's metadata is visualized.
 
