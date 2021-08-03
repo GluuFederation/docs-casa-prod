@@ -1,13 +1,12 @@
 # Integrating BioID's biometric authentication with Casa
 
-
 ## BioID Web Service
 [BioID Web Service](https://www.bioid.com) is a "Biometrics as a service" provider. This document will explain how to use Gluu's [BioID  interception script](https://github.com/GluuFederation/oxAuth/blob/master/Server/integrations/bioID/BioIDExternalAuthenticator.py) along with a Plugin in Casa to enroll a user's biometric traits and use it is as a method for 2FA. 
 
 In order to use this authentication mechanism your organization will need to register for a BioID account. 
 
 ## Prerequisites
-- A Gluu Server ([installation instructions](../installation-guide/index.md)).
+- A Gluu Server ([installation instructions](./installation-guide/index.md)).
 - [BioID interception script](https://github.com/GluuFederation/casa/blob/master/plugins/bioid/extras/BioIDExternalAuthenticator.py).
 - An account with [BioID](https://bwsportal.bioid.com/register).   
 
@@ -85,8 +84,6 @@ You can enroll again or delete your credentials by visiting your registered cred
 
 ![plugins page](../img/plugins/enroll_bioid.png)
 
-
-
 Note - When you first use BioID you may wish to enroll a few times at different times of days or in different locations under a variety of environmental conditions. Once you can be reliably recognized, you only need to enroll again if something in your face changes significantly (such as after an accident or cosmetic surgery, or if you radically change eyeglasses, facial hair, facial jewelry, etc.) or if you often have to try more than once to be recognized. Once recognized, BioID typically adjusts itself to adapt to the changes right away.
 
 ![plugins page](../img/plugins/bioid_edit_delete.png)
@@ -100,5 +97,3 @@ Try to access the application once more and supply the username and password for
 Follow the instructions on the screen for verification of facial and periocular traits.
 
 Finally you will be redirected and get access to the application.
-
-
