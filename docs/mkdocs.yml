@@ -1,5 +1,5 @@
 # Project information
-site_name: Gluu Casa 4.2 Docs
+site_name: Gluu Casa 4.3 Docs
 site_description: Documentation for Gluu Casa
 
 # Copyright
@@ -8,7 +8,7 @@ copyright: Copyright &copy; 2020, Gluu, Inc.
 # Repository
 repo_name: GluuFederation/docs-casa-prod
 repo_url: https://github.com/GluuFederation/docs-casa-prod/
-edit_uri: edit/4.2/docs/source
+edit_uri: edit/4.3/docs/source
 docs_dir: source
 
 # Configuration
@@ -21,7 +21,7 @@ theme:
     logo: 'gluu.jpg'
     favicon: 'favicon.ico'
 extra:
-    version: '4.2'
+    version: '4.3'
 
 # Tracking
 google_analytics:
@@ -40,6 +40,7 @@ markdown_extensions:
 # Navigation Menu
 nav:
 - 'Versions':
+    - '4.3': 'https://gluu.org/docs/casa/4.3/'
     - '4.2': 'https://gluu.org/docs/casa/4.2/'
     - '4.1': 'https://gluu.org/docs/casa/4.1/'
     - '4.0': 'https://gluu.org/docs/casa/4.0/'
