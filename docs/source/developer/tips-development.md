@@ -32,9 +32,9 @@ Although being able to change files this way doesn't seem like a big advantage, 
 
 Actually, **you can write Java** without requiring compilation. In ZK pages, you can include snippets of Java in `<zscript>` tags. See "ZScript" in [ZUML Reference](./intro-plugin.md#reference-docs) and "Scripts in ZUML" in [ZK Developers' Reference](./intro-plugin.md#reference-docs). ZScript can be used as a fast prototyping vehicle, but are not advised for use in production artifacts.
 
-## Hot redeploy of jar files
+## Hot install or redeploy of jar files
 
-When several files need to be updated and that includes Java classes, a cleaner approach is using the hot redeploying feature supported by Casa (starting with version 4.0). Here is how to proceed:
+When several files need to be updated and that includes Java classes, a cleaner approach is using the hot redeploying feature supported by Casa (starting with version 4.0). This process also works with new plugins. Here is how to proceed:
 
 - Locally generate the jar file for the plugin to test 
 - Connect to the VM and cd to `/opt/gluu/jetty/casa/plugins`
