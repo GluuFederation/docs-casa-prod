@@ -8,7 +8,7 @@ Every time a plugin is uploaded, its jar file is copied to `/opt/gluu/jetty/casa
 
 If you manually replace a jar file in the plugins dir, the plugin will be unloaded and then loaded and started. If a file is dropped then the plugin will be stopped and then unloaded.
 
-If two different jars reference the same plugin, one of the jar files will be removed automatically. Make sure to overwrite existing jar files to ensure the most recent is being used..
+If two different jars reference the same plugin, one of the jar files will be removed automatically. Make sure to overwrite existing jar files to ensure the most recent is being used.
 
 ## Resource extraction and registration
 
