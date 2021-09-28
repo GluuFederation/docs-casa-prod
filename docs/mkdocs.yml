@@ -54,7 +54,6 @@ nav:
 - Administration Guide: 
     - 'About 2FA': 'administration/2fa-basics.md'
     - 'Admin console': 'administration/admin-console.md'
-    - 'Fido U2F to Fido2 migration': 'administration/fido2-migration.md'
     - 'Credentials storage': 'administration/credentials-stored.md'
     - 'Custom branding': 'administration/custom-branding.md'
     - 'URL path customization': 'administration/change-context-path.md'
