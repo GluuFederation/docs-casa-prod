@@ -8,7 +8,7 @@ All configuration changes applied via the admin console take effect immediately 
 
 This section contains settings used by Casa to establish a connection to the underlying database. These settings are prepared by the application installer and there is no need to apply any change afterwards. Update these settings only if the application needs to be tested against a different database Server. 
 
-![local-ldap](../img/admin-console/LocalDatabase.png)
+![local-database](../img/admin-console/LocalDatabase.png)
 
 ## oxd
 

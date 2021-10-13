@@ -24,7 +24,7 @@ Out-of-the-box, Casa can be used to enroll and manage the following authenticato
 - OTP hardware cards like [these](https://www.ftsafe.com/Products/Power_Card/Standard) or dongles like [these](https://www.ftsafe.com/Products/OTP/Single_Button_OTP)      
 - OTP mobile apps like Google Authenticator, FreeOTP, etc.       
 - Mobile phone numbers able to receive OTPs via SMS   
-- Passwords (if stored in the corresponding Gluu Server's local LDAP, i.e. not a backend LDAP like AD)      
+- Passwords (if stored in the corresponding Gluu Server's local database, i.e. not a backend LDAP like AD)      
 
 Additional authenticators and use cases can be supported via [custom plugins](#plugin-oriented). 
 

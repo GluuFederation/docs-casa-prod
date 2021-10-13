@@ -25,11 +25,11 @@ Plugins can be very powerful and depending on the actual need, a mix of skills c
 
 - Java programming 
 - HTML/CSS/Javascript
-- LDAP
+- Database in use by your Gluu Server
 
 The building blocks of plugins are called **extensions**. A plugin can bundle one or more extensions and they can be of different types. Every extension contributes ("adds") specific behavior. For the problem at hand, your plugin will just need one extension as well as one UI page (where credential enrollment will take place). Also you can include supporting Java classes or static files you may need.
 
-A plugin that adds one (or more) authentication mechanisms will have a strong interaction with the the underlying Gluu database (eg. LDAP or couchbase) since that's the natural place where users' credential data will be stored. Also, all configurations (parameters) of the authentication method itself should be there in the DB as well.
+A plugin that adds one (or more) authentication mechanisms will have a strong interaction with the the underlying Gluu database (eg. LDAP) since that's the natural place where users' credential data will be stored. Also, all configurations (parameters) of the authentication method itself should be there in the DB as well.
 
 ## What's next?
 
@@ -41,7 +41,7 @@ Now that you have a minimal grasp, we suggest planning before coding. Working on
 
 - Will you parameterize your authentication method? Using OTP as an example, you may have the key length as a parameter, or the number of digits that generated codes will have. Every possible authentication method on its own will have some characteristic you will prefer not to be hardcoded.
 
-- What's the algorithm for authenticating users once they have supplied a valid username/password combination? Most probably it implies reading the user's stored credential from LDAP and do some crazy computation.
+- What's the algorithm for authenticating users once they have supplied a valid username/password combination? Most probably it implies reading the user's stored credential from the database and do some crazy computation.
 
 - Should this method be treated as a candidate requisite for 2FA to be enabled?. For more info, check [here](../../administration/2fa-basics.md#forcing-users-to-enroll-a-specific-credential-before-2fa-is-available).
 

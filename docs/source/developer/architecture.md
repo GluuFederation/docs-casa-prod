@@ -69,11 +69,11 @@ To add a plugin, a jar file must be uploaded via the admin dashboard.
 
 #### Persistence
 
-As expected, access to Gluu database is key in Casa. To cover this need, the oxcore persistence library. This is a small framework which allows to easily establish a mapping between Java objects (POJOs) and database entries facilitating CRUD operations a lot. Plugins leverage the persistence framework as well as some functionalities exposed directly by the application which makes access to the database fairly easy to understand and highly productive at the same time. 
+As expected, access to Gluu database is key in Casa. To cover this need, the oxCore persistence library. This is a small framework which allows to easily establish a mapping between Java objects (POJOs) and database entries facilitating CRUD operations a lot. Plugins leverage the persistence framework as well as some functionalities exposed directly by the application which makes access to the database fairly easy to understand and highly productive at the same time. 
 
 #### Rest services
 
-Plugins can add RESTful web services dynamically. For this purpose, the well-known JBoss RESTEasy 3.0 libraries were included in this project. Additionally, in future releases Gluu Casa will expose some API endpoints that leverage these libraries. 
+Plugins can add RESTful web services dynamically. For this purpose, the well-known JBoss RESTEasy  libraries were included in this project. Additionally, Gluu Casa exposes some API endpoints that leverage these libraries. 
 
 ## External dependencies
 
@@ -97,7 +97,7 @@ Casa supports free and pro service of IP-API.
 
 ### Backend database
 
-Casa uses the same lightweight directory (LDAP) or Couchbase database of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), users' trusted devices information, and so on. 
+Casa uses the same lightweight directory (LDAP) or database of your Gluu Server to store users data such as [enrolled credentials](../administration/credentials-stored.md), users' trusted devices information, and so on. 
 
 It is recommended that developers writing plugins leverage the existing database to save their data. Nonetheless, any other alternative mechanism can be embraced; it is up to administrators and developers to agree on how to incorporate this to the current stack.
 
@@ -119,8 +119,8 @@ These are key facts for potential Casa developers:
 
 * Underlying operating system: The Linux distro where your Gluu Server is running. For plugin development, there is no restriction on the operating system.
 
-* Java SE version: Gluu Server comes with JDK 1.8 installed in the chroot container, that is, the war file of Casa uses a JVM in such version.  For plugin development, JDK 1.8 is recommended as well.
+* Java version: Gluu Server comes with Java 11 installed in the chroot container, that is, the war file of Casa uses a JVM in such version.  For plugin development, JDK 11 is recommended as well.
 
-* Application container: Casa runs in a Jetty 9.4 instance (which is setup upon installation of Casa). Plugin writers don't need to use an application container since they only produce jar files.
+* Application container: Casa runs in a Jetty 9 instance (which is setup upon installation of Casa). Plugin writers don't need to use an application container since they only produce jar files.
 
 * Build tool: To write plugins, we recommend Maven 3. However, any build system which allows the user to create fat (Uber) jars will suffice.

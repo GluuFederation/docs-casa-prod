@@ -4,7 +4,7 @@ In this page we will disect the "Hello world" plugin project, apply editions on 
 
 ## Requirements
 
-Requirements for this task are the same as those listed in the [introductory page](intro-plugin.md#requirements-and-tools) except for LDAP-related stuff which is not required. Additionally, maven will be used as build tool. If you don't want to use maven you'll need to investigate how to perform the tasks in the tool of your preference. 
+Requirements for this task are the same as those listed in the [introductory page](intro-plugin.md#requirements-and-tools) except for database-related stuff which is not required. Additionally, maven will be used as build tool. If you don't want to use maven you'll need to investigate how to perform the tasks in the tool of your preference. 
 
 If you skipped ["Introduction to plugin development"](intro-plugin.md) we strongly encourage you to check it now.
 
@@ -235,7 +235,7 @@ Access the home page of Casa, you will be able to see a new link was added to us
 
 Check the app log, you will see a statement like "Hello World ViewModel inited" this is added by method `init` of `HelloWorldVM`.
 
-The page is showing a message that includes your current user name inviting you to type something in the text box. Type anything and press the button. This will end up in the execution of `loadOrgName` method of `HelloWorldVM`. This adds a new log statement and sets the value of class member `organizationName`. This value is obtained after an LDAP query!.
+The page is showing a message that includes your current user name inviting you to type something in the text box. Type anything and press the button. This will end up in the execution of `loadOrgName` method of `HelloWorldVM`. This adds a new log statement and sets the value of class member `organizationName`. This value is obtained after a database query!.
 
 After execution of this method, the UI is partially refreshed, which causes a new message to appear in the UI. 
 

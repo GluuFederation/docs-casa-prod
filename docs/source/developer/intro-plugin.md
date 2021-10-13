@@ -38,11 +38,11 @@ By default .zul templates are cached for a very long period, however, for develo
 
 The above guarantees changes in .zul files are picked very often (5 seconds is default ZK cache refresh time).
 
-#### Find a graphical LDAP client
+#### Find a graphical database client
 
-Ensure you can use a GUI client in order to connect to your LDAP. While all sort of operations on the directory can be achieved with the tools already bundled in the Gluu Server chroot container, the only means to have an agile development experience is leveraging a point-and-click tool. 
+Ensure you can use a GUI client in order to connect to your database (eg. LDAP). While command line tools can be employed, the only means to have an agile development experience is leveraging a point-and-click tool. 
 
-Two graphical clients worth mentioning are [LDAP Admin](http://www.ldapadmin.org/) and [Apache DS](https://directory.apache.org/studio/downloads.html). Ask your administrator how to setup a connection from the client running on your desktop to Gluu container's LDAP or 
+In case of LDAP two graphical clients worth mentioning are [LDAP Admin](http://www.ldapadmin.org/) and [Apache DS](https://directory.apache.org/studio/downloads.html). Ask your administrator how to setup a connection from the client running on your desktop to Gluu container's LDAP or 
 follow [these](https://gluu.org/docs/ce/user-management/local-user-management/#manage-data-in-gluu-ldap) instructions.
 
 In case you cannot establish the tunnel mentioned in the docs you can do this if your Gluu Server is backed by OpenDJ:
@@ -52,6 +52,9 @@ In case you cannot establish the tunnel mentioned in the docs you can do this if
 - [Restart](https://gluu.org/docs/ce/4.3/operation/services/#restart) LDAP
 
 ### LDAP notions
+
+!!! Note
+    This section applies for installations where the underlying database is LDAP
 
 It is advisable to get some basic acquaintance with the structure of Gluu's LDAP. We suggest doing a quick introductory reading about LDAP (you'll find many articles in the Internet) if your plugins needs to access or store information from the directory. Ensure you get the **basic** grasp of the following concepts:
 
@@ -73,9 +76,9 @@ In theory, any other language supported in the JVM such as Scala or Groovy may w
 
 You can use the tools of your choosing as long as you can produce fat (Uber) jars, which is the form in which Gluu Casa plugins are delivered. In the following pages, we will use command line interface (CLI) and [Maven 3](https://maven.apache.org) as build tool.
 
-### oxcore persistence annotation lib
+### oxCore persistence annotation lib
 
-Plugins will likely require reading and writing data from and to the underlying Gluu Server database; whether lightweight directory (LDAP) or couchbase. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
+Plugins will likely require reading and writing data from and to the underlying Gluu Server database. There is one Java library (part of Gluu casa project) called `casa-shared` at developers disposal which abstracts and simplifies access to the DB (basically CRUD operations). Manipulation of this abstraction requires developers to create simple classes (POJOs) that can be mapped to actual database entities. 
 
 For this purpose, Gluu's oxcore [persistence-annotation](https://github.com/GluuFederation/oxCore/blob/master/persistence-annotation/pom.xml) library is leveraged.
 
@@ -191,7 +194,7 @@ Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces
 
 - `ISessionContext`: It allows you to obtain information about the current user session: who the logged-in `User` is, and which their `BrowserInfo` settings are.
 
-- `IPersistenceService`: Obtain an instance of this class (via `managedBean` method) and you are ready to start performing CRUD operations in the local database!. Recall that objects and classes passed around are supposed to be annotated with some of the annotations from the oxcore [persistence framework](#oxcore-persistence-annotation-lib). This interface also contains some methods that allows to quickly obtain the DN (distinguished name) of the most important branches of Gluu's LDAP tree which are also useful when couchbase is in place.
+- `IPersistenceService`: Obtain an instance of this class (via `managedBean` method) and you are ready to start performing CRUD operations in the local database!. Recall that objects and classes passed around are supposed to be annotated with some of the annotations from the oxCore [persistence framework](#oxcore-persistence-annotation-lib). This interface also contains some methods that allows to quickly obtain the DN (distinguished name) of the most important branches of Gluu's LDAP tree.
 
 !!! Note  
     When obtaining your IPersistenceService reference there is no need to worry about connecting to the database. You are ready to go.  
@@ -202,7 +205,7 @@ Package `org.gluu.casa.service` of `casa-shared` provides a couple of interfaces
 
 ##### BasePerson
 
-The class `org.gluu.casa.core.model.BasePerson` represents an entry in the *people* LDAP branch, that is, one with `objectClass=gluuPerson` (or its equivalent in case of Couchbase). It only exposes attributes `inum` and `uid` so you might extend this class and add the attributes your plugin needs to handle. Note that field attributes may require annotations so that the framework automatically populates and/or persists values appropriately.
+The class `org.gluu.casa.core.model.BasePerson` represents an entry in the *people* LDAP branch, or its equivalent table in case of other databases. It only exposes attributes `inum` and `uid` so you might extend this class and add the attributes your plugin needs to handle. Note that field attributes may require annotations so that the framework automatically populates and/or persists values appropriately.
 
 For an example on `BasePerson` derivation, check [Owner](https://github.com/GluuFederation/casa/blob/version_4.3.0/plugins/samples/clients-management/src/main/java/org/gluu/casa/plugins/clientmanager/model/Owner.java) class from the client management sample plugin, which in addition to `BasePerson` fields, handles `givenName`, and `sn` attributes.
 

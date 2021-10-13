@@ -11,7 +11,7 @@ The application logs are located at `/opt/gluu/jetty/casa/logs`. By default, Cas
 <!--
 **Note: check the logs**
 
-To work properly, Casa requires stable dependent components (filesystem, ldap, oxd, oxauth, servlet container, etc). Thus, it's important to determine if all expected services are working properly. 
+To work properly, Casa requires stable dependent components (filesystem, database, oxd, oxauth, servlet container, etc). Thus, it's important to determine if all expected services are working properly. 
 
 At startup, the app gathers a good amount of information from its environment. If something is missing or went wrong, messages will be shown in the log. Some messages may warn you about parameters not supplied that were simply inferred for you. 
 
@@ -78,7 +78,7 @@ Once fixed, please restart the application. You will have to see a "WEBAPP INITI
 
 <!-- If for any reason an update to oxd settings results in lockout, or if you provided wrong data during installation, do the following: -->
 
-This requires resetting the oxd configuration. To make it easy for admins to apply the tweak required (no low-level ldap or couchbase commands), we deliver a small CLI tool that allows flushing some oxd configurations.
+This requires resetting the oxd configuration. To make it easy for admins to apply the tweak required (no low-level commands), we deliver a small CLI tool that allows flushing some oxd configurations.
 
 Please do the following:
 

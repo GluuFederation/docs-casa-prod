@@ -49,7 +49,7 @@ Add a custom parameter for authorization requests in your Gluu Server:
 1. Press the save button at the bottom of the page
 
 !!! Note
-    By default every time a user logs in via a external provider, an update takes place in his profile: all attributes released from the external provider to oxAuth are updated in local LDAP. Attributes not received are flushed. If you don't want the update to take place, please also add a oxAuth custom param with name `skipPassportProfileUpdate`.
+    By default every time a user logs in via a external provider, an update takes place in his profile: all attributes released from the external provider to oxAuth are updated in local database. Attributes not received are flushed. If you don't want the update to take place, please also add a oxAuth custom param with name `skipPassportProfileUpdate`.
 
 ### Activate the custom scripts needed
 
