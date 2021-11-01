@@ -81,7 +81,7 @@ Alternatively you can log into chroot and copy the jar file directly to `/opt/gl
 
 ### Enable the authentication method
 
-Wait for one minute, then visit `Administration Console` > `Enabled methods` and tick `User certificate`. On the right, the plugin will be selected by default. Finally save the changes.
+Wait for one minute, then visit `Administration Console` > `Enabled authentication methods` and tick `User certificate`. On the right, the plugin will be selected by default. Finally save the changes.
 
 ## Testing
 
