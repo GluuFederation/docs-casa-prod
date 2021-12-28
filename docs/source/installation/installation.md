@@ -322,7 +322,7 @@ Before proceeding ensure you get the latest *war* file. Proceed as follows:
 
 1. `cd` to `/opt/dist/gluu`
 
-1. Ensure the VM has Internet access and run `wget https://ox.gluu.org/maven/org/xdi/casa/3.1.6.Final/casa-3.1.6.Final.war`
+1. Ensure the VM has Internet access and run `wget https://maven.gluu.org/maven/org/xdi/casa/3.1.6.Final/casa-3.1.6.Final.war`
 
 1. Rename the file `mv casa-3.1.6.Final.war casa.war`
 

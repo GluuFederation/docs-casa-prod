@@ -160,7 +160,7 @@ You include `casa-shared` in plugins by adding the following to your maven proje
         </dependency>
 ```
 
-You can find the physical artifact [here](https://ox.gluu.org/maven/org/xdi/casa-shared/).
+You can find the physical artifact [here](https://maven.gluu.org/maven/org/xdi/casa-shared/).
 
 Note that "provided" scope is used because classes of this library are available at runtime in Gluu Casa already, thus you don't have to make them part of your plugin jar.
 
