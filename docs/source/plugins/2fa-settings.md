@@ -46,7 +46,7 @@ A device/location is considered trustworthy when the user has presented a strong
     
 ## Installation
 
-1. [Download the plugin](https://ox.gluu.org/maven/org/gluu/casa/plugins/strong-authn-settings/4.3.0.Final/strong-authn-settings-4.3.0.Final-jar-with-dependencies.jar)
+1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/strong-authn-settings/4.3.0.Final/strong-authn-settings-4.3.0.Final-jar-with-dependencies.jar)
 
 1. Log in to Casa using an administrator account
 
