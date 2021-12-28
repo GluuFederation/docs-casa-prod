@@ -61,7 +61,7 @@ Click on `Enable` under the script contents box, and press `Update` at the botto
 
 ### Add the plugin to Casa
 
-1. [Download the plugin](https://ox.gluu.org/maven/org/gluu/casa/plugins/duo-plugin/4.2.2.Final/duo-plugin-4.2.2.Final-jar-with-dependencies.jar) 
+1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/duo-plugin/4.2.2.Final/duo-plugin-4.2.2.Final-jar-with-dependencies.jar) 
 
 1. Log in to Casa using an administrator account
 

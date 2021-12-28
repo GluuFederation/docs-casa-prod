@@ -155,7 +155,7 @@ You include `casa-shared` in plugins by adding the following to your maven proje
         </dependency>
 ```
 
-You can find the physical artifact [here](https://ox.gluu.org/maven/org/gluu/casa-shared/).
+You can find the physical artifact [here](https://maven.gluu.org/maven/org/gluu/casa-shared/).
 
 Note that "provided" scope is used because classes of this library are available at runtime in Gluu Casa already, thus you don't have to make them part of your plugin jar.
 
@@ -288,11 +288,11 @@ To know the dependencies already available at runtime, do the following:
 
 1. Create `app` and `shared` folders in it
 
-1. Download file `https://ox.gluu.org/maven/org/gluu/casa-base/4.2.0.Final/casa-base-4.2.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
+1. Download file `https://maven.gluu.org/maven/org/gluu/casa-base/4.2.0.Final/casa-base-4.2.0.Final.pom` and save it as `pom.xml`. If you are on linux, you can use `wget` passing `-O pom.xml`
 
-1. `cd` to `shared` and download `https://ox.gluu.org/maven/org/gluu/casa-shared/4.2.0.Final/casa-shared-4.2.0.Final.pom` (save as `pom.xml`)
+1. `cd` to `shared` and download `https://maven.gluu.org/maven/org/gluu/casa-shared/4.2.0.Final/casa-shared-4.2.0.Final.pom` (save as `pom.xml`)
 
-1. `cd` to `../app` and download `https://ox.gluu.org/maven/org/gluu/casa/4.2.0.Final/casa-4.2.0.Final.pom` saving again as `pom.xml`
+1. `cd` to `../app` and download `https://maven.gluu.org/maven/org/gluu/casa/4.2.0.Final/casa-4.2.0.Final.pom` saving again as `pom.xml`
 
 1. Do `cd ..` and run `mvn dependency:tree -pl app`. It will take some minutes until all dependencies are downloaded to your local maven repository. Finally the tree will be printed on the screen.
 
