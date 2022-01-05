@@ -17,7 +17,7 @@ The Accounts Linking plugin allows users to link and delink their local account 
 
 Once you have configured and tested the integration(s) with the target external providers, install the Accounts Linking plugin by following the steps below:
 
-1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/account-linking/4.3.0.Final/account-linking-4.3.0.Final-jar-with-dependencies.jar)
+1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/account-linking/4.3.1.Final/account-linking-4.3.1.Final-jar-with-dependencies.jar)
 
 1. Log in to Casa using an administrator account
 
@@ -66,7 +66,7 @@ The login page must be updated so it dynamically loads the external providers in
 1. Log in to the chroot
 1. `cd` to `/opt/gluu/jetty/oxauth/custom/pages`
 1. Run `mkdir casa && cd casa` 
-1. Run `wget https://github.com/GluuFederation/casa/raw/version_4.3.0/plugins/account-linking/extras/login.xhtml`
+1. Run `wget https://github.com/GluuFederation/casa/raw/version_4.3.1/plugins/account-linking/extras/login.xhtml`
 
 ## User guide
 
