@@ -11,7 +11,7 @@ To add Casa post-install do the following:
 
 1. Login to chroot
 1. `cd /install/community-edition-setup`
-1. Run `python3  post-setup-add-components.py -addcasa`  
+1. Run `./setup.py --install-casa`
 
 
 **Important notes:**
@@ -24,7 +24,7 @@ To add Casa post-install do the following:
 
 - Ensure your server has "dynamic registration" of clients enabled and that "returnClientSecretOnRead" is set to *true*. These settings can be reverted once your Casa installation is fully operational 
 
-- Casa requires [oxd](https://gluu.org/docs/oxd) 4.x to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, one will be installed for you locally
+- Casa requires [oxd](https://gluu.org/docs/oxd) 4.x to operate. Ideally you would use a ready-to-use external oxd server (its location is prompted upon installation); if you don't have such a server, please select `oxd` from the selection Menu, then oxd-server will be installed for you locally. 
 
 ## Finish setup
 
