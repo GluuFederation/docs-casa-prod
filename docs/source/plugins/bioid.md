@@ -56,7 +56,7 @@ Click on `Enable` under the script contents box, and press `Update` at the botto
 
 ### Add the plugin to Casa
 
-1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/bioid-plugin/4.3.1.Final/bioid-plugin-4.3.1.Final-jar-with-dependencies.jar)
+1. [Download the plugin](https://maven.gluu.org/maven/org/gluu/casa/plugins/bioid-plugin/4.4.0.Final/bioid-plugin-4.4.0.Final-jar-with-dependencies.jar)
 
 1. Log in to Casa using an administrator account
 
