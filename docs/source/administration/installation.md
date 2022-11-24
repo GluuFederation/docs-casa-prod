@@ -41,6 +41,7 @@ Recall admin capabilities are disabled by default. To unlock admin features foll
 
 1. Navigate inside chroot to `/opt/gluu/jetty/casa/`
 1. Create an empty file named `.administrable` (ie. `touch .administrable`)
+1. Run `chown casa:casa .administrable` (do this only if you are on FIPS environment)
 1. Logout in case you have an open browser session
 
 !!! Warning
