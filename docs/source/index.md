@@ -2,7 +2,7 @@
 
 ## Overview
 
-Gluu Casa ("Casa") is a self-service web portal for end-users to manage authentication and authorization preferences for their account in a [Gluu Server](https://gluu.org/docs/ce). 
+Gluu Casa ("Casa") is a self-service web portal for end-users to manage authentication and authorization preferences for their account in a [Gluu Server](https://gluu.org/docs/gluu-server). 
 
 For example, as people interact with an organization's digital services, they may need to:
 
@@ -65,7 +65,7 @@ For more information visit the [Casa website](https://casa.gluu.org/plugins).
 
 ## Gluu Server integration
 
-Casa is tightly bundled with the [Gluu Server](https://gluu.org/docs/ce) identity and access management (IAM) platform. A few important notes:
+Casa is tightly bundled with the [Gluu Server](https://gluu.org/docs/gluu-server) identity and access management (IAM) platform. A few important notes:
 
 - **Authentication scripts**: The Gluu Server relies on "interception scripts" to implement user authentication. Casa itself has an interception script which defines authentication logic and routes authentications to specific 2FA mechanisms which also have their own scripts. All scripts must be enabled in the Gluu Server.        
 
