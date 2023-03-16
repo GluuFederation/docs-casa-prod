@@ -6,12 +6,12 @@ This page covers basic notions required for Gluu Casa plugin development. In pra
  
 ### A Gluu Server VM
 
-For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/ce/installation-guide). Keep in mind to opt in for Casa when prompted. The Gluu server version used should match that of the machines you are targetting for production environment.
+For development, you need a virtual machine with Gluu Server installed. Recall Gluu Server installation is constrained to a number of [Linux distributions](https://gluu.org/docs/gluu-server/installation-guide). Keep in mind to opt in for Casa when prompted. The Gluu server version used should match that of the machines you are targetting for production environment.
 
 Ideally, you should populate your Gluu Server with data (e.g. users/groups) to somewhat resemble a testing or production server of your organization. Writing a plugin to be run on a server with no users other than admin will lead to very poor testing scenarios.
 
 !!! Note
-    Ask your administrator for help on preparing your virtual machine. It is likely they already have one available for immediate use. Check the [CE docs](https://gluu.org/docs/ce/installation-guide) for instructions on how to install Gluu Server from scratch if you need to do so.
+    Ask your administrator for help on preparing your virtual machine. It is likely they already have one available for immediate use. Check the [CE docs](https://gluu.org/docs/gluu-server/installation-guide) for instructions on how to install Gluu Server from scratch if you need to do so.
 
 Ensure you have credentials for a user with administrator privileges in your Gluu Server as well as in the VM (e.g root). Ensure you can connect to that VM via SSH with a client and that your can transfer files.
 
@@ -34,7 +34,7 @@ By default .zul templates are cached for a very long period, however, for develo
     ```
     # jar -uf casa.war WEB-INF/zk.xml
     ```
-1. [Restart](https://gluu.org/docs/ce/4.3/operation/services/#restart) casa
+1. [Restart](https://gluu.org/docs/gluu-server/4.3/operation/services/#restart) casa
 
 The above guarantees changes in .zul files are picked very often (5 seconds is default ZK cache refresh time).
 
@@ -43,13 +43,13 @@ The above guarantees changes in .zul files are picked very often (5 seconds is d
 Ensure you can use a GUI client in order to connect to your database (eg. LDAP). While command line tools can be employed, the only means to have an agile development experience is leveraging a point-and-click tool. 
 
 In case of LDAP two graphical clients worth mentioning are [LDAP Admin](http://www.ldapadmin.org/) and [Apache DS](https://directory.apache.org/studio/downloads.html). Ask your administrator how to setup a connection from the client running on your desktop to Gluu container's LDAP or 
-follow [these](https://gluu.org/docs/ce/user-management/local-user-management/#manage-data-in-gluu-ldap) instructions.
+follow [these](https://gluu.org/docs/gluu-server/user-management/local-user-management/#manage-data-in-gluu-ldap) instructions.
 
 In case you cannot establish the tunnel mentioned in the docs you can do this if your Gluu Server is backed by OpenDJ:
 
 - Run `/opt/opendj/bin/dsconfig -h localhost -p 4444 -D "cn=directory manager" -w PASSWORD -n set-connection-handler-prop --handler-name="LDAPS Connection Handler" --set listen-address:0.0.0.0 -X` in chroot
 - Open port 1636 in your VM firewall
-- [Restart](https://gluu.org/docs/ce/4.3/operation/services/#restart) LDAP
+- [Restart](https://gluu.org/docs/gluu-server/4.3/operation/services/#restart) LDAP
 
 ### LDAP notions
 
@@ -106,7 +106,7 @@ In ZK, you use ZUML (ZK User Interface Markup Language) which is an XML-formatte
 
 ZK provides many ready-to-use UI components, but it also allows to use pure HTML code which is universally known by designers and developers in the field of web applications.
 
-You can use any of the resources listed above to get an idea of how typical zul files look. You can also extract casa war contents to inspect those. In the [Writing your first plugin](first-plugin.md) page you will have the opportunity to view and edit .zul files your own.
+You can use any of the resources listed above to get an idea of how typical zul files look. You can also extract casa war contents to inspect those. In the [Writing your first plugin](./writing-first.md) page you will have the opportunity to view and edit .zul files your own.
 
 Particularly in Gluu Casa code, the amount of zul components used is very small to favor plain HTML5 tags. This allows to reduce the time it takes to incorporate a UI design handed by a third party into a project. Additionally it helps reducing the time to learn ZK by focusing only on the relevant components that make the interaction with the backend possible.
 
@@ -114,7 +114,7 @@ Besides ZUML, ViewModels are an important concept. *ZK MVVM Reference* contains 
 
 ZK framework takes charge of handling the communication and state synchronization between the *View* and its associate *ViewModel*. While you don't normally reference UI components in *ViewModels*, if you need to manipulate those in your POJO, account that there is a Java class in the framework for every possible ZK component (e.g. Button, CheckBox, etc.) and they reside in package `org.zkoss.zul`. 
 
-The process of synchronizing data between the *View* and *ViewModel* is called binding. ZK uses a set of Java-like annotations to drive this mechanism. We will see some of those when [Writing our first plugin](first-plugin.md). ZK binder is also responsible for hooking up a UI component's event such as a button's onClick to a method defined in a *ViewModel*. In this case Java annotations are used.
+The process of synchronizing data between the *View* and *ViewModel* is called binding. ZK uses a set of Java-like annotations to drive this mechanism. We will see some of those when [Writing our first plugin](./writing-first.md). ZK binder is also responsible for hooking up a UI component's event such as a button's onClick to a method defined in a *ViewModel*. In this case Java annotations are used.
 
 ### Plugin framework
 
@@ -336,7 +336,7 @@ Method `void save()` will persist modifications performed on the object referenc
 
 ## Accessing cache facilities
 
-Plugins can access the underlying cache provider in use by the Gluu Server installation at no cost. This is helpful when access to a quick key/value store is required. Click [here](https://gluu.org/docs/ce/4.3/reference/cache-provider-prop/) to learn more about the cache types supported by the server.
+Plugins can access the underlying cache provider in use by the Gluu Server installation at no cost. This is helpful when access to a quick key/value store is required. Click [here](https://gluu.org/docs/gluu-server/4.3/reference/cache-provider-prop/) to learn more about the cache types supported by the server.
 
 To access the cache handler, do the following:
 
@@ -359,7 +359,7 @@ import org.gluu.service.cache.CacheProvider;
 CacheProvider cache = Utils.managedBean(CacheProvider.class);
 ```
 
-With `cache` object it is possible, for example, to retrieve values (`get` method), set values (`set` methods), and remove values by key (`remove`). By default a key/value pair has an expiration time defined at the server level in the [oxTrust admin UI](https://gluu.org/docs/ce/4.3/reference/cache-provider-prop/). A different expiration time (in seconds) can be supplied using `put` method of signature `void put(int, String, Object)`.
+With `cache` object it is possible, for example, to retrieve values (`get` method), set values (`set` methods), and remove values by key (`remove`). By default a key/value pair has an expiration time defined at the server level in the [oxTrust admin UI](https://gluu.org/docs/gluu-server/4.3/reference/cache-provider-prop/). A different expiration time (in seconds) can be supplied using `put` method of signature `void put(int, String, Object)`.
 
 !!! Note
     `Object`s to be stored in cache have to implement the interface `java.io.Serializable`.
