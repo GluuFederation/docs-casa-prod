@@ -65,6 +65,7 @@ nav:
         - 'Consent Management': 'plugins/consent-management.md'
         - 'Custom Branding': 'plugins/custom-branding.md'
         - 'Certificate authentication': 'plugins/cert-authn.md'
+        - 'Email 2FA OTP': 'plugins/email2fa.md'
         - 'Write your own plugin': 'plugins/writing-plugins.md'
     - 'FAQ': 'administration/faq.md'
 - Developer Guide:
