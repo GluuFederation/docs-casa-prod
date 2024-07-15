@@ -1,4 +1,4 @@
-# Email 2FA OTP Plugin
+# Email OTP Plugin
 
 ## Overview
 
@@ -34,9 +34,9 @@ SFTP/SCP the following files to your VM instance (create directories if needed):
 
 |Source|Destination directory (VM)|
 |-|-|
-|(otp_email.xhtml)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email.xhtml]|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
-|(otp_email_prompt.xhtml)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email_prompt.xhtml]|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
-|(oxauth.properties)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/oxauth.properties]|`/opt/gluu/jetty/oxauth/custom/i18n/`|
+|[otp_email.xhtml](https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email.xhtml)|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
+|[otp_email_prompt.xhtml](https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email_prompt.xhtml)|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
+|[oxauth.properties](https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/oxauth.properties)|`/opt/gluu/jetty/oxauth/custom/i18n/`|
 
 ### Add the plugin
 
