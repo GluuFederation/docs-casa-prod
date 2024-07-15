@@ -2,63 +2,63 @@
 
 ## Overview
 
-This plugin allows the end-user to enable email-based OTP as their second factor authentication in CASA. 
+This plugin allows end-users to receive one-time passcodes to one of their registered e-mail addresses in order to get access to Casa.  
 
-## Requirement
+## Requisites
 
- - Configurations in Gluu Server
- - Installed plugin jar in CASA
+- Gluu Server configured with SMTP
+- Custom jython script added to server
+- Custom pages added to server
+- Plugin onboarded in Casa
 
-## Installation
+### SMTP Configuration
 
-### Gluu Server
+In oxTrust, visit `Configuration` > `Organization configuration` > `SMTP server configuration`. Fill the details that suit your needs best. Ensure to pass the provided "Test Configuration" functionality. Key store and algorithm-related fields are pre-populated; these allow delivery of signed e-mails. If you don't want signed e-mails, leave the key store fields empty. 
 
-We need to enable `email_2fa_core` script in Gluu Server. There are couple of configurations required as well. 
+### Custom script
 
-#### Script enabling
+Create a new person authentication script. In oxTrust, visit `Configuration` > `Person authentication scripts` and click on the "add" button. Fill the following:
 
- - Log in to the Gluu Server as admin
- - Navigate to `Configuration` > `Person Authentication Scripts` > `Add custom script configuration`
-    - `Name`: email_2fa_core
-    - `Select SAML ACRs`: not mandatory
-    - `Description`: describe use case
-    - `Programming Language`: Jython
-    - `Level`: depends on your policy
-    - `Location`: Database
-    - `Interactive`: Web
-    - `Custom property(key/value)`:
-       - `token_length`: 7
-       - `token_lifetime`: 10
-    - Take script from [here](https://raw.githubusercontent.com/GluuFederation/casa/master/plugins/email_2fa_core/extras/email_2fa_core.py) and paste it into the `Script` location
- - Save
+- name: `email_2fa`
+- custom properties
+    - name: `otp_length` / value: the number of digits the delivered OTPs will have, e.g. 6
+    - name: `otp_lifetime` / value: how long an OTP will be considered valid (in minutes), e.g. 2
+- script: use the contents from [here](https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/email_2fa_core.py)
+- level: choose a numeric value as per your requirements
 
-#### Configuration
+Ensure the "Enabled" checkbox is ticked and then submit the form.
 
-You need SSH root access to complete this configuration. 
+### Custom pages
 
- - Go to `/opt/gluu/jetty/oxauth/custom/pages/` and create a directory named `casa` if not available. 
- - Grab and copy two files in this `casa` location: 
-   - `https://raw.githubusercontent.com/GluuFederation/casa/master/plugins/email_2fa_core/extras/otp_email.xhtml`
-   - `https://raw.githubusercontent.com/GluuFederation/casa/master/plugins/email_2fa_core/extras/otp_email_prompt.xhtml`
- - Create a file named `oxauth.properties` inside `/opt/gluu/jetty/oxauth/custom/i18n/` with below content: 
-   ```
-    #casa plugin - email otp
-    casa.email_2fa.title= Email OTP
-    casa.email_2fa.text=The Email OTP method enables you to authenticate using the one-time password (OTP) that is sent to the registered email address.
-    casa.email.enter=Enter the code sent via Email
-    casa.email.choose=Choose an email-id to send an OTP to
-    casa.email.send=Send
-   ```
- - Grab the latest `casa.xhtml` from `https://github.com/GluuFederation/oxAuth/blob/master/Server/src/main/webapp/casa/casa.xhtml` and put it inside `/opt/gluu/jetty/oxauth/custom/pages/casa/`
- - Get the image file from `https://github.com/GluuFederation/oxAuth/blob/master/Server/src/main/webapp/img/email-ver.png` and put it inside `/opt/gluu/jetty/oxauth/custom/static/img` location. 
+SFTP/SCP the following files to your VM instance (create directories if needed):
 
-### Casa configuration
+|Source|Destination directory (VM)|
+|-|-|
+|(otp_email.xhtml)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email.xhtml]|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
+|(otp_email_prompt.xhtml)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/otp_email_prompt.xhtml]|`/opt/gluu/jetty/oxauth/custom/pages/casa`|
+|(oxauth.properties)[https://github.com/GluuFederation/casa/raw/master/plugins/email_2fa_core/extras/oxauth.properties]|`/opt/gluu/jetty/oxauth/custom/i18n/`|
 
- - Log in to Casa with `https://[hostname]/casa`
- - Access `Administration console`
- - Go to `Casa Plugins`
-   - Download latest `Email_2fa_core` plugin from here: https://maven.gluu.org/maven/org/gluu/casa/plugins/email_2fa_core/
- - Upload that jar file which you just downloaded
- - Wait for some time
- 
-Now your Email 2FA OTP is ready to use. 
+### Add the plugin
+
+Use the casa admin dashboard to upload the email plugin:
+
+- Visit casa and navigate to `Administration console` > `Casa Plugins`
+- Click on `Add a plugin...` and provide this [jar](https://maven.gluu.org/maven/org/gluu/casa/plugins/email_2fa_core/4.5.5-SNAPSHOT/email_2fa_core-4.5.5-SNAPSHOT-jar-with-dependencies.jar) file
+
+Alternatively you can copy (SFTP/SCP) the file directly to `/opt/gluu/jetty/casa/plugins`.
+
+## Associate the new authentication method
+
+Once the plugin was installed (it can take up to one minute), visit the Casa admin dashboard and do the following:
+
+- Click on `Enabled authentication methods`. A table showing a row labelled `email_2fa` should appear
+- Tick the row's checkbox and then click on `Save`
+- Click on `Back to your credentials`. A new menu item should appear under `2FA credentials` as well as a corresponding widget in the main content area.
+
+## Test
+
+In the main page (user's dashboard) click on `Email 2FA`. If the user already has some e-mails added they should appear listed. In order to add more, simply provide an e-mail and follow the instructions. An OTP code will be sent for validation; note [SMTP](#smtp-configuration) has to be properly setup beforehand.
+
+Back in the main page, ensure to enroll another type of credential. This might require some configurations - check the admin console guide. Finally turn on `Second Factor Authentication` (the big toggle switch in the dashboard) and logout.
+
+Attempt to login again, after entering the username and password combination, the user will have the option to login by entering an OTP delivered to his inbox as a second factor for authentication.
