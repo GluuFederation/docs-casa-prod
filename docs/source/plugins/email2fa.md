@@ -2,7 +2,10 @@
 
 ## Overview
 
-This plugin allows end-users to receive one-time passcodes to one of their registered e-mail addresses in order to get access to Casa.  
+This plugin allows end-users to receive one-time passcodes to one of their registered e-mail addresses in order to get access to Casa.
+
+!!! Note
+    This plugin is only available for Gluu Casa version 4.5.3 or higher
 
 ## Requisites
 
@@ -13,7 +16,11 @@ This plugin allows end-users to receive one-time passcodes to one of their regis
 
 ### SMTP Configuration
 
-In oxTrust, visit `Configuration` > `Organization configuration` > `SMTP server configuration`. Fill the details that suit your needs best. Ensure to pass the provided "Test Configuration" functionality. Key store and algorithm-related fields are pre-populated; these allow delivery of signed e-mails. If you don't want signed e-mails, leave the key store fields empty. 
+In oxTrust, visit `Configuration` > `Organization configuration` > `SMTP server configuration`. Fill the details that suit your needs best. Ensure to pass the provided "Test Configuration" functionality. 
+
+Key store and algorithm-related fields are pre-populated; these allow delivery of signed e-mails. If you don't want signed e-mails, leave the key store fields empty.
+
+Restart oxauth.
 
 ### Custom script
 
@@ -43,9 +50,20 @@ SFTP/SCP the following files to your VM instance (create directories if needed):
 Use the casa admin dashboard to upload the email plugin:
 
 - Visit casa and navigate to `Administration console` > `Casa Plugins`
-- Click on `Add a plugin...` and provide this [jar](https://maven.gluu.org/maven/org/gluu/casa/plugins/email_2fa_core/4.5.5-SNAPSHOT/email_2fa_core-4.5.5-SNAPSHOT-jar-with-dependencies.jar) file
+- Click on `Add a plugin...` and provide this [jar](https://maven.gluu.org/maven/org/gluu/casa/plugins/email_2fa_core/4.5.5-SNAPSHOT/email_2fa_core-4.5.5-SNAPSHOT-jar-with-dependencies.jar) file if your Gluu Server version is 4.5.4 or higher. If you are in 4.5.3 use this [jar](https://maven.gluu.org/maven/org/gluu/casa/plugins/email_2fa_core/4.5.3.1.Final/email_2fa_core-4.5.3.1.Final-jar-with-dependencies.jar) instead
 
 Alternatively you can copy (SFTP/SCP) the file directly to `/opt/gluu/jetty/casa/plugins`.
+
+If your Gluu version is 4.5.4, please do the following as well:
+
+- Connect to your VM instance (SSH) and `cd` to `/opt/gluu/jetty/casa/webapps`
+- Stop casa, e.g. `systemctl stop casa`
+- Run `zip -d casa.war WEB-INF/lib/bcutil-jdk18on-1.76.jar`
+- Run `mkdir WEB-INF && cd WEB-INF && mkdir lib && cd lib`
+- `wget https://repo1.maven.org/maven2/org/bouncycastle/bcutil-jdk18on/1.78.1/bcutil-jdk18on-1.78.1.jar`
+- `jar -uf casa.war WEB-INF`
+- `rm -rf WEB-INF`
+- Start casa
 
 ## Associate the new authentication method
 
